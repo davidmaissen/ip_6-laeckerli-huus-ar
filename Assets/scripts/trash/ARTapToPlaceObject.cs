@@ -9,6 +9,7 @@ using System;
 public class ARTapToPlaceObject : MonoBehaviour
 {
 
+    /*
     public GameObject placementIndicator;
     private ARSessionOrigin arOrigin;
     private Pose placementPose;
@@ -50,4 +51,5 @@ public class ARTapToPlaceObject : MonoBehaviour
             placementPose = hits[0].pose;
         }
     }
+    */
 }

@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARSubsystems;
 using System;
 
-public class ARTapToPlaceObject : MonoBehaviour
+public class TapToPlaceObject : MonoBehaviour
 {
 
-    /*
     public GameObject placementIndicator;
     private ARSessionOrigin arOrigin;
     private Pose placementPose;
@@ -51,5 +51,4 @@ public class ARTapToPlaceObject : MonoBehaviour
             placementPose = hits[0].pose;
         }
     }
-    */
 }

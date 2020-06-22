@@ -9,6 +9,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
 {
     private ARRaycastManager raycastManager;
     private GameObject spawnedObject;
+    public bool placementModeActive = true;
 
     [SerializeField]
     private GameObject PlaceablePrefab;
@@ -32,7 +33,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
 
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchposition)) {
+        if (!placementModeActive || !TryGetTouchPosition(out Vector2 touchposition)) {
             return;
         }
 

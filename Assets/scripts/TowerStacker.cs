@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class TowerStacker : MonoBehaviour
 {
     public GameObject cubePrefab;
+    private SpawnObjectsOnPlane spawnObjectsOnPlane;
+
+        private void Awake()
+    {
+        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (spawnObjectsOnPlane.placementModeActive) {
+            return;
+        }
+
         foreach(var t in Input.touches) {
             if (t.phase != TouchPhase.Began)
             continue;

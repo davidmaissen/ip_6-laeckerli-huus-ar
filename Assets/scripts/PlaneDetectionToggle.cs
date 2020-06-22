@@ -11,32 +11,40 @@ public class PlaneDetectionToggle : MonoBehaviour
     private ARPlaneManager planeManager;
     [SerializeField]
     private Text toggleButtonText;
+    private SpawnObjectsOnPlane spawnObjectsOnPlane;
 
-    void Awake()
+    private void Awake()
     {
         planeManager = GetComponent<ARPlaneManager>();
-        toggleButtonText.text = "Deaktivieren";
+        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
+        spawnObjectsOnPlane.placementModeActive = true;
+        toggleButtonText.text = "Platzierung beenden";
     }
 
     public void TogglePlaneDetection() 
     {
+        Debug.Log("Button hit!");
         planeManager.enabled = !planeManager.enabled;
         string toggleButtonMessage = "";
 
         if (planeManager.enabled) 
         {
-            toggleButtonMessage = "Deaktivieren Toggle";
+            spawnObjectsOnPlane.placementModeActive = true;
+            // spawnObjectsOnPlane.enabled = false;
+            toggleButtonMessage = "Platzierung bestätigen und beenden";
             SetAllPlanesActive(true);
         } 
         else 
         {
-            toggleButtonMessage = "Aktivieren Toggle";
+            spawnObjectsOnPlane.placementModeActive = false;
+            // spawnObjectsOnPlane.enabled = true;
+            toggleButtonMessage = "Platzierung verändern";
             SetAllPlanesActive(false);
         }
         toggleButtonText.text = toggleButtonMessage;
     }
 
-    public void SetAllPlanesActive(bool value) {
+    private void SetAllPlanesActive(bool value) {
         foreach(var plane in planeManager.trackables) {
             plane.gameObject.SetActive(value);
         }

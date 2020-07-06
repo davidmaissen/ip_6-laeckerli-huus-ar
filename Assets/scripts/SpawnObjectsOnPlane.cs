@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
-public class SpawnObjectsOnPlane : MonoBehaviour
+public class SpawnObjectsOnPlane : MonoBehaviour, IPointerDownHandler
 {
     private ARRaycastManager raycastManager;
     private GameObject spawnedObject;
     public bool placementModeActive = true;
+    private bool hit = false;
 
     [SerializeField]
     private GameObject PlaceablePrefab;
@@ -31,8 +33,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
         return false;
     }
 
-    void Update()
-    {
+    private void Update() {
         if (!placementModeActive || !TryGetTouchPosition(out Vector2 touchposition)) {
             return;
         }
@@ -47,5 +48,10 @@ public class SpawnObjectsOnPlane : MonoBehaviour
                 spawnedObject.transform.rotation = hitPose.rotation;
             }
         }
+        // hit = false;
     }
+
+   public void OnPointerDown(PointerEventData eventData) {
+       hit = true;
+   }
 }

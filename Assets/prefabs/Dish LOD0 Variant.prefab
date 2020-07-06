@@ -14,6 +14,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7c0b4c58566fe86419d1f8c4fddba46a, type: 3}
+--- !u!114 &-7580566337690818736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342866754414830410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5342866754414732778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,15 +83,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c0b4c58566fe86419d1f8c4fddba46a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c0b4c58566fe86419d1f8c4fddba46a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c0b4c58566fe86419d1f8c4fddba46a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7c0b4c58566fe86419d1f8c4fddba46a, type: 3}
       propertyPath: m_Materials.Array.data[0]

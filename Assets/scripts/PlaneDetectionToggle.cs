@@ -12,13 +12,21 @@ public class PlaneDetectionToggle : MonoBehaviour
     [SerializeField]
     private Text toggleButtonText;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
+    public Button toggleButton;
 
     private void Awake()
     {
         planeManager = GetComponent<ARPlaneManager>();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
         spawnObjectsOnPlane.placementModeActive = true;
-        toggleButtonText.text = "Platzierung beenden";
+        Button btn = toggleButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
+        // btn.
+        // toggleButtonText.text = "Platzierung beenden";
+    }
+
+	void TaskOnClick(){
+        TogglePlaneDetection();
     }
 
     public void TogglePlaneDetection() 

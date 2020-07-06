@@ -56,6 +56,9 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
+/build-fb/
+/build-fb-marker/
+/build-fb-find-alex/
 *.apk
 *.aab
 *.unitypackage

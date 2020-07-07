@@ -10,7 +10,7 @@ public class main : MonoBehaviour
     public void Explore()
     {
 
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("explore");
 
     }
 

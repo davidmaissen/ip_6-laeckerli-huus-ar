@@ -64,30 +64,18 @@ public class MarkerTracking : MonoBehaviour
         }
     }
 
-    /*
-    void TouchHandler(GameObject go) {
-        foreach(var t in Input.touches) {
-            Debug.Log("something hit!!");
-            var ray = Camera.main.ScreenPointToRay(t.position);
-            Collider2D coll = go.GetComponent<Collider2D>();
-            if(coll.OverlapCollider()) {
-                Debug.Log("marker-water hit!!");
-            }
-        }
-    }
-    */
-
      void Update(){
         foreach(var t in Input.touches) {
             if (t.phase != TouchPhase.Began)
             continue;
-            Debug.Log("something new hit!!");
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo)) {
-             Debug.Log(hitInfo.transform.gameObject.name + " hit!!");
-             if (hitInfo.transform.gameObject.name == "tower") {
-                 SceneManager.LoadScene("laeckerliturm");
+             if (
+                 hitInfo.transform.gameObject.name == "laeckerli-tower" ||
+              hitInfo.transform.gameObject.name == "find-alex"
+              ) {
+                 SceneManager.LoadScene(hitInfo.transform.gameObject.name);
              }
             }
         }

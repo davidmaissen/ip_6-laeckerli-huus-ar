@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 222054868}
   m_Layer: 0
   m_Name: AR Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ReferenceLibrary: {fileID: 11400000, guid: 44e38c0332bc0430684caaf2cd322c9a, type: 2}
+  m_ReferenceLibrary: {fileID: 11400000, guid: 413c25839fc0047c98b725b45cd8e2ed, type: 2}
   m_MaxNumberOfMovingImages: 4
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &314650488
@@ -471,5 +471,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeablePrefab:
-  - {fileID: 4193031592702933283, guid: f4b69caba59e144da83ff6ad4f94e980, type: 3}
+  - {fileID: 10665138841777382, guid: 0092b71d265644ae2920902cb6f31deb, type: 3}
   - {fileID: 5261682334868248587, guid: e5260b64903a84a40952a50beb736155, type: 3}

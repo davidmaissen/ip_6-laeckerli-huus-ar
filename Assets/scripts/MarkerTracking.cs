@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.SceneManagement;
+
+// Source: https://www.youtube.com/watch?v=I9j3MD7gS5Y
 
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class MarkerTracking : MonoBehaviour
@@ -52,11 +55,42 @@ public class MarkerTracking : MonoBehaviour
         GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = position;
         prefab.SetActive(true);
+        Debug.Log(prefab.name + " spotted");
 
         foreach(GameObject go in spawnedPrefabs.Values) {
             if (go.name != name) {
                 go.SetActive(false);
             }
         }
+    }
+
+    /*
+    void TouchHandler(GameObject go) {
+        foreach(var t in Input.touches) {
+            Debug.Log("something hit!!");
+            var ray = Camera.main.ScreenPointToRay(t.position);
+            Collider2D coll = go.GetComponent<Collider2D>();
+            if(coll.OverlapCollider()) {
+                Debug.Log("marker-water hit!!");
+            }
+        }
+    }
+    */
+
+     void Update(){
+        foreach(var t in Input.touches) {
+            if (t.phase != TouchPhase.Began)
+            continue;
+            Debug.Log("something new hit!!");
+            var ray = Camera.main.ScreenPointToRay(t.position);
+            RaycastHit hitInfo;
+            if(Physics.Raycast(ray, out hitInfo)) {
+             Debug.Log(hitInfo.transform.gameObject.name + " hit!!");
+             if (hitInfo.transform.gameObject.name == "tower") {
+                 SceneManager.LoadScene("laeckerliturm");
+             }
+            }
+        }
+
     }
 }

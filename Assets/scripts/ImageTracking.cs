@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 
+// Source: https://www.youtube.com/watch?v=I9j3MD7gS5Y
+
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ImageTracking : MonoBehaviour
 {

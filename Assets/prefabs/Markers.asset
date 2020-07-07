@@ -16,22 +16,42 @@ MonoBehaviour:
   m_GuidHigh: 18097957678618183320
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5044262643992323328
-      m_GuidHigh: 16301056532910120070
+      m_GuidLow: 4750966946514114804
+      m_GuidHigh: 9737500529635069312
     m_SerializedTextureGuid:
-      m_GuidLow: 13001812663874212856
-      m_GuidHigh: 855916588488232648
-    m_Size: {x: 0.1, y: 0.056311745}
+      m_GuidLow: 6081629629982804370
+      m_GuidHigh: 11157700603472131912
+    m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: genusswelt01
-    m_Texture: {fileID: 0}
+    m_Name: tower
+    m_Texture: {fileID: 2800000, guid: 369d899249ed546648371e34951dd89a, type: 3}
   - m_SerializedGuid:
-      m_GuidLow: 5239944153613319341
-      m_GuidHigh: 10582873716151287951
+      m_GuidLow: 4617111810768206261
+      m_GuidHigh: 446030451604811434
     m_SerializedTextureGuid:
-      m_GuidLow: 8418915723593533280
-      m_GuidHigh: 5010857521130562651
-    m_Size: {x: 0.1, y: 0.17608696}
+      m_GuidLow: 4963020732751581985
+      m_GuidHigh: 1661730091862264984
+    m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: ui-1
+    m_Name: find-alex
+    m_Texture: {fileID: 2800000, guid: ac8e9321310f44e0980c07deb6a60f17, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4665308385324830605
+      m_GuidHigh: 17302543517452004759
+    m_SerializedTextureGuid:
+      m_GuidLow: 16487452944719208943
+      m_GuidHigh: 9027753128609886937
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: maze
+    m_Texture: {fileID: 2800000, guid: 54f4e1ef3319e4cfd9b2b6aea305497d, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4713799129831956959
+      m_GuidHigh: 4867995708385840825
+    m_SerializedTextureGuid:
+      m_GuidLow: 16463223988578099744
+      m_GuidHigh: 2041381640853730475
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: combine
     m_Texture: {fileID: 0}

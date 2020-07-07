@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 222054868}
   m_Layer: 0
   m_Name: AR Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,5 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeablePrefab:
-  - {fileID: 7911040046619357045, guid: a28b63c89828c449b8a7f519be747bf9, type: 3}
-  - {fileID: 4463935243042334800, guid: 454c06e75a9924f2ca25909b8f4045ff, type: 3}
+  - {fileID: 9121724712343460841, guid: 48002b3e7fe474456a13793330a759bb, type: 3}
+  - {fileID: 7911040046619357045, guid: 3beb5e60633834bb0b4b73f46e927e67, type: 3}
+  - {fileID: 7911040046619357045, guid: 3edea0b2a1ff14be98376a9d33c8f45c, type: 3}
+  - {fileID: 7911040046619357045, guid: 73e86e2751f084a2cb15d29cd27575d6, type: 3}

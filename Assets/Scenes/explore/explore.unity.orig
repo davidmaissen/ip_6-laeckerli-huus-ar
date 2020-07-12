@@ -623,7 +623,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< .merge_file_BsfoXX
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+=======
   m_Color: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0}
+>>>>>>> .merge_file_W2ME6u
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

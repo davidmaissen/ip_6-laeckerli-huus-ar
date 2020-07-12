@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/tutorial/tutorial.unity
     guid: b14b7ea43b4ed4bc2bb7deea23098b53
   - enabled: 1
-    path: Assets/Scenes/find_alex/find_alex.unity
+    path: Assets/Scenes/find-alex/find-alex.unity
     guid: dacf702e77a91427a99584fa91125f33
   - enabled: 1
     path: Assets/Scenes/explore/explore.unity
     guid: 3e484998f4b4a44c992605e3e492cf97
   - enabled: 1
-    path: Assets/Scenes/laeckerliturm/laeckerliturm.unity
+    path: Assets/Scenes/laeckerli-tower/laeckerli-tower.unity
     guid: 50a1ae615dcac45a59015dbecad6da86
   m_configObjects: {}

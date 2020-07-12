@@ -5,13 +5,16 @@ using UnityEngine.EventSystems;
 
 public class IsCanvasClicked : MonoBehaviour, IPointerDownHandler
 {
-    void Awake() {
-        Debug.Log("AWAKE");
-
-    }
-    // Update is called once per frame
+    public static bool goClicked = false;
+    // private SpawnObjectsOnPlane spawnObjectsOnPlane;
+    
     public void OnPointerDown(PointerEventData data)
     {
-        Debug.Log("CLICK");
+        Debug.Log("Event Data World Position: " + data.pointerCurrentRaycast.worldPosition);
+        Debug.Log("Event Data Screen Position: " + data.pointerCurrentRaycast.screenPosition);
+        Debug.Log("Event Data Position: " + data.position);
+        Debug.Log("Event Data: " + data);
+        goClicked = true;
+        // spawnObjectsOnPlane.UpdateObjectOnPlane(data);
     }
 }

@@ -54,6 +54,8 @@ public class MarkerTracking : MonoBehaviour
 
         GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = position;
+        prefab.transform.rotation = trackedImage.transform.rotation;
+        prefab.transform.Rotate(90,0,0);
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");
 
@@ -71,12 +73,15 @@ public class MarkerTracking : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo)) {
+                Debug.Log(hitInfo.transform.gameObject.name + " clicked");
+                SceneManager.LoadScene(hitInfo.transform.gameObject.name);
+                /*
              if (
                  hitInfo.transform.gameObject.name == "laeckerli-tower" ||
               hitInfo.transform.gameObject.name == "find-alex"
               ) {
-                 SceneManager.LoadScene(hitInfo.transform.gameObject.name);
              }
+             */
             }
         }
 

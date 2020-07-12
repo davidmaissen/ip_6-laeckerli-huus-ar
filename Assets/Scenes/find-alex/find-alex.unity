@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd9b8404543476bbb4e1686da5c44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeablePrefabMain: {fileID: 3361433996645248622, guid: 2dbed01bdeb8e42ed816aaf5ff7a1b53,
+    type: 3}
   placeablePrefab:
-  - {fileID: 10665138841777382, guid: 0092b71d265644ae2920902cb6f31deb, type: 3}
-  - {fileID: 5261682334868248587, guid: e5260b64903a84a40952a50beb736155, type: 3}
+  - {fileID: 3361433996645248622, guid: edcac7d6d84354053926613accaf7798, type: 3}

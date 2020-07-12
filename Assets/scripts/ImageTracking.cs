@@ -22,6 +22,7 @@ public class ImageTracking : MonoBehaviour
         {
             GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
             newPrefab.name = prefab.name;
+                        newPrefab.SetActive(false);
             spawnedPrefabs.Add(prefab.name, newPrefab);
         }
     }
@@ -49,7 +50,7 @@ public class ImageTracking : MonoBehaviour
     private void UpdateImage(ARTrackedImage trackedImage) {
         string name = trackedImage.referenceImage.name;
         Vector3 position = trackedImage.transform.position;
-        position.x = position.x - 1;
+        // position.x = position.x - 1;
 
         GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = position;

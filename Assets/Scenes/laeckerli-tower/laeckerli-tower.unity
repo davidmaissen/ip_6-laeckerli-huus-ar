@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementModeActive: 0
-  PlaceablePrefab: {fileID: 5342866754414830410, guid: ddc632854c41546d8aab6bffd68bfd26,
+  PlaceablePrefab: {fileID: 3130802774869350125, guid: fcbec315a61834565b745c5ed154b48e,
     type: 3}
 --- !u!114 &1802024465
 MonoBehaviour:

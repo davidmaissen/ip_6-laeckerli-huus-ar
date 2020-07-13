@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 3382419289359510817}
   - component: {fileID: 7365402907253959943}
   - component: {fileID: 214782585530822660}
-  - component: {fileID: 9024710960958374968}
   - component: {fileID: 6510716693225562856}
   - component: {fileID: -3517823021377389278}
   - component: {fileID: -7524650896794452322}
   m_Layer: 0
-  m_Name: "La\u0308ckerli"
-  m_TagString: Player
+  m_Name: "La\u0308ckerli_Placeable"
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,22 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &9024710960958374968
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130802774869350125}
-  serializedVersion: 2
-  m_Mass: 0.01
-  m_Drag: 0
-  m_AngularDrag: 0.1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!64 &6510716693225562856
 MeshCollider:
   m_ObjectHideFlags: 0

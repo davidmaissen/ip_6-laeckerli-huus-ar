@@ -37,6 +37,7 @@ public class TowerStacker : MonoBehaviour
                 Invoke("ResetCoolDown", 1.0f);
                 // cooldown = true;
                 var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 2, 0), Quaternion.identity);
+                go.transform.rotation = hitInfo.transform.rotation;
                 go.gameObject.name = "Läckerli " + counter;
                 cubes.Add(go);
                 counter++;
@@ -47,11 +48,11 @@ public class TowerStacker : MonoBehaviour
         // Check if every GameObject (except first) is still higher than the one spawned before
         if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
             highScore = cubes.Count;
-            score.text = "HIGHSCORE: " + highScore;
+            score.text = "HIGHSCORE: " + highScore + 1;
             Debug.Log("Collision with everything AAAIGHT");
         } else {
-            Debug.Log("Collision with everything GAME OVER JUNGE!!");
-            score.text = "Game Over Junge! Highscore: " + highScore;
+            Debug.Log("Collision with everything GAME OVER!!");
+            score.text = "Game Over! Highscore: " + highScore + 1;
         }
     }
     

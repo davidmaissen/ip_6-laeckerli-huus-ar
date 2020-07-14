@@ -21,6 +21,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     [SerializeField]
     private GameObject PlaceablePrefab;
     private GameObject towerGameCanvas;
+    private GameObject arHelpCanvas;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
@@ -28,6 +29,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     {
         raycastManager = GetComponent<ARRaycastManager>();
         towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
+        arHelpCanvas = GameObject.Find("ARHelpCanvas");
         planeManager = GetComponent<ARPlaneManager>();
         animator = GameObject.FindObjectOfType<Animator>();
         // moveDeviceAnimation.SetTrigger("FadeOn");
@@ -45,12 +47,18 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     }
 
     private void Update() {
-        if (PlanesFound()) {
-            animator.SetBool("PlanesDetected", true);
-            Debug.Log("PlanesDetected - Animation: Tap To Place");
+        if (spawnedObject == null) {
+            arHelpCanvas.SetActive(true);
+            if (PlanesFound()) {
+                animator.SetBool("PlanesDetected", true);
+                Debug.Log("PlanesDetected - Animation: Tap To Place");
+            } else {
+                animator.SetBool("PlanesDetected", false);
+                Debug.Log("PlanesDetectedFalse - Animation: Move Device");
+            }
         } else {
-            animator.SetBool("PlanesDetected", false);
-            Debug.Log("PlanesDetectedFalse - Animation: Move Device");
+            animator.enabled = false;
+            arHelpCanvas.SetActive(false);
         }
 
         Debug.Log("Event Data Spawn: " + IsCanvasClicked.goClicked.ToString());

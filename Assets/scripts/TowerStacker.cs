@@ -9,7 +9,8 @@ public class TowerStacker : MonoBehaviour
     public int counter = 0;
     public int highScore;
     private bool gameOver = false;
-    // private bool cooldown = false;
+    private float cooldownDuration = 1.0f;
+    private float canSpawn;
     public Text score;
     private List<GameObject> cubes;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
@@ -33,32 +34,31 @@ public class TowerStacker : MonoBehaviour
             continue;
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
-            if(!gameOver && Physics.Raycast(ray, out hitInfo)) {
-                Invoke("ResetCoolDown", 1.0f);
-                // cooldown = true;
+            if(!gameOver && Time.time > canSpawn && Physics.Raycast(ray, out hitInfo)) {
+                // Create a Cooldown so the Player can't spawn too many Cubes to cheat
+                Debug.Log("Resetting Cooldown...");
+                canSpawn = Time.time + cooldownDuration;
+
+                // Instantiate Cube
                 var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 2, 0), Quaternion.identity);
                 go.transform.rotation = hitInfo.transform.rotation;
+
+                // Give the Cube an unique Name and at it to the List with all Cubes
+                counter++;
                 go.gameObject.name = "Läckerli " + counter;
                 cubes.Add(go);
-                counter++;
                 // score.text = "HIGHSCORE: " + counter;
                 // go.GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
             }
         }
-        // Check if every GameObject (except first) is still higher than the one spawned before
+        // Check if every GameObject (except first) is still higher than the one spawned before. False = GameOver
         if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
             highScore = cubes.Count;
-            score.text = "HIGHSCORE: " + (highScore + 1);
+            score.text = "LÄCKERLI: " + (highScore + 1);
             Debug.Log("Collision with everything AAAIGHT");
         } else {
             Debug.Log("Collision with everything GAME OVER!!");
-            score.text = "Game Over! Highscore: " + (highScore + 1);
+            score.text = "Game Over! Highscore: " + (highScore);
         }
     }
-    
-    /*
-    void ResetCooldown() {
-        cooldown = false;
-    }
-    */
 }

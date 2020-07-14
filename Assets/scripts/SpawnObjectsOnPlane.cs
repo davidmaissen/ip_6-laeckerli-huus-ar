@@ -31,7 +31,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
         towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
         arHelpCanvas = GameObject.Find("ARHelpCanvas");
         planeManager = GetComponent<ARPlaneManager>();
-        animator = GameObject.FindObjectOfType<Animator>();
+        // animator = GameObject.FindObjectOfType<Animator>();
         // moveDeviceAnimation.SetTrigger("FadeOn");
         //isCanvasClicked = GameObject.FindObjectOfType<IsCanvasClicked>();
     }

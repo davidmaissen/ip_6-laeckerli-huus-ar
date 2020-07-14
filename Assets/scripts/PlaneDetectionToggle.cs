@@ -22,14 +22,7 @@ public class PlaneDetectionToggle : MonoBehaviour
         towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
         towerGameCanvas.SetActive(false);
         spawnObjectsOnPlane.placementModeActive = true;
-        Button btn = toggleButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
-        // btn.
         // toggleButtonText.text = "Platzierung beenden";
-    }
-
-	void TaskOnClick(){
-        TogglePlaneDetection();
     }
 
     public void TogglePlaneDetection() 
@@ -52,6 +45,10 @@ public class PlaneDetectionToggle : MonoBehaviour
             // spawnObjectsOnPlane.enabled = true;
             // toggleButtonMessage = "Platzierung verändern";
             SetAllPlanesActive(false);
+            Debug.Log("Set Toggle Button to false, proceeding....");
+            toggleButton.gameObject.SetActive(false);
+            Debug.Log("Set Toggle Button to false");
+            // toggleButton.gameObject.SetActive(false);
         }
         // toggleButtonText.text = toggleButtonMessage;
     }

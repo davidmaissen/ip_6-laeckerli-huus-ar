@@ -1642,7 +1642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HIGHSCORE: '
+  m_Text: Klicke auf Start
 --- !u!222 &1698322859
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1756,7 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObjectsOnPlane: {fileID: 0}
-  toggleButton: {fileID: 0}
+  toggleButton: {fileID: 1590666005}
 --- !u!1 &1826477360
 GameObject:
   m_ObjectHideFlags: 0

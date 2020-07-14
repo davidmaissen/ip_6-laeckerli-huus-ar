@@ -6,9 +6,12 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
+[RequireComponent(typeof(ARPlaneManager))]
 public class SpawnObjectsOnPlane : MonoBehaviour
 {
     private ARRaycastManager raycastManager;
+    private ARPlaneManager planeManager;
+    public Animator animator;
     private GameObject spawnedObject;
     //private IsCanvasClicked isCanvasClicked;
     public bool placementModeActive = true;
@@ -25,6 +28,8 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     {
         raycastManager = GetComponent<ARRaycastManager>();
         towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
+        planeManager = GetComponent<ARPlaneManager>();
+        animator = GameObject.FindObjectOfType<Animator>();
         // moveDeviceAnimation.SetTrigger("FadeOn");
         //isCanvasClicked = GameObject.FindObjectOfType<IsCanvasClicked>();
     }
@@ -40,6 +45,14 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     }
 
     private void Update() {
+        if (PlanesFound()) {
+            animator.SetBool("PlanesDetected", true);
+            Debug.Log("PlanesDetected - Animation: Tap To Place");
+        } else {
+            animator.SetBool("PlanesDetected", false);
+            Debug.Log("PlanesDetectedFalse - Animation: Move Device");
+        }
+
         Debug.Log("Event Data Spawn: " + IsCanvasClicked.goClicked.ToString());
         if (!placementModeActive || !TryGetTouchPosition(out Vector2 touchposition)) {
             return;
@@ -62,6 +75,14 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             IsCanvasClicked.goClicked = false;
         }
         // hit = false;
+    }
+
+    bool PlanesFound()
+    {
+        if (planeManager == null)
+            return false;
+
+        return planeManager.trackables.count > 0;
     }
 
     /*

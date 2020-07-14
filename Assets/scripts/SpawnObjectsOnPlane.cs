@@ -6,22 +6,26 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
-public class SpawnObjectsOnPlane : MonoBehaviour, IPointerDownHandler
+public class SpawnObjectsOnPlane : MonoBehaviour
 {
     private ARRaycastManager raycastManager;
     private GameObject spawnedObject;
     //private IsCanvasClicked isCanvasClicked;
     public bool placementModeActive = true;
-    private bool hit = false;
+    private bool planeHit = false;
+    // public Animator moveDeviceAnimation;
 
     [SerializeField]
     private GameObject PlaceablePrefab;
+    private GameObject towerGameCanvas;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
+        towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
+        // moveDeviceAnimation.SetTrigger("FadeOn");
         //isCanvasClicked = GameObject.FindObjectOfType<IsCanvasClicked>();
     }
 
@@ -43,8 +47,10 @@ public class SpawnObjectsOnPlane : MonoBehaviour, IPointerDownHandler
 
         if (raycastManager.Raycast(touchposition,s_Hits,TrackableType.PlaneWithinPolygon) && IsCanvasClicked.goClicked) {
             var hitPose = s_Hits[0].pose;
+            planeHit = true;
             Debug.Log("Event Data touchposition: " + touchposition);
             Debug.Log("Event Data s_Hits: " + s_Hits[0].pose);
+            towerGameCanvas.SetActive(true);
             if (spawnedObject == null) {
                 spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
             }
@@ -78,10 +84,10 @@ public class SpawnObjectsOnPlane : MonoBehaviour, IPointerDownHandler
             }
         }
     }
-    */
 
    public void OnPointerDown(PointerEventData eventData) {
        Debug.Log("Click on GO");
        hit = true;
    }
+    */
 }

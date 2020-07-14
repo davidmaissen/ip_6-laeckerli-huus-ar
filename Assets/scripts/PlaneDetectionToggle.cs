@@ -10,14 +10,17 @@ public class PlaneDetectionToggle : MonoBehaviour
 {
     private ARPlaneManager planeManager;
     [SerializeField]
-    private Text toggleButtonText;
+    // private Text toggleButtonText;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
     public Button toggleButton;
+    private GameObject towerGameCanvas;
 
     private void Awake()
     {
         planeManager = GetComponent<ARPlaneManager>();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
+        towerGameCanvas = GameObject.FindGameObjectWithTag("GameController");
+        towerGameCanvas.SetActive(false);
         spawnObjectsOnPlane.placementModeActive = true;
         Button btn = toggleButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
@@ -33,23 +36,24 @@ public class PlaneDetectionToggle : MonoBehaviour
     {
         Debug.Log("Button hit!");
         planeManager.enabled = !planeManager.enabled;
-        string toggleButtonMessage = "";
+        // string toggleButtonMessage = "";
 
         if (planeManager.enabled) 
         {
             spawnObjectsOnPlane.placementModeActive = true;
             // spawnObjectsOnPlane.enabled = false;
-            toggleButtonMessage = "Platzierung bestätigen und beenden";
+            // toggleButtonMessage = "Platzierung bestätigen und beenden";
+            towerGameCanvas.SetActive(true);
             SetAllPlanesActive(true);
         } 
         else 
         {
             spawnObjectsOnPlane.placementModeActive = false;
             // spawnObjectsOnPlane.enabled = true;
-            toggleButtonMessage = "Platzierung verändern";
+            // toggleButtonMessage = "Platzierung verändern";
             SetAllPlanesActive(false);
         }
-        toggleButtonText.text = toggleButtonMessage;
+        // toggleButtonText.text = toggleButtonMessage;
     }
 
     private void SetAllPlanesActive(bool value) {

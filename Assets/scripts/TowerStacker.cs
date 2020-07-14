@@ -48,11 +48,11 @@ public class TowerStacker : MonoBehaviour
         // Check if every GameObject (except first) is still higher than the one spawned before
         if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
             highScore = cubes.Count;
-            score.text = "HIGHSCORE: " + highScore + 1;
+            score.text = "HIGHSCORE: " + (highScore + 1);
             Debug.Log("Collision with everything AAAIGHT");
         } else {
             Debug.Log("Collision with everything GAME OVER!!");
-            score.text = "Game Over! Highscore: " + highScore + 1;
+            score.text = "Game Over! Highscore: " + (highScore + 1);
         }
     }
     

@@ -17,6 +17,18 @@ public class GameProgress: MonoBehaviour
         }
     }
 
+    /*
+    public void Initialize() {
+        if (miniGames == null) {
+            miniGames = new MiniGame[numberOfGames];
+            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
+            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu suchen", 0, 0);
+            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0);
+            Debug.Log("Creating new MiniGame Array");
+        }
+    }
+    */
+
     public void SaveMiniGame (MiniGame miniGame) {
         if (miniGames != null && miniGame.id < miniGames.Length && miniGames[miniGame.id].highScore < miniGame.highScore) {
             miniGames[miniGame.id] = miniGame;

@@ -7,6 +7,7 @@ public class GameProgress: MonoBehaviour
     public static MiniGame[] miniGames;
     public static int numberOfGames = 3;
     public static int starsCollected = 0;
+    public static bool tutorialCompleted = false;
     private void Awake() {
         if (miniGames == null) {
             miniGames = new MiniGame[numberOfGames];

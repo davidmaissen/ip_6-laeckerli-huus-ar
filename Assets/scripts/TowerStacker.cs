@@ -14,11 +14,14 @@ public class TowerStacker : MonoBehaviour
     public Text score;
     private List<GameObject> cubes;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
+    private GameProgress gameProgress;
 
         private void Awake()
     {
         cubes = new List<GameObject>();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
+        gameProgress = GameObject.FindObjectOfType<GameProgress>();
+
     }
 
 
@@ -52,13 +55,31 @@ public class TowerStacker : MonoBehaviour
             }
         }
         // Check if every GameObject (except first) is still higher than the one spawned before. False = GameOver
-        if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
+        // if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
+        if (!CollisionDetector.collided) {
             highScore = cubes.Count;
             score.text = "LÄCKERLI: " + (highScore + 1);
             Debug.Log("Collision with everything AAAIGHT");
         } else {
             Debug.Log("Collision with everything GAME OVER!!");
             score.text = "Game Over! Highscore: " + (highScore);
+
+            int stars = 0;
+
+            if (highScore > 5) {
+                stars = 3;
+            } else if (highScore > 4 ) {
+                stars = 2;
+            } else if (highScore > 2 ) {
+                stars = 1;
+            }
+
+            MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
+            gameProgress.SaveMiniGame(towerstacker);
         }
+    }
+
+    private void OnDestroy() {
+        CollisionDetector.collided = false;
     }
 }

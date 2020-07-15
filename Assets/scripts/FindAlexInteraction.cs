@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FindAlexInteraction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public GameObject windowYellowHouse;
+    public Material windowMaterialYellowHouse;
+
+    private void Awake() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OpenWindow() {
+        windowYellowHouse.GetComponent<Renderer>().material = windowMaterialYellowHouse;
+        Debug.Log("Opened Window!");
     }
 }

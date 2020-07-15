@@ -12,6 +12,7 @@ public class ImageTracking : MonoBehaviour
     [SerializeField]
     private GameObject placeablePrefab;
     private GameObject spawnedPrefab;
+    public Material windowMaterialYellowHouse;
 
     // private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
@@ -86,4 +87,43 @@ public class ImageTracking : MonoBehaviour
         }
         */
     }
+
+    void Update(){
+        foreach(var t in Input.touches) {
+            if (t.phase != TouchPhase.Began)
+            continue;
+            var ray = Camera.main.ScreenPointToRay(t.position);
+            RaycastHit hitInfo;
+            if(Physics.Raycast(ray, out hitInfo)) {
+                Debug.Log(hitInfo.transform.gameObject.name + " clicked");
+                if (hitInfo.transform.gameObject.name == "window") {
+                    // GameObject windowOpened = placeablePrefab.transform.GetChild(2).gameObject;
+                    // windowOpened = GameObject.Find(placeablePrefab.gameObject.name + "/window");
+                    placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material = windowMaterialYellowHouse;
+                    //windowOpened.GetComponent<Renderer>().material = windowMaterialYellowHouse;
+                    Debug.Log("Changed to " + placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material);
+                }
+            }
+        }
+    }
+
+    /*
+    void Update(){
+        foreach(var t in Input.touches) {
+            if (t.phase != TouchPhase.Began)
+            continue;
+            var ray = Camera.main.ScreenPointToRay(t.position);
+            RaycastHit hitInfo;
+            if(Physics.Raycast(ray, out hitInfo)) {
+                if (hitInfo.transform.gameObject.name == "window") {
+                    foreach (GameObject child in windowYellowHouse.gameObject.GetComponentsInChildren<GameObject>()) {
+                        Debug.Log("Child of windowYellowHouse: " + child.gameObject.name);
+                    }
+                    windowYellowHouse.gameObject.GetComponent<Renderer>().material = windowMaterialYellowHouse;
+                }
+                Debug.Log(hitInfo.transform.gameObject.name + " clicked: " + windowYellowHouse.GetComponent<Renderer>().material);
+            }
+        }
+    }
+    */
 }

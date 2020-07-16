@@ -12,7 +12,7 @@ public class ImageTracking : MonoBehaviour
     [SerializeField]
     private GameObject placeablePrefab;
     private GameObject spawnedPrefab;
-    public Material windowMaterialYellowHouse;
+    public Material doorMaterialYellowHouse;
 
     // private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
@@ -62,6 +62,9 @@ public class ImageTracking : MonoBehaviour
         // GameObject prefab = spawnedPrefabs[name];
         if (spawnedPrefab) {
             Destroy(spawnedPrefab.gameObject);
+        } else {
+            // First time the image is tracked, so play audio of emma
+            FindObjectOfType<AudioManager>().Play("emma");
         }
 
         spawnedPrefab = Instantiate(placeablePrefab, position, rotation);
@@ -96,10 +99,11 @@ public class ImageTracking : MonoBehaviour
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo)) {
                 Debug.Log(hitInfo.transform.gameObject.name + " clicked");
-                if (hitInfo.transform.gameObject.name == "window") {
+                if (hitInfo.transform.gameObject.name == "door-house-1") {
                     // GameObject windowOpened = placeablePrefab.transform.GetChild(2).gameObject;
                     // windowOpened = GameObject.Find(placeablePrefab.gameObject.name + "/window");
-                    placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material = windowMaterialYellowHouse;
+                    placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material = doorMaterialYellowHouse;
+                    placeablePrefab.transform.GetChild(3).gameObject.SetActive(true);
                     //windowOpened.GetComponent<Renderer>().material = windowMaterialYellowHouse;
                     Debug.Log("Changed to " + placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material);
                 }

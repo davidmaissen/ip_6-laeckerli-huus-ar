@@ -481,8 +481,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeablePrefab: {fileID: 7701960978505389609, guid: 407f329bde0e1471a8521b763f94c695,
     type: 3}
-  doorMaterialYellowHouse: {fileID: 2100000, guid: 5cd848fc357064537baec95523c4e66f,
-    type: 2}
+  materials:
+  - {fileID: 2100000, guid: 5cd848fc357064537baec95523c4e66f, type: 2}
+  - {fileID: 2100000, guid: 70807d944f2134bb5b6da2a889f9f623, type: 2}
 --- !u!1 &387418496
 GameObject:
   m_ObjectHideFlags: 0

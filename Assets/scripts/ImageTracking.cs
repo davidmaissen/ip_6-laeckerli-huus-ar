@@ -12,13 +12,15 @@ public class ImageTracking : MonoBehaviour
     [SerializeField]
     private GameObject placeablePrefab;
     private GameObject spawnedPrefab;
-    public Material doorMaterialYellowHouse;
+    public Material[] materials;
+    private ARTrackedImage lastTrackedImage;
 
     // private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
 
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+        lastTrackedImage = new ARTrackedImage();
         /*
         foreach(GameObject prefab in placeablePrefab)
         {
@@ -53,13 +55,11 @@ public class ImageTracking : MonoBehaviour
     }
 
     private void UpdateImage(ARTrackedImage trackedImage) {
+        lastTrackedImage = trackedImage;
         string name = trackedImage.referenceImage.name;
         Vector3 position = trackedImage.transform.position;
         Quaternion rotation = trackedImage.transform.rotation;
-        // rotation.x = rotation.x + 90;
-        // rotation.z = rotation.z - 180;
 
-        // GameObject prefab = spawnedPrefabs[name];
         if (spawnedPrefab) {
             Destroy(spawnedPrefab.gameObject);
         } else {
@@ -67,16 +67,11 @@ public class ImageTracking : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("emma");
         }
 
+        // Have to reinstantiate because else the image would move weirdly
         spawnedPrefab = Instantiate(placeablePrefab, position, rotation);
         spawnedPrefab.transform.Rotate(180,0,180);
         spawnedPrefab.gameObject.SetActive(true);
-        /*
-        prefab.transform.position = position;
-        prefab.transform.rotation = trackedImage.transform.rotation;
-        prefab.transform.Rotate(90,0,0);
-        placeablePrefab.transform = position;
-        prefab.SetActive(true);
-        */
+
         Debug.Log(spawnedPrefab.name + " spotted. Position: " + trackedImage.transform.position);
 
         /*
@@ -100,34 +95,25 @@ public class ImageTracking : MonoBehaviour
             if(Physics.Raycast(ray, out hitInfo)) {
                 Debug.Log(hitInfo.transform.gameObject.name + " clicked");
                 if (hitInfo.transform.gameObject.name == "door-house-1") {
-                    // GameObject windowOpened = placeablePrefab.transform.GetChild(2).gameObject;
-                    // windowOpened = GameObject.Find(placeablePrefab.gameObject.name + "/window");
-                    placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material = doorMaterialYellowHouse;
-                    placeablePrefab.transform.GetChild(3).gameObject.SetActive(true);
-                    //windowOpened.GetComponent<Renderer>().material = windowMaterialYellowHouse;
-                    Debug.Log("Changed to " + placeablePrefab.transform.GetChild(2).gameObject.GetComponent<Renderer>().material);
+                    placeablePrefab.transform.Find("door-house-1").gameObject.GetComponent<Renderer>().material = materials[0];
+                    placeablePrefab.transform.Find("door-house-1-open").gameObject.SetActive(true);
+                    placeablePrefab.transform.Find("dog").gameObject.SetActive(true);
+                    placeablePrefab.transform.Find("text-daughter-mother-1").gameObject.SetActive(false);
+                    placeablePrefab.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
+                } else if (hitInfo.transform.gameObject.name == "byciclist") {
+                    placeablePrefab.transform.Find("text-byciclist").gameObject.SetActive(true);
+                } else if (hitInfo.transform.gameObject.name == "man-window") {
+                    placeablePrefab.transform.Find("text-man-window").gameObject.SetActive(true);
+                } else if (hitInfo.transform.gameObject.name == "daughter-mother") {
+                    placeablePrefab.transform.Find("text-daughter-mother-1").gameObject.SetActive(true);
+                } else if (hitInfo.transform.gameObject.name == "alex-found") {
+                    placeablePrefab.transform.Find("text-alex").gameObject.SetActive(true);
+                    placeablePrefab.transform.Find("text-emma-2").gameObject.SetActive(true);
+                    placeablePrefab.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
                 }
+                
+                UpdateImage(lastTrackedImage);
             }
         }
     }
-
-    /*
-    void Update(){
-        foreach(var t in Input.touches) {
-            if (t.phase != TouchPhase.Began)
-            continue;
-            var ray = Camera.main.ScreenPointToRay(t.position);
-            RaycastHit hitInfo;
-            if(Physics.Raycast(ray, out hitInfo)) {
-                if (hitInfo.transform.gameObject.name == "window") {
-                    foreach (GameObject child in windowYellowHouse.gameObject.GetComponentsInChildren<GameObject>()) {
-                        Debug.Log("Child of windowYellowHouse: " + child.gameObject.name);
-                    }
-                    windowYellowHouse.gameObject.GetComponent<Renderer>().material = windowMaterialYellowHouse;
-                }
-                Debug.Log(hitInfo.transform.gameObject.name + " clicked: " + windowYellowHouse.GetComponent<Renderer>().material);
-            }
-        }
-    }
-    */
 }

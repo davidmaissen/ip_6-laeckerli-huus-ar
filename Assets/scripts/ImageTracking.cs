@@ -55,21 +55,30 @@ public class ImageTracking : MonoBehaviour
     }
 
     private void UpdateImage(ARTrackedImage trackedImage) {
-        lastTrackedImage = trackedImage;
         string name = trackedImage.referenceImage.name;
         Vector3 position = trackedImage.transform.position;
         Quaternion rotation = trackedImage.transform.rotation;
 
         if (spawnedPrefab) {
-            Destroy(spawnedPrefab.gameObject);
+            return;
         } else {
             // First time the image is tracked, so play audio of emma
             FindObjectOfType<AudioManager>().Play("emma");
+            lastTrackedImage = trackedImage;
         }
 
         // Have to reinstantiate because else the image would move weirdly
         spawnedPrefab = Instantiate(placeablePrefab, position, rotation);
-        spawnedPrefab.transform.Rotate(180,0,180);
+        if (name == "find-alex-scenery") {
+            spawnedPrefab.transform.Rotate(180,0,180);
+        } else if (name == "find-alex-scenery-1") {
+            Debug.Log("Blue house spotted");
+            spawnedPrefab.transform.Rotate(180,0,270);
+            spawnedPrefab.transform.position += new Vector3(-0.6f, 0, 0);
+        } else if (name == "find-alex-scenery-2") {
+            spawnedPrefab.transform.Rotate(180,0,270);
+            spawnedPrefab.transform.position += new Vector3(-4.6f, 0, 0);
+        }
         spawnedPrefab.gameObject.SetActive(true);
 
         Debug.Log(spawnedPrefab.name + " spotted. Position: " + trackedImage.transform.position);
@@ -111,7 +120,9 @@ public class ImageTracking : MonoBehaviour
                     placeablePrefab.transform.Find("text-emma-2").gameObject.SetActive(true);
                     placeablePrefab.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
                 }
-                
+                Destroy(spawnedPrefab.gameObject);
+                spawnedPrefab = Instantiate(placeablePrefab, spawnedPrefab.transform.position, spawnedPrefab.transform.rotation);
+                //spawnedPrefab.transform.Rotate(180,0,180);
                 UpdateImage(lastTrackedImage);
             }
         }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class SceneController : MonoBehaviour
 {
     public GameObject tutorial;
-
     private void Awake()
     {
         if (!(GameProgress.tutorialCompleted)){

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ingredients-bar-change
+  m_Name: Ingredients-Bar-Move
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 411.8
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -30,8 +30,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.33333334
-        value: 194
+        time: 0.5
+        value: -525
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: 
+    path: Mask/Bar-Icons
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -50,7 +50,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 710.24146
+        value: -525
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -58,8 +58,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.33333334
-        value: 274.59607
+        time: 0.5
+        value: -250
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -69,8 +69,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_SizeDelta.x
-    path: 
+    attribute: m_AnchoredPosition.x
+    path: Mask/Bar-Counter
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -82,15 +82,15 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 1266889658
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 0
-      attribute: 1967290853
+      path: 3121608505
+      attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
       customType: 28
@@ -101,7 +101,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -122,7 +122,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 411.8
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -130,8 +130,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.33333334
-        value: 194
+        time: 0.5
+        value: -525
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -142,7 +142,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: 
+    path: Mask/Bar-Icons
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -150,7 +150,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 710.24146
+        value: -525
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -158,8 +158,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.33333334
-        value: 274.59607
+        time: 0.5
+        value: -250
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -169,8 +169,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_SizeDelta.x
-    path: 
+    attribute: m_AnchoredPosition.x
+    path: Mask/Bar-Counter
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

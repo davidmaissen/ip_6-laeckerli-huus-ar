@@ -20,22 +20,17 @@ public class ExploreController : MonoBehaviour
         for (int i = 0; i < ingredients.Length; i++)
         {
             string name = ingredients[i].name;
-            bool completed = gameProgress.isGameCompleted(name);
-
-            if(completed)
+         
+            if(gameProgress.isGameCompleted(name))
             {
                 ingredients[i].transform.Find("complete").gameObject.SetActive(true);
                 ingredients[i].transform.Find("incomplete").gameObject.SetActive(false);
-
             }
             else
             {
                 ingredients[i].transform.Find("complete").gameObject.SetActive(false);
                 ingredients[i].transform.Find("incomplete").gameObject.SetActive(true);
             }
-           
-
-
         }
     }
 

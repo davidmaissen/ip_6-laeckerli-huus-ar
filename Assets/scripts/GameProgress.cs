@@ -11,7 +11,7 @@ public class GameProgress: MonoBehaviour
     private void Awake() {
         if (miniGames == null) {
             miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
+            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 1);
             miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu suchen", 0, 0);
             miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0);
             Debug.Log("Creating new MiniGame Array");
@@ -48,8 +48,17 @@ public class GameProgress: MonoBehaviour
 
 
     public bool isGameCompleted(string name){
+        bool completed = false;
 
-        return false;
+        foreach (MiniGame game in miniGames){
+            if (game.getTitle().Equals(name) && game.isCompleted())
+            {
+                Debug.Log("completed");
+                completed = true;
+            }
+        }
+
+        return completed;
 
     }
 

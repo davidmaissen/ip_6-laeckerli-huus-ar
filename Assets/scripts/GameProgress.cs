@@ -31,9 +31,9 @@ public class GameProgress: MonoBehaviour
     */
 
     public void SaveMiniGame (MiniGame miniGame) {
-        if (miniGames != null && miniGame.id < miniGames.Length && miniGames[miniGame.id].highScore < miniGame.highScore) {
-            miniGames[miniGame.id] = miniGame;
-            starsCollected += miniGame.stars - miniGames[miniGame.id].stars;
+        if (miniGames != null && miniGame.getId() < miniGames.Length && miniGames[miniGame.getId()].getHighScore() < miniGame.getHighScore()) {
+            miniGames[miniGame.getId()] = miniGame;
+            starsCollected += miniGame.getStars() - miniGames[miniGame.getId()].getStars();
             Debug.Log("Saved the game!");
         } else {
             Debug.Log("Can't save!");
@@ -41,8 +41,16 @@ public class GameProgress: MonoBehaviour
 
         foreach (MiniGame m in miniGames) {
             if (m != null) {
-                Debug.Log(m.title + m.stars);
+                Debug.Log(m.getTitle() + m.getStars());
             }
         }
     }
+
+
+    public bool isGameCompleted(string name){
+
+        return false;
+
+    }
+
 }

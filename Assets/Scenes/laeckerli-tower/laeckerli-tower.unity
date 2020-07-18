@@ -1665,7 +1665,6 @@ GameObject:
   - component: {fileID: 1802024464}
   - component: {fileID: 1802024466}
   - component: {fileID: 1802024467}
-  - component: {fileID: 1802024468}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -1758,18 +1757,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObjectsOnPlane: {fileID: 0}
   toggleButton: {fileID: 1590666005}
---- !u!114 &1802024468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802024461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae91e3e68b9384fef9a9f70f8c18cd07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1826477360
 GameObject:
   m_ObjectHideFlags: 0

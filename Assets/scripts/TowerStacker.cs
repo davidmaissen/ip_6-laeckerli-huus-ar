@@ -18,17 +18,16 @@ public class TowerStacker : MonoBehaviour
 
         private void Awake()
     {
+        gameProgress = new GameProgress();
         cubes = new List<GameObject>();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
-        gameProgress = GameObject.FindObjectOfType<GameProgress>();
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (spawnObjectsOnPlane.placementModeActive) {
+        if (spawnObjectsOnPlane.placementModeActive || gameOver) {
             return;
         }
 
@@ -73,13 +72,17 @@ public class TowerStacker : MonoBehaviour
             } else if (highScore > 2 ) {
                 stars = 1;
             }
-
-            MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
-            gameProgress.SaveMiniGame(towerstacker);
+            GameOver(stars);
         }
     }
 
     private void OnDestroy() {
         CollisionDetector.collided = false;
+    }
+
+    private void GameOver(int stars) {
+        gameOver = true;
+        MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
+        gameProgress.SaveMiniGame(towerstacker);
     }
 }

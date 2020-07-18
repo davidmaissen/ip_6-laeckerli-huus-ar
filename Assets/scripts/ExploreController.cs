@@ -12,7 +12,8 @@ public class ExploreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameProgress = GameObject.FindObjectOfType<GameProgress>();
+        gameProgress = new GameProgress();
+        gameProgress.InitializeGameData();
         starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
         starsCounter.text = GameProgress.starsCollected.ToString();
 

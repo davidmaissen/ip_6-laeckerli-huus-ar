@@ -1,69 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class UIController : MonoBehaviour
+public class UIController
 {
 
-    public GameObject ingredientIcons;
-    public GameObject ingredientText;
+    public void showTutorial(GameObject tutorial)
+    {
+        tutorial.SetActive(true);
+    }
 
-    public void DisableMenu(Animator animation){
+
+    public void disableMenu(Animator animation)
+    {
         animation.SetBool("displayed", false);
     }
 
-    public void EnableMenu(Animator animation)
+
+    public void enableMenu(Animator animation)
     {
         animation.SetBool("displayed", true);
     }
 
 
-    public void SetActive(GameObject gameObject)
+    public void animateIngredientsBar(Animator animation)
     {
-        if (gameObject != null)
-        {
-            gameObject.SetActive(true);
-        }
-    }
+        animation.SetBool("expanded", !animation.GetBool("expanded"));
 
-    public void SetInActive(GameObject gameObject)
-    {
-        if (gameObject != null)
-        {
-            gameObject.SetActive(false);
-        }
     }
 
 
-    //public void changeIngredientsBar(Animator animation)
-    //{
 
-    //    if(animation.GetBool("expanded") == true){
-    //        animation.SetBool("expanded", false);
-    //    }
-    //    else{
-    //        animation.SetBool("expanded", true);
-    //    }
 
-      
-    //}
 
-    public void ChangeIngredientsBar(Animator animation)
+    public void updateStarsCounter(TextMeshProUGUI starsCounter)
     {
-
-        if (animation.GetBool("expanded") == true)
-        {
-            animation.SetBool("expanded", false);
-
-        }
-        else
-        {
-            animation.SetBool("expanded", true);
-
-        }
-
+        //set value of starsCounter
+        starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
+        starsCounter.text = GameProgress.starsCollected.ToString();
 
     }
+
+
+
+    public void updateGameDetails(GameObject gameDetails)
+    {
+        TextMeshProUGUI gameTitle = gameDetails.transform.Find("Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
+        Debug.Log(gameTitle.text);
+        gameTitle.text = "Läckerliturm";
+    }
+
+
 
 
 }

@@ -99,9 +99,5 @@ public class RectTransformFlyIn : MonoBehaviour
         }
     }
 
-    public void ToggleVisible()
-    {
-        var anim = GetComponent<Animator>();
-        anim.SetBool("displayed", !anim.GetBool("displayed"));
-    }
+
 }

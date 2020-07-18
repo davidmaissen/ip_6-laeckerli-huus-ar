@@ -21,12 +21,16 @@ public class ImageTracking : MonoBehaviour
     private float timeUntilHint;
     private bool gameStarted = false;
     private bool gameOver = false;
+    private GameProgress gameProgress;
+    private int stars;
 
     private void Awake() {
+        gameProgress = new GameProgress();
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         lastTrackedImage = new ARTrackedImage();
         arHelpCanvas = GameObject.Find("ARHelpCanvas");
         arHelpCanvas.SetActive(false);
+
         /*
         foreach(GameObject prefab in placeablePrefab)
         {
@@ -107,7 +111,8 @@ public class ImageTracking : MonoBehaviour
     }
 
     void Update(){
-        if (gameStarted && Time.time > timeUntilHint && !gameOver) {
+        if (gameOver) return;
+        if (gameStarted && Time.time > timeUntilHint) {
             timeUntilHint += 120.0f;
             placeablePrefab.transform.Find("text-emma").gameObject.SetActive(false);
             placeablePrefab.transform.Find("text-emma-3").gameObject.SetActive(true);
@@ -138,9 +143,11 @@ public class ImageTracking : MonoBehaviour
                     arHelpCanvas.SetActive(false);
                 } else if (hitInfo.transform.gameObject.name == "star-bicyclist") {
                     placeablePrefab.transform.Find("star-bicyclist").gameObject.SetActive(false);
+                    stars++;
                     arHelpCanvas.SetActive(false);
                 } else if (hitInfo.transform.gameObject.name == "star-dog") {
                     placeablePrefab.transform.Find("star-dog").gameObject.SetActive(false);
+                    stars++;
                     arHelpCanvas.SetActive(false);
                 } else if (hitInfo.transform.gameObject.name == "man-window") {
                     placeablePrefab.transform.Find("text-man-window").gameObject.SetActive(true);
@@ -158,7 +165,8 @@ public class ImageTracking : MonoBehaviour
                     placeablePrefab.transform.Find("text-emma-2").gameObject.SetActive(true);
                     placeablePrefab.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
                     arHelpCanvas.SetActive(false);
-                    gameOver = true;
+                    stars++;
+                    GameOver(stars);
                 } else if (hitInfo.transform.gameObject.name == "emma"){
                     if (placeablePrefab.transform.Find("text-emma").gameObject.activeSelf) {
                         placeablePrefab.transform.Find("text-emma").gameObject.SetActive(false);
@@ -172,5 +180,11 @@ public class ImageTracking : MonoBehaviour
                 UpdateImage(lastTrackedImage);
             }
         }
+    }
+
+    private void GameOver(int stars) {
+        gameOver = true;
+        MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
+        gameProgress.SaveMiniGame(findAlex);
     }
 }

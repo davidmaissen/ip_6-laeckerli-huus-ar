@@ -6,8 +6,8 @@ using UnityEngine;
 public class TowerStacker : MonoBehaviour
 {
     public GameObject cubePrefab;
-    public int counter = 0;
-    public int highScore;
+    private int counter = 0;
+    private int highScore;
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;

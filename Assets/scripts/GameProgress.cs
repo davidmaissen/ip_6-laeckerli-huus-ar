@@ -51,8 +51,8 @@ public class GameProgress
         }
     }
 
-
-    public bool isGameCompleted(string name){
+    public bool isGameCompleted(string name)
+    {
         bool completed = false;
 
         foreach (MiniGame game in miniGames){
@@ -61,7 +61,20 @@ public class GameProgress
                 completed = true;
             }
         }
+        return completed;
+    }
 
-        return completed;    
+    public int getCompletedGameCount()
+    {
+        int counter = 0;
+
+        foreach (MiniGame game in miniGames)
+        {
+            if (game.isCompleted())
+            {
+                counter++;
+            }
+        }
+        return counter;
     }
 }

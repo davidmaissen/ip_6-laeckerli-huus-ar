@@ -54,14 +54,12 @@ public class UIController : MonoBehaviour
         if (animation.GetBool("expanded") == true)
         {
             animation.SetBool("expanded", false);
-            ingredientIcons.SetActive(true);
-            //legend.SetActive(true);
+
         }
         else
         {
             animation.SetBool("expanded", true);
-            ingredientIcons.SetActive(false);
-            //legend.SetActive(false);
+
         }
 
 

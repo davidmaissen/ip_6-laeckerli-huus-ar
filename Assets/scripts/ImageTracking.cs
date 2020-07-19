@@ -21,6 +21,7 @@ public class ImageTracking : MonoBehaviour
     private float timeUntilHint;
     private bool gameStarted = false;
     private bool gameOver = false;
+    private bool touchInfoNeeded = true;
     private GameProgress gameProgress;
     private int stars;
 
@@ -86,6 +87,7 @@ public class ImageTracking : MonoBehaviour
         spawnedPrefab = Instantiate(placeablePrefab, position, rotation);
         if (name == "find-alex-scenery") {
             spawnedPrefab.transform.Rotate(180,0,180);
+            FindObjectOfType<AudioManager>().Play("find-alex-scenery");
         } else if (name == "find-alex-scenery-1") {
             Debug.Log("Blue house spotted");
             spawnedPrefab.transform.Rotate(180,0,270);
@@ -112,10 +114,11 @@ public class ImageTracking : MonoBehaviour
 
     void Update(){
         if (gameOver) return;
-        if (gameStarted && Time.time > timeUntilHint) {
+        if (gameStarted && Time.time > timeUntilHint && touchInfoNeeded) {
             timeUntilHint += 120.0f;
             placeablePrefab.transform.Find("text-emma").gameObject.SetActive(false);
             placeablePrefab.transform.Find("text-emma-3").gameObject.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("emma-3");
             Destroy(spawnedPrefab.gameObject);
             spawnedPrefab = Instantiate(placeablePrefab, spawnedPrefab.transform.position, spawnedPrefab.transform.rotation);
             UpdateImage(lastTrackedImage);
@@ -128,35 +131,40 @@ public class ImageTracking : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo)) {
+                TouchInfoNotNeeded();
                 Debug.Log(hitInfo.transform.gameObject.name + " clicked");
                 if (hitInfo.transform.gameObject.name == "door-house-1") {
                     placeablePrefab.transform.Find("door-house-1").gameObject.GetComponent<Renderer>().material = materials[0];
                     placeablePrefab.transform.Find("door-house-1-open").gameObject.SetActive(true);
                     placeablePrefab.transform.Find("dog").gameObject.SetActive(true);
-                    placeablePrefab.transform.Find("text-daughter-mother-1").gameObject.SetActive(false);
-                    placeablePrefab.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
-                    placeablePrefab.transform.Find("star-dog").gameObject.SetActive(true);
-                    arHelpCanvas.SetActive(false);
+                    FindObjectOfType<AudioManager>().Play("dog-bark");
                 } else if (hitInfo.transform.gameObject.name == "bicyclist") {
                     placeablePrefab.transform.Find("text-bicyclist").gameObject.SetActive(true);
                     placeablePrefab.transform.Find("star-bicyclist").gameObject.SetActive(true);
-                    arHelpCanvas.SetActive(false);
+                    FindObjectOfType<AudioManager>().Play("bicyclist");
+                    StartCoroutine(DoAfterPlaying("star", "bicyclist"));
+                    // FindObjectOfType<AudioManager>().Play("star");
                 } else if (hitInfo.transform.gameObject.name == "star-bicyclist") {
                     placeablePrefab.transform.Find("star-bicyclist").gameObject.SetActive(false);
                     stars++;
-                    arHelpCanvas.SetActive(false);
                 } else if (hitInfo.transform.gameObject.name == "star-dog") {
                     placeablePrefab.transform.Find("star-dog").gameObject.SetActive(false);
                     stars++;
-                    arHelpCanvas.SetActive(false);
                 } else if (hitInfo.transform.gameObject.name == "man-window") {
                     placeablePrefab.transform.Find("text-man-window").gameObject.SetActive(true);
-                    arHelpCanvas.SetActive(false);
+                    FindObjectOfType<AudioManager>().Play("man-window");
                 } else if (hitInfo.transform.gameObject.name == "daughter-mother") {
                     if (!placeablePrefab.transform.Find("door-house-1").gameObject.activeSelf) {
                         placeablePrefab.transform.Find("text-daughter-mother-1").gameObject.SetActive(true);
                         placeablePrefab.transform.Find("door-house-1").gameObject.SetActive(true);
-                        arHelpCanvas.SetActive(false);
+                        FindObjectOfType<AudioManager>().Play("daughter-mother-1");
+                    } else {
+                        placeablePrefab.transform.Find("text-daughter-mother-1").gameObject.SetActive(false);
+                        placeablePrefab.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
+                        placeablePrefab.transform.Find("star-dog").gameObject.SetActive(true);
+                        FindObjectOfType<AudioManager>().Play("daughter-mother-2");
+                        StartCoroutine(DoAfterPlaying("star", "daughter-mother-2"));
+                        // FindObjectOfType<AudioManager>().Play("star");
                     }
                 } else if (hitInfo.transform.gameObject.name == "alex-found") {
                     placeablePrefab.transform.Find("text-alex").gameObject.SetActive(true);
@@ -164,14 +172,15 @@ public class ImageTracking : MonoBehaviour
                     placeablePrefab.transform.Find("text-emma-3").gameObject.SetActive(false);
                     placeablePrefab.transform.Find("text-emma-2").gameObject.SetActive(true);
                     placeablePrefab.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
-                    arHelpCanvas.SetActive(false);
+                    StartCoroutine(DoAfterPlaying("alex-found", "emma-2"));
+                    // FindObjectOfType<AudioManager>().Play("alex-found");
                     stars++;
                     GameOver(stars);
                 } else if (hitInfo.transform.gameObject.name == "emma"){
                     if (placeablePrefab.transform.Find("text-emma").gameObject.activeSelf) {
-                        placeablePrefab.transform.Find("text-emma").gameObject.SetActive(false);
-                        placeablePrefab.transform.Find("text-emma-3").gameObject.SetActive(true);
-                        arHelpCanvas.SetActive(false);
+                        placeablePrefab.transform.Find("text-emma").gameObject.SetActive(true);
+                        placeablePrefab.transform.Find("text-emma-3").gameObject.SetActive(false);
+                        FindObjectOfType<AudioManager>().Play("emma");
                    }
                 }
                 Destroy(spawnedPrefab.gameObject);
@@ -186,5 +195,17 @@ public class ImageTracking : MonoBehaviour
         gameOver = true;
         MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
         gameProgress.SaveMiniGame(findAlex);
+    }
+
+    private void TouchInfoNotNeeded() {
+        arHelpCanvas.SetActive(false);
+        touchInfoNeeded = false;
+    }
+
+    IEnumerator DoAfterPlaying(string soundSource, string sounSourceNext){
+        AudioSource audio = FindObjectOfType<AudioManager>().GetSoundSource(soundSource);
+
+        yield return new WaitWhile(() => audio.isPlaying);
+        FindObjectOfType<AudioManager>().GetSoundSource(sounSourceNext).Play();
     }
 }

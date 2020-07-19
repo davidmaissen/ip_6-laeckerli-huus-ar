@@ -806,6 +806,66 @@ MonoBehaviour:
     pitch: 1.15
     loop: 0
     source: {fileID: 0}
+  - name: alex-found
+    clip: {fileID: 8300000, guid: a4edcc322e80444ed93a22982071c8a1, type: 3}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: daughter-mother-1
+    clip: {fileID: 8300000, guid: 367f2fc9605d6491a87130692e1a99e1, type: 3}
+    volume: 1
+    pitch: 1.25
+    loop: 0
+    source: {fileID: 0}
+  - name: daughter-mother-2
+    clip: {fileID: 8300000, guid: 277893b6c38cb4f5ea081777a4d9fd28, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: emma-2
+    clip: {fileID: 8300000, guid: 70400e5ae41af428196c7588c2c6681e, type: 3}
+    volume: 1
+    pitch: 1.15
+    loop: 0
+    source: {fileID: 0}
+  - name: emma-3
+    clip: {fileID: 8300000, guid: 10a8c14e1c5ba433ebbad50edfd9aa49, type: 3}
+    volume: 1
+    pitch: 1.15
+    loop: 0
+    source: {fileID: 0}
+  - name: man-window
+    clip: {fileID: 8300000, guid: e332c98115f004921aa8da9ecc27198b, type: 3}
+    volume: 1
+    pitch: 1.15
+    loop: 0
+    source: {fileID: 0}
+  - name: bicyclist
+    clip: {fileID: 8300000, guid: fd7982092d11a4784ab8d88d597ecc8e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: find-alex-scenery
+    clip: {fileID: 8300000, guid: 1fcb996b873464eb797bfdeb89fa1568, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: star
+    clip: {fileID: 8300000, guid: 2ee00d0131eca49868e510eb09956a67, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: dog-bark
+    clip: {fileID: 8300000, guid: fd57b61ad65f74e04aa7e898575af5d9, type: 3}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &387418498
 Transform:
   m_ObjectHideFlags: 0

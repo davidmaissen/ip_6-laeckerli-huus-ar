@@ -35,6 +35,7 @@ public class FindAlexController : MonoBehaviour
             scenery.transform.Find("text-emma").gameObject.SetActive(false);
             scenery.transform.Find("text-emma-3").gameObject.SetActive(true);
             FindObjectOfType<AudioManager>().Play("emma-3");
+            UpdateScenery();
         }
         
         foreach(var t in Input.touches) {
@@ -50,6 +51,7 @@ public class FindAlexController : MonoBehaviour
     }
 
     private void InteractWithScenery(RaycastHit hitInfo) {
+        TouchInfoNotNeeded();
         if (hitInfo.transform.gameObject.name == "door-house-1") {
             scenery.transform.Find("door-house-1").gameObject.GetComponent<Renderer>().material = materials[0];
             scenery.transform.Find("door-house-1-open").gameObject.SetActive(true);
@@ -59,12 +61,13 @@ public class FindAlexController : MonoBehaviour
             scenery.transform.Find("text-bicyclist").gameObject.SetActive(true);
             scenery.transform.Find("star-bicyclist").gameObject.SetActive(true);
             StartCoroutine(DoAfterPlaying("star", "bicyclist"));
-            // FindObjectOfType<AudioManager>().Play("star");
         } else if (hitInfo.transform.gameObject.name == "star-bicyclist") {
             scenery.transform.Find("star-bicyclist").gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("star-collected");
             stars++;
         } else if (hitInfo.transform.gameObject.name == "star-dog") {
             scenery.transform.Find("star-dog").gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("star-collected");
             stars++;
         } else if (hitInfo.transform.gameObject.name == "man-window") {
             scenery.transform.Find("text-man-window").gameObject.SetActive(true);
@@ -79,7 +82,6 @@ public class FindAlexController : MonoBehaviour
                 scenery.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
                 scenery.transform.Find("star-dog").gameObject.SetActive(true);
                 StartCoroutine(DoAfterPlaying("star", "daughter-mother-2"));
-                // FindObjectOfType<AudioManager>().Play("star");
             }
         } else if (hitInfo.transform.gameObject.name == "alex-found") {
             scenery.transform.Find("text-alex").gameObject.SetActive(true);
@@ -88,7 +90,6 @@ public class FindAlexController : MonoBehaviour
             scenery.transform.Find("text-emma-2").gameObject.SetActive(true);
             scenery.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
             StartCoroutine(DoAfterPlaying("alex-found", "emma-2"));
-            // FindObjectOfType<AudioManager>().Play("alex-found");
             stars++;
             GameOver(stars);
         } else if (hitInfo.transform.gameObject.name == "emma"){
@@ -105,9 +106,6 @@ public class FindAlexController : MonoBehaviour
         Destroy(placedScenery.gameObject);
         placedScenery = Instantiate(scenery, PositionSaveSystem.position, PositionSaveSystem.rotation);
         placedScenery.transform.Rotate(180, 0, 180);
-        if (touchInfoNeeded) {
-            TouchInfoNotNeeded();
-        }
     }
     private void GameOver(int stars) {
         gameOver = true;
@@ -120,12 +118,12 @@ public class FindAlexController : MonoBehaviour
         touchInfoNeeded = false;
     }
 
-    IEnumerator DoAfterPlaying(string soundSource, string sounSourceNext){
+    IEnumerator DoAfterPlaying(string soundSource, string soundSourceNext){
         AudioSource audio = FindObjectOfType<AudioManager>().GetSoundSource(soundSource);
         audio.Play();
 
         yield return new WaitWhile(() => audio.isPlaying);
-        FindObjectOfType<AudioManager>().GetSoundSource(sounSourceNext).Play();
+        FindObjectOfType<AudioManager>().GetSoundSource(soundSourceNext).Play();
     }
 
     IEnumerator StartGame(){
@@ -138,8 +136,10 @@ public class FindAlexController : MonoBehaviour
         }
         Debug.Log("2 secs elapsed.");
         // arHelpCanvas.SetActive(true);
-        timeUntilHint = Time.time + 20.0f;
+        timeUntilHint = Time.time + 30.0f;
         FindObjectOfType<AudioManager>().Play("emma");
+        scenery.transform.Find("text-emma").gameObject.SetActive(true);
+        UpdateScenery();
         StopCoroutine("StartGame");
     }
 }

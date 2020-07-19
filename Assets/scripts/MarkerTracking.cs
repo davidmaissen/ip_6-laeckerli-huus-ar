@@ -77,6 +77,9 @@ public class MarkerTracking : MonoBehaviour
             if(Physics.Raycast(ray, out hitInfo)) {
                 Debug.Log(PositionSaveSystem.rotation + " -- " + PositionSaveSystem.position);
                 Debug.Log(hitInfo.transform.gameObject.name + " clicked");
+                if (hitInfo.transform.gameObject.name == "find-alex") {
+                    StartCoroutine(LoadAsyncScene(hitInfo.transform.gameObject.name));
+                }
                 SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 /*
              if (
@@ -87,6 +90,22 @@ public class MarkerTracking : MonoBehaviour
              */
             }
         }
+    }
 
+    IEnumerator LoadAsyncScene(string name)
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            Debug.Log(PositionSaveSystem.rotation + " -- " + PositionSaveSystem.position);
+            yield return null;
+        }
     }
 }

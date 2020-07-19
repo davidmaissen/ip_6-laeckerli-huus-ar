@@ -53,27 +53,27 @@ public class ExploreController : MonoBehaviour
     }
 
 
-    public void updateIngredientIcon(GameObject[] ingredients)
-    {
-            //gameProgress = GameObject.FindObjectOfType<GameProgress>();
+    //public void updateIngredientIcon(GameObject[] ingredients)
+    //{
+    //        //gameProgress = GameObject.FindObjectOfType<GameProgress>();
 
-            for (int i = 0; i < ingredients.Length; i++)
-            {
-                GameObject gameObject = ingredients[i];
-                string name = gameObject.name;
+    //        for (int i = 0; i < ingredients.Length; i++)
+    //        {
+    //            GameObject gameObject = ingredients[i];
+    //            string name = gameObject.name;
 
-                if (gameProgress.isGameCompleted(name))
-                {
-                    gameObject.transform.Find("complete").gameObject.SetActive(true);
-                    gameObject.transform.Find("incomplete").gameObject.SetActive(false);
-                }
-                else
-                {
-                    gameObject.transform.Find("complete").gameObject.SetActive(false);
-                    gameObject.transform.Find("incomplete").gameObject.SetActive(true);
-                }
-            }
-    }
+    //            if (gameProgress.isGameCompleted(name))
+    //            {
+    //                gameObject.transform.Find("complete").gameObject.SetActive(true);
+    //                gameObject.transform.Find("incomplete").gameObject.SetActive(false);
+    //            }
+    //            else
+    //            {
+    //                gameObject.transform.Find("complete").gameObject.SetActive(false);
+    //                gameObject.transform.Find("incomplete").gameObject.SetActive(true);
+    //            }
+    //        }
+    //}
 
 
 

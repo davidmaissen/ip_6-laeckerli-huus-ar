@@ -70,8 +70,6 @@ public class MiniGame
         this.stars = stars;
     }
 
-
-
     public bool isCompleted()
     {
         return (stars > 0);

@@ -30,7 +30,7 @@ public class FindAlexController : MonoBehaviour
 
     void Update(){
         if (gameOver) return;
-        if (touchInfoNeeded && Time.time > timeUntilHint) {
+        if (timeUntilHint > 0 && touchInfoNeeded && Time.time > timeUntilHint) {
             timeUntilHint += 120.0f;
             scenery.transform.Find("text-emma").gameObject.SetActive(false);
             scenery.transform.Find("text-emma-3").gameObject.SetActive(true);
@@ -130,6 +130,7 @@ public class FindAlexController : MonoBehaviour
 
     IEnumerator StartGame(){
         Debug.Log("Start Coroutine");
+        FindObjectOfType<AudioManager>().Play("find-alex-scenery");
         Stopwatch watch = new Stopwatch();
         watch.Start();
         while (watch.Elapsed.TotalSeconds < 2) {

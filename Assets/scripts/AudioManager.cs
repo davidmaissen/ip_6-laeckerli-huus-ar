@@ -26,4 +26,8 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+    
+    public AudioSource GetSoundSource(string name) {
+        return Array.Find(sounds, sounds => sounds.name == name).source;
+    }
 }

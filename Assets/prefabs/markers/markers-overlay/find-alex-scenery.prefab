@@ -444,7 +444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.142, y: -0.0233}
+  m_AnchoredPosition: {x: 0.142, y: -0.0178}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8726088109750919560
@@ -521,8 +521,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ich liebe Hunde. Das letzte Mal habe ich dort dr\xFCben im Haus einen
-    gesehen."
+  m_text: "Ich liebe Hunde! Dort dr\xFCben im gelben Haus wohnt eine Familie mit
+    einem s\xFCssen Hund. Vielleicht m\xF6chte er ja auch raus."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}
   m_sharedMaterial: {fileID: -1441547330206132555, guid: 47771057c6031441ca4621100caacdc9,
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 56
+  m_firstOverflowCharacterIndex: 55
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -592,12 +592,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 14.123863, w: 3.650878}
   m_textInfo:
     textComponent: {fileID: 322437952407673420}
-    characterCount: 75
+    characterCount: 120
     spriteCount: 0
-    spaceCount: 13
-    wordCount: 14
+    spaceCount: 20
+    wordCount: 21
     linkCount: 0
-    lineCount: 3
+    lineCount: 5
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -7554,7 +7554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1322, y: -0.0165}
+  m_AnchoredPosition: {x: 0.1389, y: -0.0165}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8103491123305376081
@@ -7632,7 +7632,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Schau mal. So ein s\xFCsser Hund! Besten Dank, du hast meiner Tochter
-    einen riesen Gefallen getan!"
+    einen riesen Gefallen getan! Hier, nimm das als Dankesch\xF6n!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}
   m_sharedMaterial: {fileID: -1441547330206132555, guid: 47771057c6031441ca4621100caacdc9,
@@ -7702,12 +7702,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 14.123863, w: 3.650878}
   m_textInfo:
     textComponent: {fileID: 1015371127772833746}
-    characterCount: 95
+    characterCount: 126
     spriteCount: 0
-    spaceCount: 15
-    wordCount: 16
+    spaceCount: 20
+    wordCount: 21
     linkCount: 0
-    lineCount: 4
+    lineCount: 5
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -22415,7 +22415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tippe mit dem Finger auf dein Display, um zum Beispiel mit\nanderen Personen
+  m_text: "Tippe mit dem Finger auf dein Display, um zum Beispiel mit anderen Personen
     zu sprechen oder T\xFCren zu \xF6ffnen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}

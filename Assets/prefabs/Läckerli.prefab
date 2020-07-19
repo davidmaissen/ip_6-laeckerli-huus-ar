@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9024710960958374968}
   - component: {fileID: 6510716693225562856}
   - component: {fileID: -3517823021377389278}
+  - component: {fileID: 5881746486928645821}
   m_Layer: 0
   m_Name: "La\u0308ckerli"
   m_TagString: Player
@@ -136,5 +137,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5881746486928645821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130802774869350125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2cb3c796ae740ad84069b0445394c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

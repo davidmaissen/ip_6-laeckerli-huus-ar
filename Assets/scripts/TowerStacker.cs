@@ -53,9 +53,15 @@ public class TowerStacker : MonoBehaviour
                 // go.GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
             }
         }
+
+        if (CollisionDetector.cookieCollided) {
+            FindObjectOfType<AudioManager>().Play("cookie");
+            CollisionDetector.cookieCollided = false;
+        }
+
         // Check if every GameObject (except first) is still higher than the one spawned before. False = GameOver
         // if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
-        if (!CollisionDetector.collided) {
+        if (!CollisionDetector.floorCollided) {
             highScore = cubes.Count;
             score.text = "LÄCKERLI: " + (highScore + 1);
             Debug.Log("Collision with everything AAAIGHT");
@@ -76,8 +82,22 @@ public class TowerStacker : MonoBehaviour
         }
     }
 
+    /*
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        Debug.Log("Läckerli: " + collisionInfo.gameObject.name);
+        if (collisionInfo.gameObject.name.Contains("Läckerli")){
+            Debug.Log("Läckerli: " + collisionInfo);
+            Debug.Log("Läckerli: " + collisionInfo.relativeVelocity);
+            Debug.Log("Läckerli: " + collisionInfo.impulse);
+            FindObjectOfType<AudioManager>().Play("cookie");
+        }
+    }
+    */
+
     private void OnDestroy() {
-        CollisionDetector.collided = false;
+        CollisionDetector.floorCollided = false;
+        CollisionDetector.cookieCollided = false;
     }
 
     private void GameOver(int stars) {

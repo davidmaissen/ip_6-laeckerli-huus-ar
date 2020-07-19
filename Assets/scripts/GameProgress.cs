@@ -8,7 +8,7 @@ public class GameProgress
     public static int numberOfGames = 3;
     public static int starsCollected = 0;
     public static bool tutorialCompleted = false;
-    
+
     /*
     private void Awake() {
         if (miniGames == null) {
@@ -20,32 +20,40 @@ public class GameProgress
         }
     }
     */
-    
-    public void InitializeGameData() {
-        if (miniGames == null) {
+
+    public void InitializeGameData()
+    {
+        if (miniGames == null)
+        {
             miniGames = new MiniGame[numberOfGames];
             miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 0);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0);
+            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 2);
+            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 3);
             Debug.Log("Creating new MiniGame Array");
         }
     }
 
-    public void SaveMiniGame (MiniGame miniGame) {
-        if (miniGames != null && miniGame.getId() < miniGames.Length && miniGames[miniGame.getId()].getHighScore() < miniGame.getHighScore()) {
-            Debug.Log("Stars collected before saving in model minigame: " +  miniGames[miniGame.getId()].getStars());
+    public void SaveMiniGame(MiniGame miniGame)
+    {
+        if (miniGames != null && miniGame.getId() < miniGames.Length && miniGames[miniGame.getId()].getHighScore() < miniGame.getHighScore())
+        {
+            Debug.Log("Stars collected before saving in model minigame: " + miniGames[miniGame.getId()].getStars());
             starsCollected += miniGame.getStars() - miniGames[miniGame.getId()].getStars();
             miniGames[miniGame.getId()] = miniGame;
             Debug.Log("Stars collected: " + starsCollected);
             Debug.Log("Stars collected in new minigame: " + miniGame.getStars());
-            Debug.Log("Stars collected in model minigame: " +  miniGames[miniGame.getId()].getStars());
+            Debug.Log("Stars collected in model minigame: " + miniGames[miniGame.getId()].getStars());
             Debug.Log("Saved the game!");
-        } else {
+        }
+        else
+        {
             Debug.Log("Can't save!");
         }
 
-        foreach (MiniGame m in miniGames) {
-            if (m != null) {
+        foreach (MiniGame m in miniGames)
+        {
+            if (m != null)
+            {
                 Debug.Log(m.getTitle() + m.getStars());
             }
         }
@@ -55,7 +63,8 @@ public class GameProgress
     {
         bool completed = false;
 
-        foreach (MiniGame game in miniGames){
+        foreach (MiniGame game in miniGames)
+        {
             if (game.getTitle().Equals(name) && game.isCompleted())
             {
                 completed = true;
@@ -76,5 +85,33 @@ public class GameProgress
             }
         }
         return counter;
+    }
+
+    public (string title, int stars, string status, int highScore) getGameDetail(string name)
+    {
+        string title = "";
+        int stars = 0;
+        string status = "";
+        int highScore = 0;
+
+        foreach (MiniGame game in miniGames)
+        {
+            if (game.getTitle().Equals(name))
+            {
+                title = game.getTitle();
+                stars = game.getStars();
+                highScore = game.getHighScore();
+
+                if(game.isCompleted()){
+                    status = "gefunden";
+                }
+                else
+                {
+                    status = "verschollen";
+                }
+            }
+        }
+
+        return (title, stars, status, highScore);
     }
 }

@@ -5,27 +5,39 @@ using TMPro;
 
 public class ExploreController : MonoBehaviour
 {
+
     public TextMeshProUGUI starsCounter;
     public TextMeshProUGUI completedGameCounter;
+    public GameObject gameDetails;
     public GameObject[] ingredients;
     public GameObject tutorial;
+    public GameObject menu;
+    public GameObject ingredientsbar;
+
+
     private GameProgress gameProgress;
+    private UIController uiController;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+
         gameProgress = new GameProgress();
         gameProgress.InitializeGameData();
+
         if(!(GameProgress.tutorialCompleted))
         {
-            tutorial.SetActive(true);
+            uiController.showTutorial(tutorial);
             GameProgress.tutorialCompleted = true;
         }
 
         //set icons of ingredientsBar
-        updateIngredientsBar();
-
+        //uiController.updateIngredientIcon(ingredients);
+        uiController.updateStarsCounter(starsCounter);
+       // uiController.updateCompledetGameCounter(completedGameCounter);
+        uiController.updateGameDetails(gameDetails);
     }
 
     // Update is called once per frame
@@ -34,33 +46,45 @@ public class ExploreController : MonoBehaviour
             
     }
 
-    public void updateIngredientsBar()
+    public void animateIngredientsBar(Animator animation)
     {
+      //  animation.SetBool("expanded", !animation.GetBool("expanded"));
+         uiController.animateIngredientsBar(animation);
+    }
 
-        //set value of starsCounter
-        starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
-        starsCounter.text = GameProgress.starsCollected.ToString();
 
-        //set value of completedGameCounter
-        completedGameCounter = completedGameCounter.GetComponent<TextMeshProUGUI>();
-        completedGameCounter.text = gameProgress.getCompletedGameCount().ToString() + "/" + GameProgress.numberOfGames;
+    public void updateIngredientIcon(GameObject[] ingredients)
+    {
+            //gameProgress = GameObject.FindObjectOfType<GameProgress>();
 
-        for (int i = 0; i < ingredients.Length; i++)
-        {
-            string name = ingredients[i].name;
-
-            if (gameProgress.isGameCompleted(name))
+            for (int i = 0; i < ingredients.Length; i++)
             {
-                ingredients[i].transform.Find("complete").gameObject.SetActive(true);
-                ingredients[i].transform.Find("incomplete").gameObject.SetActive(false);
-            }
-            else
-            {
-                ingredients[i].transform.Find("complete").gameObject.SetActive(false);
-                ingredients[i].transform.Find("incomplete").gameObject.SetActive(true);
-            }
-        }
+                GameObject gameObject = ingredients[i];
+                string name = gameObject.name;
 
+                if (gameProgress.isGameCompleted(name))
+                {
+                    gameObject.transform.Find("complete").gameObject.SetActive(true);
+                    gameObject.transform.Find("incomplete").gameObject.SetActive(false);
+                }
+                else
+                {
+                    gameObject.transform.Find("complete").gameObject.SetActive(false);
+                    gameObject.transform.Find("incomplete").gameObject.SetActive(true);
+                }
+            }
+    }
+
+
+
+    public void updateCompledetGameCounter(TextMeshProUGUI completedGameCounter)
+    {
+            //gameProgress = GameObject.FindObjectOfType<GameProgress>();
+
+            //set value of completedGameCounter
+            completedGameCounter = completedGameCounter.GetComponent<TextMeshProUGUI>();
+            completedGameCounter.text = gameProgress.getCompletedGameCount().ToString() + "/" + GameProgress.numberOfGames;
 
     }
+
 }

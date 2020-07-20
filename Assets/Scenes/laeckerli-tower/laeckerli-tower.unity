@@ -196,6 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 3130802774869350125, guid: 92ab992bcea1a4ef78affb8e43bfac6c,
     type: 3}
+  circle3d: {fileID: 5979024083497550962, guid: d7bf4e73c6422499fbd1da21885b1b77,
+    type: 3}
   score: {fileID: 1698322858}
 --- !u!4 &103366878
 Transform:

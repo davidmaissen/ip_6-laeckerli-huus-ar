@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class TowerStacker : MonoBehaviour
 {
     public GameObject cubePrefab;
+    public GameObject circle3d;
     private int counter = 0;
     private int highScore;
     private bool gameOver = false;
@@ -37,12 +40,13 @@ public class TowerStacker : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
             if(!gameOver && Time.time > canSpawn && Physics.Raycast(ray, out hitInfo)) {
+                StartCoroutine(ShowTouchInput(hitInfo));
                 // Create a Cooldown so the Player can't spawn too many Cubes to cheat
                 Debug.Log("Resetting Cooldown...");
                 canSpawn = Time.time + cooldownDuration;
 
                 // Instantiate Cube
-                var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 2, 0), Quaternion.identity);
+                var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 1, 0), Quaternion.identity);
                 go.transform.rotation = hitInfo.transform.rotation;
 
                 // Give the Cube an unique Name and at it to the List with all Cubes
@@ -64,9 +68,7 @@ public class TowerStacker : MonoBehaviour
         if (!CollisionDetector.floorCollided) {
             highScore = cubes.Count;
             score.text = "LÄCKERLI: " + (highScore + 1);
-            Debug.Log("Collision with everything AAAIGHT");
         } else {
-            Debug.Log("Collision with everything GAME OVER!!");
             score.text = "Game Over! Highscore: " + (highScore);
 
             int stars = 0;
@@ -94,6 +96,19 @@ public class TowerStacker : MonoBehaviour
         }
     }
     */
+
+    IEnumerator ShowTouchInput(RaycastHit hitInfo){
+        var inputFeedback = GameObject.Instantiate(circle3d, hitInfo.point + new Vector3(0,0.01f,0), Quaternion.identity);
+        inputFeedback.transform.Rotate(90, 0, 0);
+        Debug.Log("Start Coroutine");
+        Stopwatch watch = new Stopwatch();
+        watch.Start();
+        while (watch.Elapsed.TotalSeconds < 0.5) {
+            yield return null;
+        }
+        Destroy(inputFeedback);
+        StopCoroutine("ShowTouchInput");
+    }
 
     private void OnDestroy() {
         CollisionDetector.floorCollided = false;

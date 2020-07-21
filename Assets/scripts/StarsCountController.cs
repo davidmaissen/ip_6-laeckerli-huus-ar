@@ -10,7 +10,8 @@ public class StarsCountController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        updateStarsCounter(starsCounter);
+        starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
+        updateStarsCounter();
     }
 
     // Update is called once per frame
@@ -20,11 +21,10 @@ public class StarsCountController : MonoBehaviour
     }
 
 
-    public void updateStarsCounter(TextMeshProUGUI starsCounter)
+    public void updateStarsCounter()
     {
         //set value of starsCounter
         Debug.Log(GameProgress.starsCollected.ToString());
-        starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
         starsCounter.text = GameProgress.starsCollected.ToString();
 
     }

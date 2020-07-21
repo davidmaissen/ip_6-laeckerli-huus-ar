@@ -15,12 +15,14 @@ public class MarkerTracking : MonoBehaviour
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
+    private StarsCountController starsCountController;
     private static bool airPlaneStarCollected = false;
     private static bool oldImagesStarCollected = false;
     private static bool museStarCollected = false;
 
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+        starsCountController = FindObjectOfType<StarsCountController>();
 
         foreach(GameObject prefab in placeablePrefab)
         {
@@ -111,6 +113,7 @@ public class MarkerTracking : MonoBehaviour
         else if (name == "muse-star") museStarCollected = true;
         Debug.Log(GameProgress.starsCollected);
         GameProgress.starsCollected++;
+        starsCountController.updateStarsCounter();
         Debug.Log(GameProgress.starsCollected);
         foreach(GameObject go in spawnedPrefabs.Values) {
             if (go.name == name) {

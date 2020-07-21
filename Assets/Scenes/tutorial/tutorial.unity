@@ -1144,7 +1144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.28845042}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.999878, y: -37.839966}
+  m_AnchoredPosition: {x: -5, y: -37.839966}
   m_SizeDelta: {x: -71.68164, y: -165.67947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253871223
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 79.15
+  m_fontSize: 79.85
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1242,7 +1242,7 @@ MonoBehaviour:
     spaceCount: 12
     wordCount: 13
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -4166,22 +4166,22 @@ PrefabInstance:
     - target: {fileID: 8528657061911306797, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8528657061911306797, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8528657061911306797, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8528657061911306797, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8528657062021813349, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameProgressController : MonoBehaviour
+public class StarsCountController : MonoBehaviour
 {
     public TextMeshProUGUI starsCounter;
 

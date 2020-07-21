@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ReferenceLibrary: {fileID: 11400000, guid: 1af2d24e7b9744e449b7a9daa52ec2fe, type: 2}
+  m_ReferenceLibrary: {fileID: 11400000, guid: 4af44699a9c224677af33194a0fdba86, type: 2}
   m_MaxNumberOfMovingImages: 4
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &314650488
@@ -472,12 +472,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeablePrefab:
   - {fileID: 9121724712343460841, guid: 48002b3e7fe474456a13793330a759bb, type: 3}
-  - {fileID: 7911040046619357045, guid: 3beb5e60633834bb0b4b73f46e927e67, type: 3}
   - {fileID: 7911040046619357045, guid: 3edea0b2a1ff14be98376a9d33c8f45c, type: 3}
+  - {fileID: 7911040046619357045, guid: 3beb5e60633834bb0b4b73f46e927e67, type: 3}
   - {fileID: 7911040046619357045, guid: 73e86e2751f084a2cb15d29cd27575d6, type: 3}
-  - {fileID: 8541744748547234771, guid: fd1d7074d497f4e9586b2750fc9316a3, type: 3}
-  - {fileID: 8541744748547234771, guid: b64bfd7b3664e4e0b988dc7248e8f420, type: 3}
-  - {fileID: 8541744748547234771, guid: 461acd804ae5a454185c15c88c41775b, type: 3}
+  - {fileID: 1247201176095479075, guid: 5531a62cc0415487a87a1cde04375e5c, type: 3}
 --- !u!1001 &986610963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -614,6 +612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445872538775890962, guid: 990c45c5d003f4851b7109b56b6fde17,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4445872539381535579, guid: 990c45c5d003f4851b7109b56b6fde17,
         type: 3}
@@ -761,6 +764,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8528657060969711135, guid: 0cee67f850aee4205b9dd1658c2de255,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528657061873399766, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -871,6 +879,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserInterface
       objectReference: {fileID: 0}
+    - target: {fileID: 8528657061873399786, guid: 0cee67f850aee4205b9dd1658c2de255,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528657062021813349, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
       propertyPath: m_Material
@@ -880,6 +893,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528657062021813349, guid: 0cee67f850aee4205b9dd1658c2de255,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8528657062654452504, guid: 0cee67f850aee4205b9dd1658c2de255,
         type: 3}
@@ -895,6 +913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528657062817894681, guid: 0cee67f850aee4205b9dd1658c2de255,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cee67f850aee4205b9dd1658c2de255, type: 3}

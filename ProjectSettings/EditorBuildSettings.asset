@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/tutorial/tutorial-old.unity
     guid: b14b7ea43b4ed4bc2bb7deea23098b53
+  - enabled: 0
+    path: Assets/Scenes/find-alex/find-alex-image-tracking.unity
+    guid: dacf702e77a91427a99584fa91125f33
   - enabled: 1
     path: Assets/Scenes/find-alex/find-alex.unity
-    guid: dacf702e77a91427a99584fa91125f33
+    guid: b62a7913e6d6d48c3a77ff2451c6804c
   - enabled: 1
     path: Assets/Scenes/explore/explore.unity
     guid: 3e484998f4b4a44c992605e3e492cf97

@@ -12,7 +12,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     private ARRaycastManager raycastManager;
     private ARPlaneManager planeManager;
     public Animator animator;
-    private GameObject spawnedObject;
+    public GameObject spawnedObject;
     //private IsCanvasClicked isCanvasClicked;
     public bool placementModeActive = true;
     private bool planeHit = false;
@@ -51,17 +51,17 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             arHelpCanvas.SetActive(true);
             if (PlanesFound()) {
                 animator.SetBool("PlanesDetected", true);
-                Debug.Log("PlanesDetected - Animation: Tap To Place");
+                // Debug.Log("PlanesDetected - Animation: Tap To Place");
             } else {
                 animator.SetBool("PlanesDetected", false);
-                Debug.Log("PlanesDetectedFalse - Animation: Move Device");
+                // Debug.Log("PlanesDetectedFalse - Animation: Move Device");
             }
         } else {
             animator.enabled = false;
             arHelpCanvas.SetActive(false);
         }
 
-        Debug.Log("Event Data Spawn: " + IsCanvasClicked.goClicked.ToString());
+        // Debug.Log("Event Data Spawn: " + IsCanvasClicked.goClicked.ToString());
         if (!placementModeActive || !TryGetTouchPosition(out Vector2 touchposition)) {
             return;
         }
@@ -73,12 +73,20 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             Debug.Log("Event Data s_Hits: " + s_Hits[0].pose);
             towerGameCanvas.SetActive(true);
             if (spawnedObject == null) {
-                spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                if (PlaceablePrefab.name.Contains("find-alex-scenery") && PlanesFound()) {
+                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                    spawnedObject.gameObject.transform.Rotate(0,180,0);
+                    SetAllPlanesActive(false);
+                    placementModeActive = false;
+                } else {
+                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                }
             }
             else {
                 spawnedObject.transform.position = hitPose.position;
                 spawnedObject.transform.rotation = hitPose.rotation;
             }
+            Debug.Log("Object spawned with name: " + spawnedObject.gameObject.name);
             // Debug.Log("Event Data Spawn: " + isCanvasClicked.goClicked);
             IsCanvasClicked.goClicked = false;
         }
@@ -91,6 +99,12 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             return false;
 
         return planeManager.trackables.count > 0;
+    }
+
+    private void SetAllPlanesActive(bool value) {
+        foreach(var plane in planeManager.trackables) {
+            plane.gameObject.SetActive(value);
+        }
     }
 
     /*

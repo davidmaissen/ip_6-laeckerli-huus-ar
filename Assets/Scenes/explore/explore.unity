@@ -475,6 +475,9 @@ MonoBehaviour:
   - {fileID: 7911040046619357045, guid: 3beb5e60633834bb0b4b73f46e927e67, type: 3}
   - {fileID: 7911040046619357045, guid: 3edea0b2a1ff14be98376a9d33c8f45c, type: 3}
   - {fileID: 7911040046619357045, guid: 73e86e2751f084a2cb15d29cd27575d6, type: 3}
+  - {fileID: 8541744748547234771, guid: fd1d7074d497f4e9586b2750fc9316a3, type: 3}
+  - {fileID: 8541744748547234771, guid: b64bfd7b3664e4e0b988dc7248e8f420, type: 3}
+  - {fileID: 8541744748547234771, guid: 461acd804ae5a454185c15c88c41775b, type: 3}
 --- !u!1001 &986610963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +604,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445872538775890962, guid: 990c45c5d003f4851b7109b56b6fde17,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445872538775890962, guid: 990c45c5d003f4851b7109b56b6fde17,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4445872539381535579, guid: 990c45c5d003f4851b7109b56b6fde17,
         type: 3}

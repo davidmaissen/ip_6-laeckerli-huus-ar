@@ -11,7 +11,8 @@ public class SpawnObjectsOnPlane : MonoBehaviour
 {
     private ARRaycastManager raycastManager;
     private ARPlaneManager planeManager;
-    public Animator animator;
+    public Animator moveDeviceAnimator;
+    public Animator tapToPlaceAnimator;
     public GameObject spawnedObject;
     //private IsCanvasClicked isCanvasClicked;
     public bool placementModeActive = true;
@@ -50,14 +51,17 @@ public class SpawnObjectsOnPlane : MonoBehaviour
         if (spawnedObject == null) {
             arHelpCanvas.SetActive(true);
             if (PlanesFound()) {
-                animator.SetBool("PlanesDetected", true);
+                moveDeviceAnimator.SetBool("PlanesDetected", true);
+                tapToPlaceAnimator.SetBool("PlanesDetected", true);
                 // Debug.Log("PlanesDetected - Animation: Tap To Place");
             } else {
-                animator.SetBool("PlanesDetected", false);
+                moveDeviceAnimator.SetBool("PlanesDetected", false);
+                tapToPlaceAnimator.SetBool("PlanesDetected", false);
                 // Debug.Log("PlanesDetectedFalse - Animation: Move Device");
             }
         } else {
-            animator.enabled = false;
+            moveDeviceAnimator.enabled = false;
+            tapToPlaceAnimator.enabled = false;
             arHelpCanvas.SetActive(false);
         }
 

@@ -145,7 +145,7 @@ public class FindAlexController : MonoBehaviour
             yield return null;
         }
         Debug.Log("2 secs elapsed.");
-        // arHelpCanvas.SetActive(true);
+        arHelpCanvas.SetActive(true);
         timeUntilHint = Time.time + 30.0f;
         FindObjectOfType<AudioManager>().Play("emma");
         scenery.transform.Find("text-emma").gameObject.SetActive(true);

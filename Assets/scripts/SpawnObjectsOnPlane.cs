@@ -77,6 +77,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
                     spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
                     spawnedObject.gameObject.transform.Rotate(0,180,0);
                     SetAllPlanesActive(false);
+                    planeManager.enabled = false;
                     placementModeActive = false;
                 } else {
                     spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);

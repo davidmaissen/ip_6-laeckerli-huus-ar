@@ -15,9 +15,9 @@ public class MarkerTracking : MonoBehaviour
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
-    private bool airPlaneStarCollected = false;
-    private bool oldImagesStarCollected = false;
-    private bool museStarCollected = false;
+    private static bool airPlaneStarCollected = false;
+    private static bool oldImagesStarCollected = false;
+    private static bool museStarCollected = false;
 
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
@@ -92,7 +92,7 @@ public class MarkerTracking : MonoBehaviour
                     hitInfo.transform.gameObject.name == "muse-star") {
                     StarCollected(hitInfo.transform.gameObject.name);
                 } else {
-                    StartCoroutine(LoadAsyncScene(hitInfo.transform.gameObject.name));
+                    SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 }
                 /*
              if (
@@ -109,6 +109,9 @@ public class MarkerTracking : MonoBehaviour
         if (name == "airplane-star") airPlaneStarCollected = true;
         else if (name == "old-images-star") oldImagesStarCollected = true;
         else if (name == "muse-star") museStarCollected = true;
+        Debug.Log(GameProgress.starsCollected);
+        GameProgress.starsCollected++;
+        Debug.Log(GameProgress.starsCollected);
         foreach(GameObject go in spawnedPrefabs.Values) {
             if (go.name == name) {
                 go.SetActive(false);
@@ -117,7 +120,7 @@ public class MarkerTracking : MonoBehaviour
         }
     }
     private bool IsStarCollected(string name) {
-        return !name.Contains("-star") || (name == "airplane-star" && airPlaneStarCollected) || 
+        return (name == "airplane-star" && airPlaneStarCollected) || 
         (name == "old-images-star" && oldImagesStarCollected) ||
         (name == "muse-star" && museStarCollected);
     }

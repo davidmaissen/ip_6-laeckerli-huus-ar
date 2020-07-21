@@ -162,7 +162,7 @@ public class TutorialController : MonoBehaviour
 
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
                 menuInfo.transform.Find("Panel-Menu/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(true);

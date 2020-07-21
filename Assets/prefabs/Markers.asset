@@ -55,3 +55,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: find-alex
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4649649674841240122
+      m_GuidHigh: 11608923979610022845
+    m_SerializedTextureGuid:
+      m_GuidLow: 7216759663756569761
+      m_GuidHigh: 16536142739278102970
+    m_Size: {x: 0.12082973, y: 0.0459153}
+    m_SpecifySize: 1
+    m_Name: bird-star
+    m_Texture: {fileID: 2800000, guid: 9b93eca114ad6427ba81d389352e7ce5, type: 3}

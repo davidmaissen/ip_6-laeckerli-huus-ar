@@ -49,6 +49,7 @@ public class MarkerTracking : MonoBehaviour
     }
 
     private void UpdateImage(ARTrackedImage trackedImage) {
+        Debug.Log(trackedImage.referenceImage.name + " image spotted");
         string name = trackedImage.referenceImage.name;
         Vector3 position = trackedImage.transform.position;
 

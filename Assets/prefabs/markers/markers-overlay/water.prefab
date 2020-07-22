@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1242899947027228724}
   - component: {fileID: 1607256834779383538}
   m_Layer: 0
-  m_Name: combine
+  m_Name: water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5262,7 +5262,7 @@ GameObject:
   - component: {fileID: 2524427987908366584}
   - component: {fileID: 3623959110321108778}
   m_Layer: 0
-  m_Name: combine
+  m_Name: water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

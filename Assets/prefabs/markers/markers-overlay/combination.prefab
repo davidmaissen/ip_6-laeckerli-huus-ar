@@ -4968,7 +4968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Labyrinth
+  m_text: Kombiniere
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
   m_sharedMaterial: {fileID: 600632079493727670, guid: b0bf4defc798541579d3e8116149b77c,
@@ -5038,7 +5038,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6077365285712114394}
-    characterCount: 9
+    characterCount: 10
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -5074,7 +5074,7 @@ GameObject:
   - component: {fileID: 6398655673816117236}
   - component: {fileID: 7085802646337090017}
   m_Layer: 0
-  m_Name: maze
+  m_Name: combination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5165,7 +5165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3559524690098515837}
   m_Layer: 0
-  m_Name: maze
+  m_Name: combination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

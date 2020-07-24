@@ -4,17 +4,21 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
+using TMPro;
 
 public class TowerStacker : MonoBehaviour
 {
     public GameObject cubePrefab;
     public GameObject circle3d;
+    public TextMeshProUGUI score;
+
+    public GameObject successCanvas;
     private int counter = 0;
     private int highScore;
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;
-    public Text score;
+    
     private List<GameObject> cubes;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
     private GameProgress gameProgress;
@@ -24,6 +28,7 @@ public class TowerStacker : MonoBehaviour
         gameProgress = new GameProgress();
         cubes = new List<GameObject>();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
+        successCanvas.SetActive(false);
     }
 
 
@@ -69,7 +74,9 @@ public class TowerStacker : MonoBehaviour
             highScore = cubes.Count;
             score.text = "LÄCKERLI: " + (highScore + 1);
         } else {
-            score.text = "Game Over! Highscore: " + (highScore);
+            
+            score.text = highScore.ToString();
+            successCanvas.SetActive(true);
 
             int stars = 0;
 

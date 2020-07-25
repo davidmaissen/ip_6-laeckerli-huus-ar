@@ -23,7 +23,7 @@ MonoBehaviour:
       m_GuidHigh: 2041381640853730475
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: Cube-Overlay
+    m_Name: bowl-topleft
     m_Texture: {fileID: 2800000, guid: e0e322201efde479ab341762c971541c, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5474577165690194923
@@ -33,7 +33,7 @@ MonoBehaviour:
       m_GuidHigh: 1661730091862264984
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: Sphere-Overlay
+    m_Name: bowl-topright
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5034545183378408009
@@ -43,7 +43,7 @@ MonoBehaviour:
       m_GuidHigh: 9027753128609886937
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: combination
+    m_Name: bowl-bottomright
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5233529719581264026
@@ -53,5 +53,5 @@ MonoBehaviour:
       m_GuidHigh: 11157700603472131912
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: tower
+    m_Name: bowl-bottomleft
     m_Texture: {fileID: 0}

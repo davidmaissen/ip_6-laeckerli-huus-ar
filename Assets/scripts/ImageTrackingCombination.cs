@@ -62,7 +62,7 @@ public class ImageTrackingCombination : MonoBehaviour
         prefab.transform.rotation = trackedImage.transform.rotation;
         PositionSaveSystem.position = prefab.transform.position;
         PositionSaveSystem.rotation = prefab.transform.rotation;
-        prefab.transform.Rotate(0,0,0);
+        // prefab.transform.Rotate(0,0,0);
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");
 

@@ -17,7 +17,7 @@ public class CollisionDetectorCombination : MonoBehaviour
             if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
                 Debug.Log("Collision without Rigidbody down " + this.name + " with: " + 
                 hitInfo.transform.gameObject.name);
-                Instantiate(collision, hitInfo.transform.position + new Vector3(0,this.GetComponent<Collider>().bounds.size.x/2,0), hitInfo.transform.rotation);
+                Instantiate(collision, hitInfo.point, hitInfo.transform.rotation);
                 
                 if (this.name == "bowl-topright" && hitInfo.transform.gameObject.name == "bowl-bottomright") {
                     Debug.Log(this.name + " is placed right");
@@ -33,7 +33,7 @@ public class CollisionDetectorCombination : MonoBehaviour
             if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
                 Debug.Log("Collision without Rigidbody up " + this.name + " with: " + 
                 hitInfo.transform.gameObject.name);
-                Instantiate(collision, hitInfo.transform.position - new Vector3(0,this.GetComponent<Collider>().bounds.size.x/2,0), hitInfo.transform.rotation);
+                Instantiate(collision, hitInfo.point, hitInfo.transform.rotation);
                 if (this.name == "bowl-bottomright" && hitInfo.transform.gameObject.name == "bowl-topright") {
                     Debug.Log(this.name + " is placed right");
                     combinationController.UpdateCombination(1, this.name);
@@ -48,8 +48,8 @@ public class CollisionDetectorCombination : MonoBehaviour
             if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
                 Debug.Log("Collision without Rigidbody right " + this.name + " with: " + 
                 hitInfo.transform.gameObject.name);
-                GameObject go = Instantiate(collision, hitInfo.transform.position - new Vector3(this.GetComponent<Collider>().bounds.size.x/2,0,0), hitInfo.transform.rotation);
-                go.transform.Rotate(0,0,90);
+                GameObject go = Instantiate(collision, hitInfo.point, hitInfo.transform.rotation);
+                go.transform.Rotate(0,0,180);
 
                 if (this.name == "bowl-topleft" && hitInfo.transform.gameObject.name == "bowl-topright") {
                     Debug.Log(this.name + " is placed right");
@@ -65,8 +65,8 @@ public class CollisionDetectorCombination : MonoBehaviour
             if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
                 Debug.Log("Collision without Rigidbody left " + this.name + " with: " + 
                 hitInfo.transform.gameObject.name);
-                GameObject go = Instantiate(collision, hitInfo.transform.position + new Vector3(this.GetComponent<Collider>().bounds.size.x/2,0,0), hitInfo.transform.rotation);
-                go.transform.Rotate(0,0,90);
+                GameObject go = Instantiate(collision, hitInfo.point, hitInfo.transform.rotation);
+                go.transform.Rotate(0,0,180);
                 if (this.name == "bowl-bottomright" && hitInfo.transform.gameObject.name == "bowl-bottomleft") {
                     Debug.Log(this.name + " is placed right");
                     combinationController.UpdateCombination(2, this.name);

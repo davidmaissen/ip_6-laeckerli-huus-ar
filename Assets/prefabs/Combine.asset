@@ -55,3 +55,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: bowl-bottomleft
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5124126299514659618
+      m_GuidHigh: 5572890489024787880
+    m_SerializedTextureGuid:
+      m_GuidLow: 14141171446400908066
+      m_GuidHigh: 9510127677275823305
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: whisk-wires
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5360071746269399809
+      m_GuidHigh: 1817181569377900469
+    m_SerializedTextureGuid:
+      m_GuidLow: 9527762179956301946
+      m_GuidHigh: 2297822320099963050
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: whisk-handle
+    m_Texture: {fileID: 0}

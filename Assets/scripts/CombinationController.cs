@@ -8,13 +8,12 @@ using Debug = UnityEngine.Debug;
 public class CombinationController : MonoBehaviour
 {
     private bool[] bowlAddedCorrectly;
-    private bool[] spoonAddedCorrectly;
+    private bool whiskAddedCorrectly = false;
     private bool[] tableAddedCorrectly;
     public Canvas canvas;
 
     private void Awake() {
         bowlAddedCorrectly = new bool[4];
-        spoonAddedCorrectly = new bool[3];
         tableAddedCorrectly = new bool[3];
     }
 
@@ -26,6 +25,9 @@ public class CombinationController : MonoBehaviour
         */
         if (Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
+            canvas.gameObject.SetActive(true);
+        } else if (whiskAddedCorrectly) {
+            Debug.Log("whiskAddedCorrectly");
             canvas.gameObject.SetActive(true);
         }
     }
@@ -44,12 +46,8 @@ public class CombinationController : MonoBehaviour
                 yield return null;
             }
             bowlAddedCorrectly[index] = false;
-        } else if (name.Contains("spoon") && !spoonAddedCorrectly[index]) {
-            spoonAddedCorrectly[index] = true;
-            while (watch.Elapsed.TotalSeconds < 0.5) {
-                yield return null;
-            }
-            spoonAddedCorrectly[index] = false;
+        } else if (name.Contains("whisk") && !whiskAddedCorrectly) {
+            whiskAddedCorrectly = true;
         } else if (name.Contains("table") && !tableAddedCorrectly[index]) {
             tableAddedCorrectly[index] = true;
             while (watch.Elapsed.TotalSeconds < 0.5) {

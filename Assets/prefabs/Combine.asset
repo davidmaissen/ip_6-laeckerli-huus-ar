@@ -19,18 +19,18 @@ MonoBehaviour:
       m_GuidLow: 5458403908450765787
       m_GuidHigh: 5721005338878663554
     m_SerializedTextureGuid:
-      m_GuidLow: 16463223988578099744
-      m_GuidHigh: 2041381640853730475
+      m_GuidLow: 2623741909210108765
+      m_GuidHigh: 1574076451770544907
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-topleft
-    m_Texture: {fileID: 2800000, guid: e0e322201efde479ab341762c971541c, type: 3}
+    m_Texture: {fileID: 2800000, guid: 80c6135d675d24690b33176d313ed815, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5474577165690194923
       m_GuidHigh: 11816970351128477834
     m_SerializedTextureGuid:
-      m_GuidLow: 4963020732751581985
-      m_GuidHigh: 1661730091862264984
+      m_GuidLow: 13003634995945106663
+      m_GuidHigh: 3076591333212841018
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-topright
@@ -39,8 +39,8 @@ MonoBehaviour:
       m_GuidLow: 5034545183378408009
       m_GuidHigh: 3036452613203548055
     m_SerializedTextureGuid:
-      m_GuidLow: 16487452944719208943
-      m_GuidHigh: 9027753128609886937
+      m_GuidLow: 10667533383315150498
+      m_GuidHigh: 5349242237904334680
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-bottomright
@@ -49,8 +49,8 @@ MonoBehaviour:
       m_GuidLow: 5233529719581264026
       m_GuidHigh: 2134049222130144941
     m_SerializedTextureGuid:
-      m_GuidLow: 6081629629982804370
-      m_GuidHigh: 11157700603472131912
+      m_GuidLow: 4909187812398816187
+      m_GuidHigh: 14368191468718459080
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-bottomleft

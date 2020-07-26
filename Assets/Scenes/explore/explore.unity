@@ -497,6 +497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorial: {fileID: 986610964}
+  setActive: []
+  setInactive:
+  - {fileID: 986610964}
 --- !u!1001 &986610963
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasStateController : MonoBehaviour
 {
 
     public GameObject tutorial;
+    public GameObject[] setActive;
+    public GameObject[] setInactive;
+
     private GameProgress gameProgress;
 
 
@@ -16,10 +20,17 @@ public class CanvasStateController : MonoBehaviour
         gameProgress.InitializeGameData();
 
         //set canvas visibilty
-        tutorial.SetActive(false);
+        foreach(GameObject obj in setActive)
+        {
+             obj.SetActive(true);   
+        }
 
+        foreach(GameObject obj in setInactive)
+        {
+             obj.SetActive(false);   
+        }
 
-        if(!(GameProgress.tutorialCompleted))
+        if( SceneManager.GetActiveScene().name.Equals("explore") && !(GameProgress.tutorialCompleted))
         {
             showTutorial(tutorial);
             GameProgress.tutorialCompleted = true;

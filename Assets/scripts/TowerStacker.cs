@@ -10,9 +10,11 @@ public class TowerStacker : MonoBehaviour
 {
     public GameObject cubePrefab;
     public GameObject circle3d;
-    public TextMeshProUGUI score;
+    //public TextMeshProUGUI score;
 
     public GameObject successCanvas;
+
+    public GameObject uiController;
     private int counter = 0;
     private int highScore;
     private bool gameOver = false;
@@ -22,15 +24,16 @@ public class TowerStacker : MonoBehaviour
     private List<GameObject> cubes;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
     private GameProgress gameProgress;
+    private GameSuccessController gameSuccessController;
 
         private void Awake()
     {
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         cubes = new List<GameObject>();
-        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> ();
-        successCanvas.SetActive(false);
+        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> (); 
+    
     }
-
 
     // Update is called once per frame
     void Update()
@@ -72,21 +75,13 @@ public class TowerStacker : MonoBehaviour
         // if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
         if (!CollisionDetector.floorCollided) {
             highScore = cubes.Count;
-            score.text = "LÄCKERLI: " + (highScore + 1);
+
+           // gameSuccessController.setCounter(highScore + 1);   
+            gameSuccessController.updateProgress(highScore + 1, getStarsFromCount(highScore + 1));
+            //score.text = "LÄCKERLI: " + (highScore + 1);
         } else {
-            
-            score.text = highScore.ToString();
-            successCanvas.SetActive(true);
-
-            int stars = 0;
-
-            if (highScore > 5) {
-                stars = 3;
-            } else if (highScore > 4 ) {
-                stars = 2;
-            } else if (highScore > 2 ) {
-                stars = 1;
-            }
+    
+            int stars = getStarsFromCount(highScore);
             GameOver(stars);
         }
     }
@@ -126,5 +121,22 @@ public class TowerStacker : MonoBehaviour
         gameOver = true;
         MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
         gameProgress.SaveMiniGame(towerstacker);
+        gameSuccessController.showSuccessPanel(stars);
     }
+
+    private int getStarsFromCount(int count)
+    {
+            int stars = 0;
+
+            if (count > 5) {
+                stars = 3;
+            } else if (count > 4 ) {
+                stars = 2;
+            } else if (count > 2 ) {
+                stars = 1;
+            }
+            return stars;
+    }
+
+
 }

@@ -121,7 +121,7 @@ public class TowerStacker : MonoBehaviour
         gameOver = true;
         MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
         gameProgress.SaveMiniGame(towerstacker);
-        gameSuccessController.showSuccessPanel(stars);
+        gameSuccessController.showSuccessPanel("Towerstacker", highScore, stars);
     }
 
     private int getStarsFromCount(int count)

@@ -24,7 +24,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
     private GameObject towerGameCanvas;
     private GameObject arHelpCanvas;
 
-    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     void Awake()
     {
@@ -70,15 +70,22 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             return;
         }
 
-        if (raycastManager.Raycast(touchposition,s_Hits,TrackableType.PlaneWithinPolygon) && IsCanvasClicked.goClicked) {
-            var hitPose = s_Hits[0].pose;
+        if (raycastManager.Raycast(touchposition,hits,TrackableType.PlaneWithinPolygon) && IsCanvasClicked.goClicked) {
+            Pose hitPose = hits[0].pose;
             planeHit = true;
             Debug.Log("Event Data touchposition: " + touchposition);
-            Debug.Log("Event Data s_Hits: " + s_Hits[0].pose);
+            Debug.Log("Event Data s_Hits: " + hits[0].pose);
             towerGameCanvas.SetActive(true);
             if (spawnedObject == null) {
                 if (PlaceablePrefab.name.Contains("find-alex-scenery") && PlanesFound()) {
-                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                    Quaternion orientation = Quaternion.identity;
+                    Quaternion zUp = Quaternion.identity;
+ 
+                    GetWallPlacement(hits[0], out orientation, out zUp);
+            
+                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, orientation);
+                    spawnedObject.transform.rotation = zUp;
+                    
                     spawnedObject.gameObject.transform.Rotate(0,180,0);
                     SetAllPlanesActive(false);
                     planeManager.enabled = false;
@@ -110,6 +117,16 @@ public class SpawnObjectsOnPlane : MonoBehaviour
         foreach(var plane in planeManager.trackables) {
             plane.gameObject.SetActive(value);
         }
+    }
+
+    private void GetWallPlacement(ARRaycastHit _planeHit, out Quaternion orientation, out Quaternion zUp)
+    {
+        TrackableId planeHit_ID = _planeHit.trackableId;
+        ARPlane planeHit = planeManager.GetPlane(planeHit_ID);
+        Vector3 planeNormal = planeHit.normal;
+        orientation = Quaternion.FromToRotation(Vector3.up, planeNormal);
+        Vector3 forward = _planeHit.pose.position - (_planeHit.pose.position + Vector3.down);
+        zUp = Quaternion.LookRotation(forward, planeNormal);
     }
 
     /*

@@ -16,6 +16,8 @@ public class CollisionDetectorCombination : MonoBehaviour
             BowlCollision();
         } else if (this.name.Contains("whisk")) {
             WhiskCollision();
+        } else if (this.name.Contains("rolling-pin")) {
+            RollingPinCollision();
         }
     }
 
@@ -102,6 +104,29 @@ public class CollisionDetectorCombination : MonoBehaviour
                 }
             }
         }
-
     }
+
+    private void RollingPinCollision() {
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(transform.position, -transform.forward, out hitInfo)) {
+            if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
+                Debug.Log("Collision without Rigidbody down " + this.name);
+                if (this.name == "rolling-pin-right" && hitInfo.transform.gameObject.name == "rolling-pin-left") {
+                    Debug.Log(this.name + " is placed right");
+                    combinationController.UpdateCombination(0, this.name);
+                }
+            }
+        }
+        if (Physics.Raycast(transform.position, -transform.right, out hitInfo)) {
+            if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
+                Debug.Log("Collision without Rigidbody left " + this.name);
+                if (this.name == "rolling-pin-left" && hitInfo.transform.gameObject.name == "rolling-pin-right") {
+                    Debug.Log(this.name + " is placed right");
+                    combinationController.UpdateCombination(0, this.name);
+                }
+            }
+        }
+    }
+
 }

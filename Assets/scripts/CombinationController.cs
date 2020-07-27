@@ -9,26 +9,49 @@ public class CombinationController : MonoBehaviour
 {
     private bool[] bowlAddedCorrectly;
     private bool whiskAddedCorrectly = false;
-    private bool[] tableAddedCorrectly;
+    private bool rollingPinAddedCorrectly;
+    private bool[] puzzlesCompleted;
+    private GameProgress gameProgress;
+    private bool gameOver;
+    private GameTimer gameTimer;
     public Canvas canvas;
 
     private void Awake() {
+        gameProgress = new GameProgress();
+        gameTimer = GameObject.FindObjectOfType<GameTimer>();
         bowlAddedCorrectly = new bool[4];
-        tableAddedCorrectly = new bool[3];
+        puzzlesCompleted = new bool[3];
     }
 
     private void Update() {
-        /*
-        Debug.Log("---");
-        foreach (bool b in bowlAddedCorrectly) Debug.Log(b);
-        Debug.Log("---");
-        */
         if (Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
             canvas.gameObject.SetActive(true);
+            puzzlesCompleted[0] = true;
+            gameTimer.ReStart();
         } else if (whiskAddedCorrectly) {
             Debug.Log("whiskAddedCorrectly");
             canvas.gameObject.SetActive(true);
+            gameTimer.ReStart();
+            puzzlesCompleted[1] = true;
+        } else if (rollingPinAddedCorrectly) {
+            Debug.Log("rollingPinAddedCorrectly");
+            canvas.gameObject.SetActive(true);
+            gameTimer.ReStart();
+            puzzlesCompleted[2] = true;
+        }
+
+        if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) {
+            gameOver = true;
+            int stars = 0;
+            foreach (bool completed in puzzlesCompleted) {
+                if (completed) {
+                    stars ++;
+                }
+            }
+            int highScore = (int)gameTimer.timeRemainingTotal;
+            MiniGame towerstacker = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
+            gameProgress.SaveMiniGame(towerstacker);
         }
     }
 
@@ -48,12 +71,8 @@ public class CombinationController : MonoBehaviour
             bowlAddedCorrectly[index] = false;
         } else if (name.Contains("whisk") && !whiskAddedCorrectly) {
             whiskAddedCorrectly = true;
-        } else if (name.Contains("table") && !tableAddedCorrectly[index]) {
-            tableAddedCorrectly[index] = true;
-            while (watch.Elapsed.TotalSeconds < 0.5) {
-                yield return null;
-            }
-            tableAddedCorrectly[index] = false;
+        } else if (name.Contains("rolling-pin") && !rollingPinAddedCorrectly) {
+            rollingPinAddedCorrectly = true;
         }
         StopCoroutine("CollisionUpdate");       
     }

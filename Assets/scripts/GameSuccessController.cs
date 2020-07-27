@@ -7,11 +7,10 @@ public class GameSuccessController : MonoBehaviour
 {
     public GameObject successCanvas;
     public GameObject uiController;
-    public GameObject stars;
+ //   public GameObject stars;
 
-    public GameObject starsTop;
-
-    public TextMeshProUGUI objCounter;
+    public GameObject menuTop;
+   // public GameObject starsTop;
 
     private StarStateController starStateController;
 
@@ -19,23 +18,24 @@ public class GameSuccessController : MonoBehaviour
     void Start()
     {
         starStateController = uiController.GetComponent<StarStateController>();
-        starStateController.setStarGroup(starsTop, 0);
-        setCounter(0);
-    }
-
-    public void setCounter(int count)
-    {
-        objCounter.text = count.ToString();
+        updateProgress(0, 0);
     }
 
     public void updateProgress(int count, int starsCount)
     {
-        objCounter.text = count.ToString();
-        starStateController.setStarGroup(starsTop, starsCount);
+        GameObject stars = menuTop.transform.Find("Stars").gameObject;
+        TextMeshProUGUI counter = menuTop.transform.Find("Counter/Counter-Text").gameObject.GetComponent<TextMeshProUGUI>();
+
+        counter.text = count.ToString();
+        starStateController.setStarGroup(stars, starsCount);
     }
 
-     public void showSuccessPanel(int starsCount)
-    {
+     public void showSuccessPanel(string title, int highscore, int starsCount)
+    {   
+        GameObject stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
+        TextMeshProUGUI ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+
         successCanvas.SetActive(true);
         starStateController = uiController.GetComponent<StarStateController>();
         starStateController.setStarGroup(stars, starsCount);

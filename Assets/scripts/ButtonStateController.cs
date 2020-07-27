@@ -46,57 +46,11 @@ public class ButtonStateController : MonoBehaviour
                 GameObject button =  buttonGroup.transform.GetChild(i).gameObject;
                 if(button != buttonClicked)
                  {
-                button.transform.GetComponent<Image>().sprite = imageInactive;
+                Sprite image = button.GetComponent<ButtonStateController>().imageInactive;
+                button.transform.GetComponent<Image>().sprite = image;
                 }
             }
 
         }
     }
 }
-
-        
-      //  for (int i = 0; i < gameObject.transform.childCount; i++)
-       // {
-        //}
-     /*        GameObject buttonGroup = this.gameObject;
-            GameObject button =  buttonGroup.transform.GetChild(i).gameObject;
-            if(button == buttonClicked)
-            {
-                if (button.transform.GetComponent<Image>().sprite == imageActive)
-                {
-                    button.transform.GetComponent<Image>().sprite = imageInactive;
-                }
-                else
-                {
-                    button.transform.GetComponent<Image>().sprite = imageInactive;
-                }
-
-            } */
-            
-            //gameObject.transform.GetChild(i).transform.GetComponent<Image>().sprite = imageActive;
-
-
-/*     public void changeImage(GameObject buttonClicked)
-    {
-        foreach(GameObject button in buttons)
-        {
-            if(button == buttonClicked)
-            {
-                if (buttonClicked.GetComponent<Image>().sprite == imageActive)
-                {
-                    buttonClicked.GetComponent<Image>().sprite = imageInactive;
-                }
-                else
-                {
-                    buttonClicked.GetComponent<Image>().sprite = imageActive;
-                }
-            }
-            else
-            {
-                button.GetComponent<Image>().sprite = imageInactive;
-            }
-        }
-
-
-
-    } */

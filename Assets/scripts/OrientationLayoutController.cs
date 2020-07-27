@@ -20,8 +20,10 @@ public class OrientationLayoutController : MonoBehaviour
     public GameObject[] infoItemGroup;
 
     public GameObject[] nestedInfoItemGroup;
+    
     public GameObject[] settingsItemGroup;
 
+    public GameObject[] nestedInfoSettingsGroup;
 
     //public GameObject landscape;
     //public GameObject portrait;
@@ -37,6 +39,8 @@ public class OrientationLayoutController : MonoBehaviour
     {
         if(rectTransform == null) return;
 
+        setView();
+
         if(rectTransform.rect.width < rectTransform.rect.height){
             Debug.Log("Layout for Portrait");
 
@@ -44,10 +48,10 @@ public class OrientationLayoutController : MonoBehaviour
             GameObject nestedLayoutGroupInfo = panelsInfo[0].transform.Find("Menu-Area/Panel-Background-Portrait/Label-Ingredients").gameObject;
             GameObject panelInfo = panelsInfo[0].transform.Find("Menu-Area/Panel-Background-Portrait").gameObject;
 
-            //GameObject nestedLayoutGroupInfo = panelPortrait.transform.Find("Menu-Area/Panel-Background-Portrait/Label-Ingredients").gameObject;
+            GameObject nestedLayoutGroupSettings = panelsSettings[0].transform.Find("Menu-Area/Panel-Background-Portrait/Label-Settings-Items").gameObject;
             GameObject panelSettings = panelsSettings[0].transform.Find("Menu-Area/Panel-Background-Portrait").gameObject;
 
-            CreateGrouping(panelInfo, nestedLayoutGroupInfo, panelSettings);
+            CreateGrouping(panelInfo, nestedLayoutGroupInfo, nestedLayoutGroupSettings, panelSettings);
         }
         else
         {
@@ -56,9 +60,10 @@ public class OrientationLayoutController : MonoBehaviour
             GameObject nestedLayoutGroupInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape/Label-Ingredients").gameObject;
             GameObject panelInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape").gameObject;
 
+            GameObject nestedLayoutGroupSettings = panelsSettings[1].transform.Find("Menu-Area/Panel-Background-Landscape/Label-Setting-Items").gameObject;
             GameObject panelSettings = panelsSettings[1].transform.Find("Menu-Area/Panel-Background-Landscape").gameObject;
 
-            CreateGrouping(panelInfo, nestedLayoutGroupInfo, panelSettings);
+            CreateGrouping(panelInfo, nestedLayoutGroupInfo, nestedLayoutGroupSettings, panelSettings);
         }
     }
     
@@ -68,39 +73,51 @@ public class OrientationLayoutController : MonoBehaviour
     }
    
     //add the menu items to the specific Menu Panel
-    private void CreateGrouping(GameObject panelInfo, GameObject nestedLayoutGroupInfo, GameObject panelSettings)
+    private void CreateGrouping(GameObject panelInfo, GameObject nestedLayoutGroupInfo, GameObject nestedLayoutGroupSettings, GameObject panelSettings)
     {
 
             //Add all Menu-Info items to panel
             foreach(GameObject item in infoItemGroup)
             {
                 item.transform.SetParent ( panelInfo.gameObject.transform );
-                if(item.name.Equals("Label-Ingredients-Detail"))
+                if(item.name.Equals("Label-Ingredients-Detail") && IsPortrait())
                 {
                     item.transform.SetSiblingIndex(0);
                 }
+                else if (item.name.Equals("Label-Ingredients-Detail") && !IsPortrait())
+                {
+                    item.transform.SetSiblingIndex(1);
+                }
             }
-            //Add all Menu-Info nested items to panel
-
-
-                    foreach(GameObject item in nestedInfoItemGroup)
-                    {
-                    item.transform.SetParent (nestedLayoutGroupInfo.gameObject.transform);
-                    }
-    
-
+             //Add all Menu-Info items to nested panel
+            foreach(GameObject item in nestedInfoItemGroup)
+            {
+               item.transform.SetParent (nestedLayoutGroupInfo.gameObject.transform);
+            }
 
             //Add all Menu-Settings items to panel
             foreach(GameObject item in settingsItemGroup)
             {
                 item.transform.SetParent ( panelSettings.gameObject.transform );
-                if(item.name.Equals("Label-Settings"))
+                if(item.name.Equals("Label-Settings") && IsPortrait())
                 {
                     item.transform.SetSiblingIndex(0);
                 }
+                else if (item.name.Equals("Label-Settings") && !IsPortrait())
+                {
+                    item.transform.SetSiblingIndex(1);
+                }
             }
 
+            //Add all Menu-Setting item to nested panel
+            foreach(GameObject item in nestedInfoSettingsGroup)
+            {
+               item.transform.SetParent (nestedLayoutGroupSettings.gameObject.transform);
+            }
+    }
 
+       private void setView()
+    {
             if(IsPortrait()){
                 panelsInfo[0].SetActive(true);
                 panelsInfo[1].SetActive(false);
@@ -114,8 +131,7 @@ public class OrientationLayoutController : MonoBehaviour
                 panelsInfo[1].SetActive(true);
 
                 panelsSettings[0].SetActive(false);
-                panelsSettings[1].SetActive(true);
-                
+                panelsSettings[1].SetActive(true);                
             }  
     }
 
@@ -123,5 +139,8 @@ public class OrientationLayoutController : MonoBehaviour
     {
         UpdateLayout();
     }
+
+
+ 
 
 }

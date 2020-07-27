@@ -7,10 +7,10 @@ public class GameSuccessController : MonoBehaviour
 {
     public GameObject successCanvas;
     public GameObject uiController;
- //   public GameObject stars;
 
     public GameObject menuTop;
-   // public GameObject starsTop;
+
+    public GameObject menuBottom;
 
     private StarStateController starStateController;
 
@@ -30,16 +30,18 @@ public class GameSuccessController : MonoBehaviour
         starStateController.setStarGroup(stars, starsCount);
     }
 
-     public void showSuccessPanel(string title, int highscore, int starsCount)
+     public void showSuccessPanel(string ingredient, int highscore, int starsCount)
     {   
         GameObject stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
         TextMeshProUGUI ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
 
+        ingredientLabel.text = ingredient;
+        highscoreLabel.text = highscore.ToString();
+
+        menuBottom.SetActive(false);
         successCanvas.SetActive(true);
         starStateController = uiController.GetComponent<StarStateController>();
         starStateController.setStarGroup(stars, starsCount);
-
-
     }
 }

@@ -19,8 +19,8 @@ MonoBehaviour:
       m_GuidLow: 5117519071955590142
       m_GuidHigh: 11578413905167021731
     m_SerializedTextureGuid:
-      m_GuidLow: 4963020732751581985
-      m_GuidHigh: 1661730091862264984
+      m_GuidLow: 2598487777377643128
+      m_GuidHigh: 7104566483036489784
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: find-alex-scenery
@@ -29,8 +29,8 @@ MonoBehaviour:
       m_GuidLow: 4766197692454027345
       m_GuidHigh: 12391252843958394524
     m_SerializedTextureGuid:
-      m_GuidLow: 6081629629982804370
-      m_GuidHigh: 11157700603472131912
+      m_GuidLow: 12977225811905763079
+      m_GuidHigh: 488571276774051018
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: find-alex-scenery-1

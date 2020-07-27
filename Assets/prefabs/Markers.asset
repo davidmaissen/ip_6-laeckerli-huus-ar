@@ -19,42 +19,32 @@ MonoBehaviour:
       m_GuidLow: 4750966946514114804
       m_GuidHigh: 9737500529635069312
     m_SerializedTextureGuid:
-      m_GuidLow: 6081629629982804370
-      m_GuidHigh: 11157700603472131912
+      m_GuidLow: 12996987234756752711
+      m_GuidHigh: 9084531080190038250
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: laeckerli-tower
-    m_Texture: {fileID: 2800000, guid: 369d899249ed546648371e34951dd89a, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4617111810768206261
       m_GuidHigh: 446030451604811434
     m_SerializedTextureGuid:
-      m_GuidLow: 4963020732751581985
-      m_GuidHigh: 1661730091862264984
+      m_GuidLow: 2598487777377643128
+      m_GuidHigh: 7104566483036489784
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: find-alex
-    m_Texture: {fileID: 2800000, guid: ac8e9321310f44e0980c07deb6a60f17, type: 3}
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4665308385324830605
       m_GuidHigh: 17302543517452004759
     m_SerializedTextureGuid:
-      m_GuidLow: 16487452944719208943
-      m_GuidHigh: 9027753128609886937
+      m_GuidLow: 12977225811905763079
+      m_GuidHigh: 488571276774051018
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: combination
-    m_Texture: {fileID: 2800000, guid: 54f4e1ef3319e4cfd9b2b6aea305497d, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5676572577510175420
-      m_GuidHigh: 16189680227560079528
-    m_SerializedTextureGuid:
-      m_GuidLow: 3771485175761769907
-      m_GuidHigh: 4375833727473671529
-    m_Size: {x: 0.2, y: 0.15819125}
-    m_SpecifySize: 1
-    m_Name: star
-    m_Texture: {fileID: 2800000, guid: 00ee95b301c9345769dd3d4a9715ba3c, type: 3}
+    m_Texture: {fileID: 2800000, guid: a0ac57075e1eb418ca8c93d7fcc0c706, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 4982769763353411726
       m_GuidHigh: 14046720573792793241

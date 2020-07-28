@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngredientsStateController : MonoBehaviour
 {
-    public GameObject icons;
+    public int gameID;
+
     private GameProgress gameProgress;
 
 
@@ -13,7 +15,9 @@ public class IngredientsStateController : MonoBehaviour
     {
         gameProgress = new GameProgress();
         gameProgress.InitializeGameData();
-        updateIngredientIcon(icons);
+        SetIngredientStates(gameID);
+
+
   
     }
 
@@ -24,8 +28,14 @@ public class IngredientsStateController : MonoBehaviour
     }
 
 
+ public void SetIngredientStates(int gameID)
+    {
+        GameObject ingredient = this.gameObject;
+        ingredient.transform.GetComponent<Image>().sprite = gameProgress.GetIngredientIcon(gameID, true);
+    }
 
-    public void updateIngredientIcon(GameObject ingredient)
+
+/*     public void updateIngredientIcon(GameObject ingredient)
     {
       //  gameProgress = GameObject.FindObjectOfType<GameProgress>();
 
@@ -42,6 +52,6 @@ public class IngredientsStateController : MonoBehaviour
             ingredient.transform.Find("complete").gameObject.SetActive(false);
             ingredient.transform.Find("incomplete").gameObject.SetActive(true);
             }
-    }
+    } */
 
 }

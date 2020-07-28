@@ -6,7 +6,7 @@ public class GameProgress
 {
     public static MiniGame[] miniGames;
     public static int numberOfGames = 3;
-    public static int starsCollected = 1;
+    public static int starsCollected = 0;
     public static bool tutorialCompleted = false;
 
     /*
@@ -35,8 +35,8 @@ public class GameProgress
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
             miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0, lemon);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 2, hazelnut);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 3, flour);
+            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 0, hazelnut);
+            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0, flour);
             Debug.Log("Creating new MiniGame Array");
         }
     }
@@ -70,18 +70,18 @@ public class GameProgress
         }
     }
 
-    public bool isGameCompleted(string name)
+    public bool isGameCompleted(int gameID)
     {
         bool completed = false;
 
-        foreach (MiniGame game in miniGames)
+        if (miniGames != null && gameID < miniGames.Length)
         {
-            if (game.getTitle().Equals(name) && game.isCompleted())
-            {
-                completed = true;
-            }
+            return miniGames[gameID].isCompleted();
         }
-        return completed;
+        else
+        {
+            return false;
+        }
     }
 
     public int getCompletedGameCount()
@@ -98,14 +98,32 @@ public class GameProgress
         return counter;
     }
 
-    public (string title, int stars, string status, int highScore) getGameDetail(string name)
+    public (string title, int stars, string status, int highScore) getGameDetail(int gameID)
     {
         string title = "";
         int stars = 0;
         string status = "";
         int highScore = 0;
 
-        foreach (MiniGame game in miniGames)
+
+        if(miniGames != null && gameID < miniGames.Length)
+        {
+           MiniGame game = miniGames[gameID];
+           title = game.getTitle();
+           stars = game.getStars();
+           highScore = game.getHighScore();
+
+           if(game.isCompleted()){
+                status = "gefunden";
+           }
+           else
+           {
+                status = "verschollen";
+            }
+        }
+
+
+/*         foreach (MiniGame game in miniGames)
         {
             if (game.getTitle().Equals(name))
             {
@@ -121,16 +139,16 @@ public class GameProgress
                     status = "verschollen";
                 }
             }
-        }
+        } */
 
         return (title, stars, status, highScore);
     }
 
-    public (string name, Sprite imageActive, Sprite imageInactive) GetIngredientInfo(int id)
+    public (string name, Sprite imageActive, Sprite imageInactive) GetIngredientInfo(int gameID)
     {
-        if(miniGames != null && id < miniGames.Length)
+        if(miniGames != null && gameID < miniGames.Length)
         {
-            MiniGame game = miniGames[id];
+            MiniGame game = miniGames[gameID];
             string name = game.getIngredientName();
             Sprite imageActive = game.getIngredientImageActive();
             Sprite imageInactive = game.getIngredientImageInactive();
@@ -139,6 +157,28 @@ public class GameProgress
         else
         {
             return  (null, null, null);
+        }
+        
+    }
+
+        public Sprite GetIngredientIcon(int gameID, bool checkState)
+    {
+        if(miniGames != null && gameID < miniGames.Length)
+        {
+            MiniGame game = miniGames[gameID];
+
+            if(game.isCompleted() || !checkState)
+            {
+                return game.getIngredientImageActive();
+            }
+            else
+            {
+                return game.getIngredientImageInactive();
+            }
+        }
+        else
+        {
+            return  null;
         }
         
     }

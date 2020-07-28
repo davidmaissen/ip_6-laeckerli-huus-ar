@@ -34,7 +34,7 @@ public class GameTimer : MonoBehaviour
     }
 
     public void ReStart() {
-        startTime = Time.time;
+        startTime = Time.time + minutesMax * 60;
         timeRemainingTotal += timeRemaining;
     }
 

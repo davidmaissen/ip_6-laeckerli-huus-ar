@@ -19,18 +19,18 @@ MonoBehaviour:
       m_GuidLow: 5458403908450765787
       m_GuidHigh: 5721005338878663554
     m_SerializedTextureGuid:
-      m_GuidLow: 2623741909210108765
-      m_GuidHigh: 1574076451770544907
+      m_GuidLow: 1504236903813397209
+      m_GuidHigh: 18027716485438105864
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-topleft
-    m_Texture: {fileID: 2800000, guid: 80c6135d675d24690b33176d313ed815, type: 3}
+    m_Texture: {fileID: 2800000, guid: 85d4bad91f7e14e008e9fde9a0502ffa, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5474577165690194923
       m_GuidHigh: 11816970351128477834
     m_SerializedTextureGuid:
-      m_GuidLow: 13003634995945106663
-      m_GuidHigh: 3076591333212841018
+      m_GuidLow: 7253695502314019691
+      m_GuidHigh: 5978015434192747931
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-topright
@@ -39,8 +39,8 @@ MonoBehaviour:
       m_GuidLow: 5034545183378408009
       m_GuidHigh: 3036452613203548055
     m_SerializedTextureGuid:
-      m_GuidLow: 10667533383315150498
-      m_GuidHigh: 5349242237904334680
+      m_GuidLow: 3762748088817853205
+      m_GuidHigh: 5762165145328749865
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-bottomright
@@ -49,8 +49,8 @@ MonoBehaviour:
       m_GuidLow: 5233529719581264026
       m_GuidHigh: 2134049222130144941
     m_SerializedTextureGuid:
-      m_GuidLow: 4909187812398816187
-      m_GuidHigh: 14368191468718459080
+      m_GuidLow: 16431005030223544127
+      m_GuidHigh: 10496976963350765816
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: bowl-bottomleft
@@ -59,8 +59,8 @@ MonoBehaviour:
       m_GuidLow: 5124126299514659618
       m_GuidHigh: 5572890489024787880
     m_SerializedTextureGuid:
-      m_GuidLow: 14141171446400908066
-      m_GuidHigh: 9510127677275823305
+      m_GuidLow: 15276345450474709528
+      m_GuidHigh: 1922762455674430232
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: whisk-wires
@@ -69,9 +69,29 @@ MonoBehaviour:
       m_GuidLow: 5360071746269399809
       m_GuidHigh: 1817181569377900469
     m_SerializedTextureGuid:
-      m_GuidLow: 9527762179956301946
-      m_GuidHigh: 2297822320099963050
+      m_GuidLow: 4902625161971613118
+      m_GuidHigh: 8911042614893137577
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: whisk-handle
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5300501187564984637
+      m_GuidHigh: 9255468568873330604
+    m_SerializedTextureGuid:
+      m_GuidLow: 10697195507395937125
+      m_GuidHigh: 2939274961243369961
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: rolling-pin-right
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5591151388754863636
+      m_GuidHigh: 5762290873414185103
+    m_SerializedTextureGuid:
+      m_GuidLow: 7268487086897739873
+      m_GuidHigh: 17932420982775486699
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: rolling-pin-left
     m_Texture: {fileID: 0}

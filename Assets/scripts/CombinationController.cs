@@ -8,36 +8,36 @@ using Debug = UnityEngine.Debug;
 public class CombinationController : MonoBehaviour
 {
     private bool[] bowlAddedCorrectly;
-    private bool whiskAddedCorrectly = false;
+    private bool[] whiskAddedCorrectly;
     private bool rollingPinAddedCorrectly;
     private bool[] puzzlesCompleted;
+    public GameObject[] animations; 
     private GameProgress gameProgress;
     private bool gameOver;
     private GameTimer gameTimer;
-    public Canvas canvas;
+    private ImageTrackingCombination imageTracking;
 
     private void Awake() {
         gameProgress = new GameProgress();
         gameTimer = GameObject.FindObjectOfType<GameTimer>();
+        imageTracking = GameObject.FindObjectOfType<ImageTrackingCombination>();
         bowlAddedCorrectly = new bool[4];
+        whiskAddedCorrectly = new bool[2];
         puzzlesCompleted = new bool[3];
     }
 
     private void Update() {
         if (Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
-            canvas.gameObject.SetActive(true);
+            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[0] = true;
-            gameTimer.ReStart();
-        } else if (whiskAddedCorrectly) {
+        } else if (Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
             Debug.Log("whiskAddedCorrectly");
-            canvas.gameObject.SetActive(true);
-            gameTimer.ReStart();
+            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[1] = true;
         } else if (rollingPinAddedCorrectly) {
             Debug.Log("rollingPinAddedCorrectly");
-            canvas.gameObject.SetActive(true);
-            gameTimer.ReStart();
+            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[2] = true;
         }
 
@@ -50,13 +50,29 @@ public class CombinationController : MonoBehaviour
                 }
             }
             int highScore = (int)gameTimer.timeRemainingTotal;
-            MiniGame towerstacker = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
-            gameProgress.SaveMiniGame(towerstacker);
+            MiniGame combine = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
+            gameProgress.SaveMiniGame(combine);
         }
     }
 
     public void UpdateCombination(int index, string name) {
         StartCoroutine(CollisionUpdate(index, name));
+    }
+
+    public bool IsPuzzleCompleted(string name) {
+        if (name.Contains("bowl")) {
+            return puzzlesCompleted[0];
+        } else if (name.Contains("whisk")) {
+            return puzzlesCompleted[1];
+        } else if (name.Contains("rolling-pin")) {
+            return puzzlesCompleted[2];
+        } else {
+            return false;
+        }
+    }
+
+    public void PlayAnimation(string name, Vector3 position, Quaternion rotation) {
+        StartCoroutine(PlayAnimationThenGoOn(name, position, rotation));
     }
 
     IEnumerator CollisionUpdate(int index, string name)
@@ -69,11 +85,33 @@ public class CombinationController : MonoBehaviour
                 yield return null;
             }
             bowlAddedCorrectly[index] = false;
-        } else if (name.Contains("whisk") && !whiskAddedCorrectly) {
-            whiskAddedCorrectly = true;
+        } else if (name.Contains("whisk") && !whiskAddedCorrectly[index]) {
+            whiskAddedCorrectly[index] = true;
+            while (watch.Elapsed.TotalSeconds < 0.5) {
+                yield return null;
+            }
+            whiskAddedCorrectly[index] = false;
         } else if (name.Contains("rolling-pin") && !rollingPinAddedCorrectly) {
             rollingPinAddedCorrectly = true;
         }
         StopCoroutine("CollisionUpdate");       
+    }
+
+    IEnumerator PlayAnimationThenGoOn(string name, Vector3 position, Quaternion rotation) {
+        Stopwatch watch = new Stopwatch();
+        watch.Start();
+
+        GameObject animation = Instantiate(Array.Find(animations, a => a.name.Contains(name)));
+        animation.transform.position = position;
+        animation.transform.rotation = rotation;
+        imageTracking.ToggleImageTracking();
+
+        while (watch.Elapsed.TotalSeconds < 5) {
+            yield return null;
+        }
+        Destroy(animation);
+        imageTracking.ToggleImageTracking();
+        gameTimer.ReStart();
+        StopCoroutine("PlayAnimationThenGoOn");
     }
 }

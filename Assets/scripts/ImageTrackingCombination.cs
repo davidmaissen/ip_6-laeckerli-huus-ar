@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 // Source: https://www.youtube.com/watch?v=I9j3MD7gS5Y
 
@@ -12,17 +14,16 @@ public class ImageTrackingCombination : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] placeablePrefab;
+    private Dictionary<string, float> placeablePrefabTimers = new Dictionary<string, float>();
+
+    private float timeUntilDeactivation = 1.0f;
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
-    private StarsCountController starsCountController;
-    private static bool airPlaneStarCollected = false;
-    private static bool oldImagesStarCollected = false;
-    private static bool museStarCollected = false;
+    private bool activated = true;
 
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        starsCountController = FindObjectOfType<StarsCountController>();
 
         foreach(GameObject prefab in placeablePrefab)
         {
@@ -30,6 +31,16 @@ public class ImageTrackingCombination : MonoBehaviour
             newPrefab.name = prefab.name;
             newPrefab.SetActive(false);
             spawnedPrefabs.Add(prefab.name, newPrefab);
+            placeablePrefabTimers.Add(prefab.name, Time.time);
+        }
+    }
+
+    void Update()
+    {
+        foreach(KeyValuePair<string, float> timer in placeablePrefabTimers) {
+            if (timer.Value + timeUntilDeactivation < Time.time) {
+                spawnedPrefabs[timer.Key].SetActive(false);
+            }
         }
     }
 
@@ -42,14 +53,16 @@ public class ImageTrackingCombination : MonoBehaviour
     }
 
     private void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs) {
-        foreach(ARTrackedImage trackedImage in eventArgs.added) {
-            UpdateImage(trackedImage);
-        }
-        foreach(ARTrackedImage trackedImage in eventArgs.updated) {
-            UpdateImage(trackedImage);
-        }
-        foreach(ARTrackedImage trackedImage in eventArgs.removed) {
-            spawnedPrefabs[trackedImage.name].SetActive(false);
+        if (activated) {
+            foreach(ARTrackedImage trackedImage in eventArgs.added) {
+                UpdateImage(trackedImage);
+            }
+            foreach(ARTrackedImage trackedImage in eventArgs.updated) {
+                UpdateImage(trackedImage);
+            }
+            foreach(ARTrackedImage trackedImage in eventArgs.removed) {
+                spawnedPrefabs[trackedImage.name].SetActive(false);
+            }
         }
     }
 
@@ -58,23 +71,34 @@ public class ImageTrackingCombination : MonoBehaviour
         Vector3 position = trackedImage.transform.position;
 
         GameObject prefab = spawnedPrefabs[name];
+        placeablePrefabTimers[name] = Time.time;
         prefab.transform.position = position;
         prefab.transform.rotation = trackedImage.transform.rotation;
-        PositionSaveSystem.position = prefab.transform.position;
-        PositionSaveSystem.rotation = prefab.transform.rotation;
-        // prefab.transform.Rotate(0,0,0);
-        prefab.SetActive(true);
+        // PositionSaveSystem.position = prefab.transform.position;
+        // PositionSaveSystem.rotation = prefab.transform.rotation;
         Debug.Log(prefab.name + " spotted");
-
-        /*
-        foreach(GameObject go in spawnedPrefabs.Values) {
-            if (go.name != name) {
-                go.SetActive(false);
-            }
-        }
-        */
+        prefab.SetActive(true);
     }
 
-     void Update(){
-     }
+    public void ToggleImageTracking() {
+        activated = !activated;
+        foreach (GameObject prefab in spawnedPrefabs.Values) {
+            prefab.SetActive(false);
+        }
+    }
+
+    /*
+    IEnumerator ActivatePrefab(GameObject prefab) {
+        Stopwatch watch = new Stopwatch();
+        watch.Start();
+        prefab.SetActive(true);
+
+        while (watch.Elapsed.TotalSeconds < 1) {
+            yield return null;
+        }
+        prefab.SetActive(false);
+        StopCoroutine("ActivatePrefab");
+
+    }
+    */
 }

@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameDetailController : MonoBehaviour
 {
     public GameObject gameDetails;
     public GameObject buttonActive;
     public GameObject[] stars;
-    public GameObject[] ingredientIcons;
+
+    public Image labelIcon;
+
+    //Controller
     private GameProgress gameProgress;
 
 
@@ -17,7 +21,7 @@ public class GameDetailController : MonoBehaviour
     {
         gameProgress = new GameProgress();
         gameProgress.InitializeGameData();
-        updateGameDetails(buttonActive);
+        updateGameDetails(0);
     }
 
     // Update is called once per frame
@@ -26,18 +30,19 @@ public class GameDetailController : MonoBehaviour
         
     }
 
-    public void updateGameDetails(GameObject obj)
+    public void updateGameDetails(int gameID)
     {
-        string name = obj.name;
+       // string tag = obj.tag;
+     //   int gameID = Int32.Parse(tag.Substring(8));
 
         TextMeshProUGUI gameTitle = gameDetails.transform.Find("Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI gameStatus = gameDetails.transform.Find("Status-Game/Status-Text").gameObject.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI gameHighScore = gameDetails.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
-       
+       // Sprite labelIcon = gameDetails.transform.Find("Label-Image").gameObject.transform.GetComponent<Image>().sprite;
 
 
 
-        foreach(GameObject icon in ingredientIcons)
+/*         foreach(GameObject icon in ingredientIcons)
         {
             if (icon.name.Equals(name))
             {
@@ -47,12 +52,13 @@ public class GameDetailController : MonoBehaviour
             {
                 icon.gameObject.SetActive(false);
             }
-        }
+        } */
 
-        (string title, int stars, string status, int highScore) details = gameProgress.getGameDetail(name);
+        (string title, int stars, string status, int highScore) details = gameProgress.getGameDetail(gameID);
         gameTitle.text = details.Item1;
         gameStatus.text = details.Item3;
         gameHighScore.text = details.Item4.ToString();
+        labelIcon.sprite = gameProgress.GetIngredientIcon(gameID, false);
 
         for (int i = 0; i < stars.Length; i++)
         {

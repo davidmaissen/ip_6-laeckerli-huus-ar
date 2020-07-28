@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
@@ -25,12 +26,24 @@ public class GameSuccessController : MonoBehaviour
     }
 
     public void updateProgress(int count, int starsCount)
-    {
+    {   
+        Debug.Log("update Progress");
         GameObject stars = menuTop.transform.Find("Stars").gameObject;
-        TextMeshProUGUI counter = menuTop.transform.Find("Counter/Counter-Text").gameObject.GetComponent<TextMeshProUGUI>();
-
-        counter.text = count.ToString();
         starStateController.setStarGroup(stars, starsCount);
+
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "laeckerli-tower":
+            TextMeshProUGUI counter = menuTop.transform.Find("Counter/Counter-Text").gameObject.GetComponent<TextMeshProUGUI>();
+            counter.text = count.ToString();
+            break;
+
+            case "find-alex":
+
+            break;
+        }
+        
+
     }
 
      public void showSuccessPanel(int gameID, int highscore, int starsCount)

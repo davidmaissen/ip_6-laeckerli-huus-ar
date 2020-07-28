@@ -892,7 +892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 351.3, y: -176.18}
+  m_AnchoredPosition: {x: 337, y: -190.18}
   m_SizeDelta: {x: 545.3522, y: 215.27267}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &633987594
@@ -1782,6 +1782,7 @@ MonoBehaviour:
   successCanvas: {fileID: 6794065200062507763}
   uiController: {fileID: 1547162498}
   menuTop: {fileID: 662993564}
+  menuBottom: {fileID: 1407730159}
 --- !u!114 &1547162501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +2714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -179.20001, y: -174}
+  m_AnchoredPosition: {x: -176, y: -181.86}
   m_SizeDelta: {x: 198.62378, y: 198.62381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850091173
@@ -2916,6 +2917,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800614822}
     m_Modifications:
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 103366879}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: explore
+      objectReference: {fileID: 0}
     - target: {fileID: 4465806504442506892, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3025,6 +3046,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas-Success
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 103366879}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: laeckerli-tower
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292928625484, guid: a811173d0981d45d88f29b8442086196,
         type: 3}

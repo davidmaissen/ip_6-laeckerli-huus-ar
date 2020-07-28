@@ -7,7 +7,10 @@ public class ButtonStateController : MonoBehaviour
 {
     public Sprite imageInactive;
     public Sprite imageActive;
-    public GameObject[] buttons;
+
+    public bool isButtonGroup;
+  //  public GameObject[] ingredientButtons;
+    //public GameObject[] languageButtons;
 
     // Start is called before the first frame update
     void Start()
@@ -21,28 +24,33 @@ public class ButtonStateController : MonoBehaviour
 
     }
 
-    public void changeImage(GameObject buttonClicked)
+    public void setButtonStates()
     {
-        foreach(GameObject button in buttons)
+        GameObject buttonClicked = this.gameObject;
+
+
+        if (buttonClicked.transform.GetComponent<Image>().sprite == imageActive)
         {
-            if(button == buttonClicked)
-            {
-                if (buttonClicked.GetComponent<Image>().sprite == imageActive)
-                {
-                    buttonClicked.GetComponent<Image>().sprite = imageInactive;
-                }
-                else
-                {
-                    buttonClicked.GetComponent<Image>().sprite = imageActive;
-                }
-            }
-            else
-            {
-                button.GetComponent<Image>().sprite = imageInactive;
-            }
+            buttonClicked.transform.GetComponent<Image>().sprite = imageInactive;
+        }
+        else
+        {
+            buttonClicked.transform.GetComponent<Image>().sprite = imageActive;
         }
 
+        if(isButtonGroup)
+        {
+            GameObject buttonGroup = buttonClicked.transform.parent.gameObject;
+            for (int i = 0; i < buttonGroup.transform.childCount; i++)
+            {
+                GameObject button =  buttonGroup.transform.GetChild(i).gameObject;
+                if(button != buttonClicked)
+                 {
+                Sprite image = button.GetComponent<ButtonStateController>().imageInactive;
+                button.transform.GetComponent<Image>().sprite = image;
+                }
+            }
 
-
+        }
     }
 }

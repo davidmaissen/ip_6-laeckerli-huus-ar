@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80d7b689cfdb463d80bcdea26950db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 3130802774869350125, guid: 92ab992bcea1a4ef78affb8e43bfac6c,
+  cubePrefab: {fileID: 2228603803391010328, guid: 86fd67b58b9cb4ec0901343a18121ba1,
     type: 3}
   circle3d: {fileID: 5979024083497550962, guid: d7bf4e73c6422499fbd1da21885b1b77,
     type: 3}
@@ -993,13 +993,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
@@ -1906,7 +1906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1590666004
 RectTransform:
   m_ObjectHideFlags: 0

@@ -35,7 +35,6 @@ public class TutorialController : MonoBehaviour
         
     }
 
-
     public void next()
     {
         int triggerAnimateIndex1 = 6;

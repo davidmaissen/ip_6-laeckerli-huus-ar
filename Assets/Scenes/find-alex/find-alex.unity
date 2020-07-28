@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &478873285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1121,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2146706528}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: explore
+      objectReference: {fileID: 0}
     - target: {fileID: 4465806504442506892, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1230,6 +1250,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas-Success
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2146706528}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: find-alex
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465806505024168320, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22.080322
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
@@ -2819,6 +2859,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848966337}
   m_CullTransparentMesh: 0
+--- !u!1 &1967464989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1703594996156767282, guid: 01534d2ba867b4640b1cd1ead8f41b27,
+    type: 3}
+  m_PrefabInstance: {fileID: 2048591942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2048591942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2973,6 +3019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146706527}
   - component: {fileID: 2146706526}
+  - component: {fileID: 2146706528}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2996,7 +3043,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 5cd848fc357064537baec95523c4e66f, type: 2}
   - {fileID: 2100000, guid: 70807d944f2134bb5b6da2a889f9f623, type: 2}
-  uiController: {fileID: 0}
+  uiController: {fileID: 1967464989}
 --- !u!4 &2146706527
 Transform:
   m_ObjectHideFlags: 0
@@ -3011,6 +3058,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2146706528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146706525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afd835116f984adfb9f3fb8dd01399d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8506961761959529744
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,6 +114,7 @@ public class FindAlexController : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("emma");
             }
         }
+         gameSuccessController.updateProgress(0, stars);
         // UpdateScenery();
     }
 

@@ -25,15 +25,12 @@ public class OrientationLayoutController : MonoBehaviour
 
     public GameObject[] nestedInfoSettingsGroup;
 
-    //public GameObject landscape;
-    //public GameObject portrait;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         UpdateLayout();
-        //landscape = transform.Find("landscape").gameObject;
-        //portrait = transform.Find("portrait").gameObject;
-        //SetOrientation();
+
     }
     void UpdateLayout()
     {
@@ -42,7 +39,6 @@ public class OrientationLayoutController : MonoBehaviour
         setView();
 
         if(rectTransform.rect.width < rectTransform.rect.height){
-            Debug.Log("Layout for Portrait");
 
             //setup Layout for PortraitView
             GameObject nestedLayoutGroupInfo = panelsInfo[0].transform.Find("Menu-Area/Panel-Background-Portrait/Label-Ingredients").gameObject;
@@ -55,7 +51,6 @@ public class OrientationLayoutController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Layout for Landscape");
             //setup Layout for LandscapeView
             GameObject nestedLayoutGroupInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape/Label-Ingredients").gameObject;
             GameObject panelInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape").gameObject;

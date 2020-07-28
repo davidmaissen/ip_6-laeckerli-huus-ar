@@ -29,7 +29,6 @@ public class AnimationController : MonoBehaviour
         animation.SetBool("displayed", !animation.GetBool("displayed"));
     } 
 
-
      public void TogglePanel(GameObject panel)
     {
         layoutController = GetComponent<OrientationLayoutController>();
@@ -38,18 +37,14 @@ public class AnimationController : MonoBehaviour
         {
             Animator animatorPortrait = panel.transform.GetChild(0).transform.GetComponent<Animator>();      
             animatorPortrait.SetBool("displayed", !animatorPortrait.GetBool("displayed"));
-  
         }
         else
         {
-            Debug.Log("Button pressed");
             Animator animatorLandscape = panel.transform.GetChild(1).transform.GetComponent<Animator>();
-            Debug.Log(panel.transform.GetChild(1).name);
             animatorLandscape.SetBool("displayed", !animatorLandscape.GetBool("displayed"));
             
+            
         }
-        //var anim = GetComponent<Animator>();
-      //  animation.SetBool("displayed", !animation.GetBool("displayed"));
     } 
 
 

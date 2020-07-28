@@ -22,10 +22,16 @@ public class ImageTracking : MonoBehaviour
     private bool gameStarted = false;
     private bool gameOver = false;
     private bool touchInfoNeeded = true;
-    private GameProgress gameProgress;
     private int stars;
+    private int gameID = 1;
+
+    //Controller
+    private GameProgress gameProgress;
+    private GameSuccessController gameSuccessController;
+    public GameObject uiController;
 
     private void Awake() {
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         lastTrackedImage = new ARTrackedImage();
@@ -193,8 +199,12 @@ public class ImageTracking : MonoBehaviour
 
     private void GameOver(int stars) {
         gameOver = true;
-        MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
-        gameProgress.SaveMiniGame(findAlex);
+        
+        gameProgress.SaveMiniGame(gameID, 0, stars);
+        gameSuccessController.showSuccessPanel(gameID, 0, stars);
+
+        //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
+        //gameProgress.SaveMiniGame(findAlex);
     }
 
     private void TouchInfoNotNeeded() {

@@ -26,7 +26,9 @@ public class TowerStacker : MonoBehaviour
     private GameProgress gameProgress;
     private GameSuccessController gameSuccessController;
 
-        private void Awake()
+    private int gameID = 0;
+
+    private void Awake()
     {
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
@@ -119,9 +121,10 @@ public class TowerStacker : MonoBehaviour
 
     private void GameOver(int stars) {
         gameOver = true;
-        MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
-        gameProgress.SaveMiniGame(towerstacker);
-        gameSuccessController.showSuccessPanel("Zitrone", highScore, stars);
+        //MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
+        //gameProgress.SaveMiniGame(towerstacker);
+        gameProgress.SaveMiniGame(gameID,highScore, stars);
+        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
     }
 
     private int getStarsFromCount(int count)

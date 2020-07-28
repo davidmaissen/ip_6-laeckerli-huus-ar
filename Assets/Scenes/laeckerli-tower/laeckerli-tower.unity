@@ -1780,9 +1780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   successCanvas: {fileID: 6794065200062507763}
-  uiController: {fileID: 1547162498}
   menuTop: {fileID: 662993564}
   menuBottom: {fileID: 1407730159}
+  uiController: {fileID: 1547162498}
 --- !u!114 &1547162501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,6 +2917,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800614822}
     m_Modifications:
+    - target: {fileID: 1146521192146867536, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146521192146867538, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_Name
+      value: Ingredient-Icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146521192307819018, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146521192796571069, guid: a811173d0981d45d88f29b8442086196,
+        type: 3}
+      propertyPath: m_Name
+      value: Ingredients-Image
+      objectReference: {fileID: 0}
     - target: {fileID: 4465806503739677189, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

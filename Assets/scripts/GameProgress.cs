@@ -25,25 +25,36 @@ public class GameProgress
     {
         if (miniGames == null)
         {
+            Sprite sp  = Resources.Load<Sprite>("Sprites/tower");
+
+            //Initialize Ingredients
+            Ingredient lemon = new Ingredient(0, "Lemon", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"));
+            Ingredient hazelnut = new Ingredient(1, "Hazelnut", Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-active"), Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-inactive"));
+            Ingredient flour = new Ingredient(2, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/flour-active"), Resources.Load<Sprite>("Sprites/Ingredients/flour-inactive"));
+            
+            //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 2);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 3);
+            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0, lemon);
+            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 2, hazelnut);
+            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 3, flour);
             Debug.Log("Creating new MiniGame Array");
         }
     }
 
-    public void SaveMiniGame(MiniGame miniGame)
+    public void SaveMiniGame(int id, int highScore, int stars)
     {
-        if (miniGames != null && miniGame.getId() < miniGames.Length && miniGames[miniGame.getId()].getHighScore() < miniGame.getHighScore())
+        
+        if (miniGames != null && id < miniGames.Length && miniGames[id].getHighScore() < highScore)
         {
-            Debug.Log("Stars collected before saving in model minigame: " + miniGames[miniGame.getId()].getStars());
-            starsCollected += miniGame.getStars() - miniGames[miniGame.getId()].getStars();
-            miniGames[miniGame.getId()] = miniGame;
-            Debug.Log("Stars collected: " + starsCollected);
-            Debug.Log("Stars collected in new minigame: " + miniGame.getStars());
-            Debug.Log("Stars collected in model minigame: " + miniGames[miniGame.getId()].getStars());
-            Debug.Log("Saved the game!");
+            //Debug.Log("Stars collected before saving in model minigame: " + miniGames[miniGame.getId()].getStars());
+            starsCollected += stars - miniGames[id].getStars();
+            //miniGames[miniGame.getId()] = miniGame;
+            miniGames[id].setStars(stars);
+            miniGames[id].setHighScore(highScore);
+           // Debug.Log("Stars collected: " + starsCollected);
+           // Debug.Log("Stars collected in new minigame: " + miniGame.getStars());
+            //Debug.Log("Stars collected in model minigame: " + miniGames[miniGame.getId()].getStars());
+            //Debug.Log("Saved the game!");
         }
         else
         {
@@ -113,5 +124,22 @@ public class GameProgress
         }
 
         return (title, stars, status, highScore);
+    }
+
+    public (string name, Sprite imageActive, Sprite imageInactive) GetIngredientInfo(int id)
+    {
+        if(miniGames != null && id < miniGames.Length)
+        {
+            MiniGame game = miniGames[id];
+            string name = game.getIngredientName();
+            Sprite imageActive = game.getIngredientImageActive();
+            Sprite imageInactive = game.getIngredientImageInactive();
+            return (name, imageActive, imageInactive);
+        }
+        else
+        {
+            return  (null, null, null);
+        }
+        
     }
 }

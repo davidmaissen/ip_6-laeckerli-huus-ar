@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameSuccessController : MonoBehaviour
 {
     public GameObject successCanvas;
-    public GameObject uiController;
-
     public GameObject menuTop;
 
     public GameObject menuBottom;
 
+   //Controller
     private StarStateController starStateController;
+    private GameProgress gameProgress;
+    public GameObject uiController;
 
 
-    void Start()
+    void Awake()
     {
+        gameProgress = new GameProgress();
         starStateController = uiController.GetComponent<StarStateController>();
         updateProgress(0, 0);
     }
@@ -30,14 +33,17 @@ public class GameSuccessController : MonoBehaviour
         starStateController.setStarGroup(stars, starsCount);
     }
 
-     public void showSuccessPanel(string ingredient, int highscore, int starsCount)
+     public void showSuccessPanel(int gameID, int highscore, int starsCount)
     {   
+        (string name, Sprite imageActive, Sprite imageInactive) gameData = gameProgress.GetIngredientInfo(gameID);
         GameObject stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
+        GameObject ingredientIcon = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Ingredient-Icon").gameObject; 
         TextMeshProUGUI ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
 
-        ingredientLabel.text = ingredient;
+        ingredientLabel.text = gameData.Item1;
         highscoreLabel.text = highscore.ToString();
+        ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item2;
 
         menuBottom.SetActive(false);
         successCanvas.SetActive(true);

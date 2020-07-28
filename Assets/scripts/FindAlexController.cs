@@ -15,11 +15,18 @@ public class FindAlexController : MonoBehaviour
     private float timeUntilHint;
     private bool gameOver = false;
     private bool gameStarted = false;
-    private bool touchInfoNeeded = true;
-    private GameProgress gameProgress;
+    private bool touchInfoNeeded = true; 
     private int stars;
+    private int gameID = 1;
+
+    //Controller
+    private GameProgress gameProgress;
+    private GameSuccessController gameSuccessController;
+    public GameObject uiController;
+
 
     private void Awake() {
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         // Quaternion rotationForScenery = PositionSaveSystem.rotation;
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane>();
@@ -117,8 +124,10 @@ public class FindAlexController : MonoBehaviour
     }
     private void GameOver(int stars) {
         gameOver = true;
-        MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
-        gameProgress.SaveMiniGame(findAlex);
+        //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
+        //gameProgress.SaveMiniGame(findAlex);
+        gameProgress.SaveMiniGame(gameID, 0, stars);
+        gameSuccessController.showSuccessPanel(gameID, 0, stars);
     }
 
     private void TouchInfoNotNeeded() {

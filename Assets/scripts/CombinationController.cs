@@ -11,13 +11,22 @@ public class CombinationController : MonoBehaviour
     private bool[] whiskAddedCorrectly;
     private bool rollingPinAddedCorrectly;
     private bool[] puzzlesCompleted;
-    public GameObject[] animations; 
-    private GameProgress gameProgress;
     private bool gameOver;
     private GameTimer gameTimer;
+    private int gameID = 2;
+    public Canvas canvas;
+    public GameObject[] animations; 
     private ImageTrackingCombination imageTracking;
 
+
+    //Controller
+    public GameObject uiController;
+    private GameSuccessController gameSuccessController;
+    private GameProgress gameProgress;
+
+
     private void Awake() {
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         gameTimer = GameObject.FindObjectOfType<GameTimer>();
         imageTracking = GameObject.FindObjectOfType<ImageTrackingCombination>();
@@ -50,8 +59,11 @@ public class CombinationController : MonoBehaviour
                 }
             }
             int highScore = (int)gameTimer.timeRemainingTotal;
-            MiniGame combine = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
-            gameProgress.SaveMiniGame(combine);
+            //MiniGame towerstacker = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
+            //gameProgress.SaveMiniGame(towerstacker);
+
+            gameProgress.SaveMiniGame(gameID,highScore, stars);
+            gameSuccessController.showSuccessPanel(gameID, highScore, stars);
         }
     }
 

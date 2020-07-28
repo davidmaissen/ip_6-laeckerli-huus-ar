@@ -5,14 +5,16 @@ using UnityEngine;
 public class MiniGame
 {
     private int id;
+    private string titleKey;
     private string title;
     private string description;
     private int highScore;
     private int stars;
     private Ingredient ingredient;
 
-    public MiniGame (int id, string title, string description, int highScore, int stars, Ingredient ingredient) {
+    public MiniGame (int id, string titleKey, string title, string description, int highScore, int stars, Ingredient ingredient) {
         this.id = id;
+        this.titleKey = titleKey;
         this.title = title;
         this.description = description;
         this.highScore = highScore;
@@ -29,6 +31,11 @@ public class MiniGame
     public string getTitle()
     {
         return title;
+    }
+
+    public string getTitleKey()
+    {
+        return titleKey;
     }
 
     public string getDescription()
@@ -66,6 +73,10 @@ public class MiniGame
         this.id = id;
     }
 
+    public void setTitleKey(string titleKey)
+    {
+        this.titleKey = titleKey;
+    }
     public void setTitle(string title)
     {
         this.title = title;

@@ -34,9 +34,9 @@ public class GameProgress
             
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0, lemon);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu finden", 0, 2, hazelnut);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 3, flour);
+            miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem su sie aufeinander stapelst.", 0, 0, lemon);
+            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex","Hilf Emma Alex zu finden.", 0, 2, hazelnut);
+            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig","Setze die einzelnen Stücke richtig zusammen.", 0, 3, flour);
             Debug.Log("Creating new MiniGame Array");
         }
     }

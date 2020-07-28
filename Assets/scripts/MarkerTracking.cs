@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
+using UnityEngine.UI;
 
 // Source: https://www.youtube.com/watch?v=I9j3MD7gS5Y
 
@@ -12,6 +15,12 @@ public class MarkerTracking : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] placeablePrefab;
+    public GameObject gameStartScreen;
+    public GameObject gamePlayButton;
+    public TextMeshProUGUI gameTitle;
+    public TextMeshProUGUI gameDescription;
+    private GameProgress gameProgress;
+    private MiniGame selectedMiniGame;
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
@@ -23,6 +32,7 @@ public class MarkerTracking : MonoBehaviour
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         starsCountController = FindObjectOfType<StarsCountController>();
+        gameProgress = new GameProgress();
 
         foreach(GameObject prefab in placeablePrefab)
         {
@@ -84,25 +94,18 @@ public class MarkerTracking : MonoBehaviour
             if(Physics.Raycast(ray, out hitInfo)) {
                 Debug.Log(PositionSaveSystem.rotation + " -- " + PositionSaveSystem.position);
                 Debug.Log(hitInfo.transform.gameObject.name + " clicked");
-                /*
-                if (hitInfo.transform.gameObject.name == "find-alex") {
-                    StartCoroutine(LoadAsyncScene(hitInfo.transform.gameObject.name));
-                }
-                */
                 if (hitInfo.transform.gameObject.name == "airplane-star" ||
                     hitInfo.transform.gameObject.name == "old-images-star" || 
                     hitInfo.transform.gameObject.name == "muse-star") {
                     StarCollected(hitInfo.transform.gameObject.name);
                 } else {
-                    SceneManager.LoadScene(hitInfo.transform.gameObject.name);
+                    gameStartScreen.SetActive(true);
+                    selectedMiniGame = Array.Find(GameProgress.miniGames, minigame => minigame.getTitleKey() == hitInfo.transform.gameObject.name);
+                    gameTitle.text = selectedMiniGame.getTitle();
+                    gameDescription.text = selectedMiniGame.getDescription();
+                    gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
+                    // SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 }
-                /*
-             if (
-                 hitInfo.transform.gameObject.name == "laeckerli-tower" ||
-              hitInfo.transform.gameObject.name == "find-alex"
-              ) {
-             }
-             */
             }
         }
     }
@@ -126,6 +129,10 @@ public class MarkerTracking : MonoBehaviour
         return (name == "airplane-star" && airPlaneStarCollected) || 
         (name == "old-images-star" && oldImagesStarCollected) ||
         (name == "muse-star" && museStarCollected);
+    }
+
+    private void LoadScene() {
+        SceneManager.LoadScene(selectedMiniGame.getTitleKey());
     }
 
     IEnumerator LoadAsyncScene(string name)

@@ -92,6 +92,10 @@ public class SpawnObjectsOnPlane : MonoBehaviour
                     placementModeActive = false;
                 } else {
                     spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                    SetAllPlanesActive(false);
+                    spawnedObject.gameObject.transform.Rotate(0,180,0);
+                    planeManager.enabled = false;
+                    placementModeActive = false;
                 }
             }
             else {

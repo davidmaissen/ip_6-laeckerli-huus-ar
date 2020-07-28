@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collision: {fileID: 1495864580862965839, guid: aa056cf46b12b45fe9204abba5f2bfda,
     type: 3}
+  puzzleName: rolling-pin

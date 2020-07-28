@@ -75,6 +75,8 @@ public class MarkerTracking : MonoBehaviour
         PositionSaveSystem.position = prefab.transform.position;
         PositionSaveSystem.rotation = prefab.transform.rotation;
         prefab.transform.Rotate(90,0,0);
+        ShowGameIcon(prefab);
+
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");
 
@@ -133,6 +135,40 @@ public class MarkerTracking : MonoBehaviour
 
     private void LoadScene() {
         SceneManager.LoadScene(selectedMiniGame.getTitleKey());
+    }
+
+    private void ShowGameIcon(GameObject prefab) {
+        if (GameProgress.miniGames[0].getTitleKey() == prefab.name) {
+            MiniGame miniGame = GameProgress.miniGames[0];
+            if (miniGame.isCompleted()) {
+                prefab.transform.Find("completed").gameObject.SetActive(true);
+                prefab.transform.Find("not-completed").gameObject.SetActive(false);
+            } else {
+                prefab.transform.Find("completed").gameObject.SetActive(false);
+                prefab.transform.Find("not-completed").gameObject.SetActive(true);
+            }
+        } else if (GameProgress.miniGames[1].getTitleKey() == prefab.name) {
+            MiniGame miniGame = GameProgress.miniGames[1];
+            if (miniGame.isCompleted()) {
+                prefab.transform.Find("completed").gameObject.SetActive(true);
+                prefab.transform.Find("not-completed").gameObject.SetActive(false);
+            } else {
+                prefab.transform.Find("completed").gameObject.SetActive(false);
+                prefab.transform.Find("not-completed").gameObject.SetActive(true);
+            }
+        } else if (GameProgress.miniGames[2].getTitleKey() == prefab.name) {
+            MiniGame miniGame = GameProgress.miniGames[2];
+            if (miniGame.isCompleted()) {
+                prefab.transform.Find("completed").gameObject.SetActive(true);
+                prefab.transform.Find("not-completed").gameObject.SetActive(false);
+            } else {
+                prefab.transform.Find("completed").gameObject.SetActive(false);
+                prefab.transform.Find("not-completed").gameObject.SetActive(true);
+            }
+        } else {
+            return;
+        }
+
     }
 
     IEnumerator LoadAsyncScene(string name)

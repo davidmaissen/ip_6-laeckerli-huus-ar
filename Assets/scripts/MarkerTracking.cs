@@ -142,6 +142,9 @@ public class MarkerTracking : MonoBehaviour
             MiniGame miniGame = GameProgress.miniGames[0];
             if (miniGame.isCompleted()) {
                 prefab.transform.Find("completed").gameObject.SetActive(true);
+                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
+                animator.enabled = true;
+                animator.Play("pulse-succ");
                 prefab.transform.Find("not-completed").gameObject.SetActive(false);
             } else {
                 prefab.transform.Find("completed").gameObject.SetActive(false);
@@ -151,6 +154,9 @@ public class MarkerTracking : MonoBehaviour
             MiniGame miniGame = GameProgress.miniGames[1];
             if (miniGame.isCompleted()) {
                 prefab.transform.Find("completed").gameObject.SetActive(true);
+                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
+                animator.enabled = true;
+                animator.Play("pulse-succ");
                 prefab.transform.Find("not-completed").gameObject.SetActive(false);
             } else {
                 prefab.transform.Find("completed").gameObject.SetActive(false);
@@ -160,6 +166,9 @@ public class MarkerTracking : MonoBehaviour
             MiniGame miniGame = GameProgress.miniGames[2];
             if (miniGame.isCompleted()) {
                 prefab.transform.Find("completed").gameObject.SetActive(true);
+                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
+                animator.enabled = true;
+                animator.Play("pulse-succ");
                 prefab.transform.Find("not-completed").gameObject.SetActive(false);
             } else {
                 prefab.transform.Find("completed").gameObject.SetActive(false);

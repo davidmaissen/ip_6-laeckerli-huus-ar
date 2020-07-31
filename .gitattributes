@@ -53,3 +53,4 @@
 *.unity linguist-generated
 *.cpp filter=lfs diff=lfs merge=lfs -text
 build-fb* filter=lfs diff=lfs merge=lfs -text
+.TGA filter=lfs diff=lfs merge=lfs -text

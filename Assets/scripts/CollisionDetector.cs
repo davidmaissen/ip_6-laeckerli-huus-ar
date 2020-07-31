@@ -9,9 +9,9 @@ public class CollisionDetector : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision with " + collision.gameObject.name);
-        if (collision.gameObject.name == "LäckerliFloor") {
+        if (collision.gameObject.name == "LaeckerliFloor") {
             floorCollided = true;
-        } else if (collision.gameObject.name.Contains("Läckerli")) {
+        } else if (collision.gameObject.name.Contains("Laeckerli")) {
             if (collision.relativeVelocity.y < -0.3 ) {
                 cookieCollided = true;
             }

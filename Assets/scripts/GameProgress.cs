@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameProgress
 {
     public static MiniGame[] miniGames;
-    public static int numberOfGames = 3;
+    public static int numberOfGames = 4;
     public static int starsCollected = 0;
     public static bool tutorialCompleted = false;
 
@@ -31,12 +31,14 @@ public class GameProgress
             Ingredient lemon = new Ingredient(0, "Lemon", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"));
             Ingredient hazelnut = new Ingredient(1, "Hazelnut", Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-active"), Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-inactive"));
             Ingredient flour = new Ingredient(2, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/flour-active"), Resources.Load<Sprite>("Sprites/Ingredients/flour-inactive"));
+            Ingredient honey = new Ingredient(3, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/honey-active"), Resources.Load<Sprite>("Sprites/Ingredients/honey-inactive"));
             
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
             miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem su sie aufeinander stapelst.", 0, 0, lemon);
-            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex","Hilf Emma Alex zu finden.", 0, 0, hazelnut);
-            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig","Setze die einzelnen Stücke richtig zusammen.", 0, 0, flour);
+            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex","Hilf Emma Alex zu finden.", 0, 1, hazelnut);
+            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig","Setze die einzelnen Stücke richtig zusammen.", 0, 1, flour);
+            miniGames[3] = new MiniGame(3, "maze", "Labyrinth","Finde einen Weg durch die Hindernisse.", 0, 1, honey);
             Debug.Log("Creating new MiniGame Array");
         }
     }
@@ -161,7 +163,7 @@ public class GameProgress
         
     }
 
-        public Sprite GetIngredientIcon(int gameID, bool checkState)
+    public Sprite GetIngredientIcon(int gameID, bool checkState)
     {
         if(miniGames != null && gameID < miniGames.Length)
         {
@@ -181,5 +183,17 @@ public class GameProgress
             return  null;
         }
         
+    }
+
+    public bool checkifStoryCompleted()
+    {
+
+        int i = 0;
+        while(i < miniGames.Length && miniGames[i].isCompleted())
+        {
+            i++;
+        }
+
+        return i == miniGames.Length;
     }
 }

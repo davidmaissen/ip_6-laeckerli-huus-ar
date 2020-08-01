@@ -16,28 +16,46 @@ public class MazePlayer : MonoBehaviour {
 
 	// Create private references to the rigidbody component on the player, and the count of pick up objects picked up so far
 	private Rigidbody rb;
-	private bool levelFinish;
+
+	private GameObject levelGroup;
+
+	private GameObject[] levels;
+
+	//private int levelCount;
+	private bool finished;
     private Vector2 touchStart, touchEnd; 
 
-	private GameObject activeLevel;
+	//private GameObject activeLevel;
 
 	// At the start of the game..
 	void Start ()
 	{
 		// Assign the Rigidbody component to our private rb variable
+		//rb = GetComponent<Rigidbody>();
+
+		
+
+		//levelGroup = GameObject.FindGameObjectWithTag("Level");
+		//levelCount = levelGroup.transform.childCount;
+		finished = false;
+
+
+/*         for (int i = 0; i < levelGroup.transform.childCount; i++)
+        {   
+            if (i < 1)
+            {
+                levelGroup.transform.GetChild(i).gameObject.SetActive(true);
+				activeLevel = levelGroup.transform.GetChild(i).gameObject;
+            }
+            else
+            {
+                levelGroup.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        } */
+
 		rb = GetComponent<Rigidbody>();
+		Debug.Log("Kugel: " + rb.name);
 
-		// Set the count to zero 
-		levelFinish = false;
-
-		// Run the SetCountText function to update the UI (see below)
-		//SetCountText ();
-
-		// Set the text property of our Win Text UI to an empty string, making the 'You Win' (game over message) blank
-		//winText.text = "";
-
-		nextLevel.SetActive(false);
-		activeLevel = this.gameObject.transform.parent.gameObject;
 	}
 
 	// Each physics step..
@@ -64,30 +82,20 @@ void Update() {
 	// store a reference to that collider in a variable named 'other'..
 	void OnTriggerEnter(Collider other) 
 	{
-		Debug.Log("Hit");
-		// ..and if the game object we intersect has the tag 'Pick Up' assigned to it..
+		Debug.Log("Collision");
 		if (other.gameObject.CompareTag ("Finish"))
 		{
-			Debug.Log("Hit Finish");
-			// Make the other game object (the pick up) inactive, to make it disappear
-			levelFinish = true;
-			Instantiate(nextLevel, transform.position, transform.rotation);
-			activeLevel.SetActive (false);
-			nextLevel.SetActive(true);
+			Debug.Log("Collision with target");
+		//	Debug.Log("Finish");
+			finished = true;
 		}
 	}
 
-	// Create a standalone function that can update the 'countText' UI and check if the required amount to win has been achieved
-/* 	void SetCountText()
-	{
-		// Update the text field of our 'countText' variable
-		countText.text = "Count: " + count.ToString ();
 
-		// Check if our 'count' is equal to or exceeded 12
-		if (count >= 12) 
-		{
-			// Set the text value of our 'winText'
-			winText.text = "You Win!";
-		}
-	} */
+
+	public bool levelStatus()
+	{
+		return finished;
+	}
+
 }

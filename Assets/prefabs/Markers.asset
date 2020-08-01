@@ -79,9 +79,9 @@ MonoBehaviour:
       m_GuidLow: 4738375335983474618
       m_GuidHigh: 11394209578146300039
     m_SerializedTextureGuid:
-      m_GuidLow: 1482620364545006062
-      m_GuidHigh: 14901642419388808523
+      m_GuidLow: 7208707017004471913
+      m_GuidHigh: 13387593416597674121
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: maze
-    m_Texture: {fileID: 2800000, guid: c57719ee535d14934bfd8f01d444cdce, type: 3}
+    m_Texture: {fileID: 2800000, guid: ae6ad66978d6640a8998a9294849cab9, type: 3}

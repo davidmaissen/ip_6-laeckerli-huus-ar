@@ -92,7 +92,7 @@ public class CollisionDetectorCombination : MonoBehaviour
             if (!(this.name == hitInfo.transform.gameObject.name) && hitInfo.distance - this.GetComponent<Collider>().bounds.size.x/2 < 0) {
                 Debug.Log("Collision without Rigidbody right " + this.name + " with: " + 
                 hitInfo.transform.gameObject.name);
-                GameObject go = Instantiate(collision, hitInfo.point, hitInfo.transform.rotation);
+                GameObject go = Instantiate(collision, hitInfo.transform.position, hitInfo.transform.rotation);
                 go.transform.Rotate(0,0,90);
 
                 if (this.name == "bowl-topleft" && hitInfo.transform.gameObject.name == "bowl-topright") {

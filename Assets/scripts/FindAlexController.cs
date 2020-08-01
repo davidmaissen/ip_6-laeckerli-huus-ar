@@ -108,7 +108,7 @@ public class FindAlexController : MonoBehaviour
             animator.Play("birdie");
             FindObjectOfType<AudioManager>().Play("bird-chirp");
         }
-         else if (hitInfo.transform.gameObject.name == "papeterie-woman") {
+         else if (hit == "papeterie-woman") {
             scenery.transform.Find("papeterie-woman").gameObject.GetComponent<Renderer>().material = materials[2];
             scenery.transform.Find("text-papeterie").gameObject.SetActive(true);
         }

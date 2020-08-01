@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/combination/combination.unity
     guid: 994f9df8cfd6f4aab99b151b813ee8e5
+  - enabled: 1
+    path: Assets/Scenes/maze/maze.unity
+    guid: f934ba1c2cd52480bb49ca3e9fbc14b6
+  - enabled: 1
+    path: Assets/Scenes/success-board/success-board.unity
+    guid: 48dc1d7be3ff642a9a8e0bd3526c0f81
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

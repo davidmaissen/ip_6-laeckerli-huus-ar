@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Game-ID:2
   - Game-ID:0
   - Game-ID:1
-  - Game-ID:2
+  - Level
   layers:
   - Default
   - TransparentFX

@@ -61,7 +61,7 @@ public class Maze : MonoBehaviour
             for (int i = 0; i < levels.Length; i++) {
                 GameObject newPrefab = Instantiate(levels[i], activeLevel.transform.position, activeLevel.transform.rotation);
                 Vector3 eulerRotation = transform.rotation.eulerAngles;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                newPrefab.transform.rotation = Quaternion.Euler(0, eulerRotation.y, 0);
                 newPrefab.name = levels[i].name;
                 newPrefab.SetActive(false);
                 spawnedlevels[i] = newPrefab;

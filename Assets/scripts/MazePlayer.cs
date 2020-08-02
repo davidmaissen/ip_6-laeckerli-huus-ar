@@ -4,12 +4,14 @@
 using UnityEngine.UI;
 
 using System.Collections;
+using TMPro;
 
 public class MazePlayer : MonoBehaviour {
 	
 	// Create public variables for player speed, and for the Text UI game objects
 	public float speed;
-	//public Text countText;
+	public int touchesCounter = 0;
+    // public TextMeshProUGUI touches;
 	//public Text winText;
 
 	public GameObject nextLevel;
@@ -19,11 +21,16 @@ public class MazePlayer : MonoBehaviour {
 
 	private GameObject levelGroup;
 
-	private GameObject[] levels;
+	// private GameObject[] levels;
 
-	//private int levelCount;
+	public int activeLevel;
 	private bool finished;
-    private Vector2 touchStart, touchEnd; 
+    private Vector2 touchStart, touchEnd;
+    private GameObject uiController;
+	private GameSuccessController gameSuccessController;
+	private GameObject arHelpCanvas;
+    private Animator swipeAnimator;
+
 
 	//private GameObject activeLevel;
 
@@ -32,8 +39,15 @@ public class MazePlayer : MonoBehaviour {
 	{
 		// Assign the Rigidbody component to our private rb variable
 		//rb = GetComponent<Rigidbody>();
-
-		
+        arHelpCanvas = GameObject.Find("UserInterface").gameObject.transform.Find("ARHelpCanvasTouch").gameObject;
+		// arHelpCanvas.SetActive(true);
+		//arHelpCanvas.gameObject.transform.Find("Swipe").gameObject.SetActive(true);
+		touchesCounter = activeLevel * 15;
+		uiController = GameObject.Find("UserInterface").gameObject.transform.Find("UIControllerGame").gameObject;
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
+		gameSuccessController.updateProgress(touchesCounter, activeLevel-1);
+		swipeAnimator = arHelpCanvas.transform.Find("Swipe").gameObject.GetComponent<Animator>();
+		swipeAnimator.SetBool("ShowInfo", true);
 
 		//levelGroup = GameObject.FindGameObjectWithTag("Level");
 		//levelCount = levelGroup.transform.childCount;
@@ -64,16 +78,18 @@ public class MazePlayer : MonoBehaviour {
 void Update() {
    // Swipe start
    if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
-     touchStart = Input.GetTouch(0).position;
+		// swipeAnimator.SetBool("ShowInfo", false);
+    	touchStart = Input.GetTouch(0).position;
+		TouchCount();
    }
    // Swipe end
    if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) {
-     touchEnd = Input.GetTouch(0).position;
-     float cameraFacing = Camera.main.transform.eulerAngles.y;
-     Vector2 swipeVector = touchEnd - touchStart;
-     Vector3 inputVector = new Vector3(swipeVector.x, 0.0f, swipeVector.y);
-     Vector3 movement = Quaternion.Euler(0.0f, cameraFacing, 0.0f) * Vector3.Normalize(inputVector);
-     rb.velocity = movement;
+		touchEnd = Input.GetTouch(0).position;
+		float cameraFacing = Camera.main.transform.eulerAngles.y;
+		Vector2 swipeVector = touchEnd - touchStart;
+		Vector3 inputVector = new Vector3(swipeVector.x, 0.0f, swipeVector.y);
+		Vector3 movement = Quaternion.Euler(0.0f, cameraFacing, 0.0f) * Vector3.Normalize(inputVector);
+		rb.velocity = movement;
    }   
  }
 
@@ -91,9 +107,14 @@ void Update() {
 		}
 	}
 
+	private void TouchCount() {
+		touchesCounter--;
+		swipeAnimator.SetBool("ShowInfo", false);
+        gameSuccessController.updateProgress(touchesCounter, activeLevel-1);
+	}
 
 
-	public bool levelStatus()
+	public bool LevelCompleted()
 	{
 		return finished;
 	}

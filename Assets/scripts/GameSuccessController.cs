@@ -34,12 +34,13 @@ public class GameSuccessController : MonoBehaviour
         switch(SceneManager.GetActiveScene().name)
         {
             case "laeckerli-tower":
+            case "maze":
             TextMeshProUGUI counter = menuTop.transform.Find("Counter/Counter-Text").gameObject.GetComponent<TextMeshProUGUI>();
             counter.text = count.ToString();
             break;
 
             case "find-alex":
-
+            
             break;
         }
         

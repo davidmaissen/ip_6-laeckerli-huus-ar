@@ -20,7 +20,7 @@ public class Maze : MonoBehaviour
     private int counter = 0;
     private bool gameStarted = false;
     private bool gameCompleted;
-    private int highScore;
+    private int highScore = 0;
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;
@@ -72,7 +72,7 @@ public class Maze : MonoBehaviour
         player = GameObject.FindObjectOfType<MazePlayer>();
         Debug.Log("gefunden: " + player.name);
 
-        if (player.levelStatus())
+        if (player.LevelCompleted())
         {
             if (gameCompleted){
                 int stars = 2;
@@ -84,7 +84,10 @@ public class Maze : MonoBehaviour
                 Debug.Log("Level completed");
                 NextLevel();
             }
+        }
 
+        if (player.touchesCounter <= 0) {
+            GameOver(player.activeLevel - 1);
         }
         
     }
@@ -92,7 +95,7 @@ public class Maze : MonoBehaviour
 
     	void NextLevel()
 	{
-
+        highScore += player.touchesCounter;
         if (counter == levels.Length)
         {
             gameCompleted = true;
@@ -115,12 +118,12 @@ public class Maze : MonoBehaviour
 	}
 
 
-        private void GameOver(int stars) {
+    private void GameOver(int stars) {
         gameOver = true;
         //MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
         //gameProgress.SaveMiniGame(towerstacker);
-       // gameProgress.SaveMiniGame(gameID,highScore, stars);
-        //gameSuccessController.showSuccessPanel(gameID, highScore, stars);
+        gameProgress.SaveMiniGame(gameID,highScore, stars);
+        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
     }
 
 

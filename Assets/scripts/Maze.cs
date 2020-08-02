@@ -14,9 +14,11 @@ public class Maze : MonoBehaviour
     public GameObject uiController;
 
     public GameObject[] levels;
+    private GameObject[] spawnedlevels;
 
     private GameObject activeLevel;
     private int counter = 0;
+    private bool gameStarted = false;
     private bool gameCompleted;
     private int highScore;
     private bool gameOver = false;
@@ -35,13 +37,12 @@ public class Maze : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
        // Debug.Log("Player: " + player.name);
        // gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> (); 
         gameCompleted = false;
-        
+        spawnedlevels = new GameObject[3];
     }
 
     // Update is called once per frame
@@ -51,14 +52,28 @@ public class Maze : MonoBehaviour
         if (spawnObjectsOnPlane.placementModeActive || gameOver) {
         return;
         }
+
+        if (!gameStarted) {
+            gameStarted = true;
+            activeLevel = GameObject.FindWithTag("Respawn");
+            activeLevel.SetActive(false);
+
+            for (int i = 0; i < levels.Length; i++) {
+                GameObject newPrefab = Instantiate(levels[i], activeLevel.transform.position, activeLevel.transform.rotation);
+                Vector3 eulerRotation = transform.rotation.eulerAngles;
+                newPrefab.transform.rotation = Quaternion.Euler(0, eulerRotation.y, 0);
+                newPrefab.name = levels[i].name;
+                newPrefab.SetActive(false);
+                spawnedlevels[i] = newPrefab;
+            }
+            spawnedlevels[0].SetActive(true);
+        }
         
-        activeLevel = GameObject.FindWithTag("Respawn");
-        player = GameObject.FindObjectOfType<MazePlayer> ();
+        player = GameObject.FindObjectOfType<MazePlayer>();
         Debug.Log("gefunden: " + player.name);
 
-        if(player.levelStatus())
+        if (player.levelStatus())
         {
-            
             if (gameCompleted){
                 int stars = 2;
                 GameOver(2);
@@ -78,7 +93,7 @@ public class Maze : MonoBehaviour
     	void NextLevel()
 	{
 
-        if(counter == levels.Length)
+        if (counter == levels.Length)
         {
             gameCompleted = true;
             return;
@@ -86,12 +101,15 @@ public class Maze : MonoBehaviour
         else
         {
             Debug.Log("Load new Level");
-            Vector3   position = activeLevel.transform.position;
-            Quaternion  rotation = activeLevel.transform.rotation;
-            Destroy(activeLevel);
-            activeLevel = Instantiate(levels[counter], position, rotation);
+            //Destroy(activeLevel);
+            foreach (GameObject level in levels) {
+                level.SetActive(false);
+            }
+            // activeLevel = levels[counter];
+            spawnedlevels[counter-1].SetActive(false);
+            spawnedlevels[counter].SetActive(true);
             
-            player = activeLevel.GetComponent<MazePlayer>();
+            player = spawnedlevels[counter].GetComponent<MazePlayer>();
         }
 
 	}

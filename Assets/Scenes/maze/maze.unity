@@ -1532,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4077629275779106622, guid: c7f7a081661274a38a3bece40844ee47,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0029296875
+      objectReference: {fileID: 0}
     - target: {fileID: 4077629275963095911, guid: c7f7a081661274a38a3bece40844ee47,
         type: 3}
       propertyPath: m_Name

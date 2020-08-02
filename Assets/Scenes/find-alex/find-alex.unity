@@ -969,21 +969,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: emma
-    clip: {fileID: 8300000, guid: dfdb751e4cbb6458c9a3a76ece79c479, type: 3}
+    clip: {fileID: 8300000, guid: f97b1d0990f6a42d0a4a5abc8b58e0d9, type: 3}
     volume: 1
     pitch: 1.15
     loop: 0
     source: {fileID: 0}
   - name: alex-found
-    clip: {fileID: 8300000, guid: a4edcc322e80444ed93a22982071c8a1, type: 3}
+    clip: {fileID: 8300000, guid: 63a7bb38b7ea9469c92884f1d0ab4d61, type: 3}
     volume: 1
-    pitch: 0.9
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: daughter-mother-1
-    clip: {fileID: 8300000, guid: 367f2fc9605d6491a87130692e1a99e1, type: 3}
+    clip: {fileID: 8300000, guid: 95dd813ba11b1498d8a52dfdcbf0cada, type: 3}
     volume: 1
-    pitch: 1.25
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: daughter-mother-2
@@ -993,13 +993,13 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: emma-2
-    clip: {fileID: 8300000, guid: 70400e5ae41af428196c7588c2c6681e, type: 3}
+    clip: {fileID: 8300000, guid: 73ea796a25a0740cf92355f04e37f493, type: 3}
     volume: 1
     pitch: 1.15
     loop: 0
     source: {fileID: 0}
   - name: emma-3
-    clip: {fileID: 8300000, guid: 10a8c14e1c5ba433ebbad50edfd9aa49, type: 3}
+    clip: {fileID: 8300000, guid: e1c4d84e5dbda450090b5376af0b367c, type: 3}
     volume: 1
     pitch: 1.15
     loop: 0
@@ -1036,6 +1036,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: star-collected
     clip: {fileID: 8300000, guid: 6de09830b6d1f4fd4844d6828281bc8d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bird-chirp
+    clip: {fileID: 8300000, guid: de348c863949b4551b938368292dc8ea, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -3043,6 +3049,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 5cd848fc357064537baec95523c4e66f, type: 2}
   - {fileID: 2100000, guid: 70807d944f2134bb5b6da2a889f9f623, type: 2}
+  - {fileID: 2100000, guid: 7bf4c126a9ee94584a50522bf2855969, type: 2}
   uiController: {fileID: 1967464989}
 --- !u!4 &2146706527
 Transform:

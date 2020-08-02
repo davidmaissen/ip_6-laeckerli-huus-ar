@@ -88,7 +88,7 @@ public class Maze : MonoBehaviour
             Debug.Log("Load new Level");
             Vector3   position = activeLevel.transform.position;
             Quaternion  rotation = activeLevel.transform.rotation;
-            //Destroy(activeLevel);
+            Destroy(activeLevel);
             activeLevel = Instantiate(levels[counter], position, rotation);
             
             player = activeLevel.GetComponent<MazePlayer>();

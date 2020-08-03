@@ -43,34 +43,38 @@ public class CombinationController : MonoBehaviour
             puzzlesCompleted[0] = true;
             stars++;
             gameSuccessController.updateProgress(1, stars);
+            // SaveMiniGame();
         } else if (!puzzlesCompleted[1] && Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
             Debug.Log("whiskAddedCorrectly");
             // canvas.gameObject.SetActive(true);
             puzzlesCompleted[1] = true;
             stars++;
             gameSuccessController.updateProgress(2, stars);
+            // SaveMiniGame();
         } else if (!puzzlesCompleted[2] && rollingPinAddedCorrectly) {
             Debug.Log("rollingPinAddedCorrectly");
             // canvas.gameObject.SetActive(true);
             puzzlesCompleted[2] = true;
             stars++;
             gameSuccessController.updateProgress(3, stars);
+            // SaveMiniGame();
         }
 
         if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) {
             gameOver = true;
+            /*
             int stars = 0;
             foreach (bool completed in puzzlesCompleted) {
                 if (completed) {
                     stars ++;
                 }
             }
-            int highScore = (int)gameTimer.timeRemainingTotal;
+            */
+            SaveMiniGame();
+            
             //MiniGame towerstacker = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
             //gameProgress.SaveMiniGame(towerstacker);
-
-            gameProgress.SaveMiniGame(gameID,highScore, stars);
-            gameSuccessController.showSuccessPanel(gameID, highScore, stars);
+            
         }
     }
 
@@ -88,6 +92,12 @@ public class CombinationController : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    private void SaveMiniGame() {
+        int highScore = (int)gameTimer.timeRemainingTotal;
+        gameProgress.SaveMiniGame(gameID,highScore, stars);
+        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
     }
 
     public void PlayAnimation(string name, Vector3 position, Quaternion rotation) {

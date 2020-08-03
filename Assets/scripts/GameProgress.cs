@@ -36,8 +36,8 @@ public class GameProgress
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
             miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem su sie aufeinander stapelst.", 0, 0, lemon);
-            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex", "Hilf Emma Alex zu finden.", 0, 0, hazelnut);
-            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke richtig zusammen.", 0, 0, flour);
+            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex", "Hilf Emma Alex zu finden.", 0, 0, flour);
+            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke richtig zusammen.", 0, 0, hazelnut);
             miniGames[3] = new MiniGame(3, "maze", "Labyrinth", "Rolle eine Kugel durch die Hindernisse.", 0, 0, honey);
             Debug.Log("Creating new MiniGame Array");
         }
@@ -46,7 +46,7 @@ public class GameProgress
     public void SaveMiniGame(int id, int highScore, int stars)
     {
         
-        if (miniGames != null && id < miniGames.Length && miniGames[id].getHighScore() < highScore)
+        if (miniGames != null && id < miniGames.Length && (miniGames[id].getHighScore() < highScore || miniGames[id].getStars() < stars))
         {
             //Debug.Log("Stars collected before saving in model minigame: " + miniGames[miniGame.getId()].getStars());
             starsCollected += stars - miniGames[id].getStars();

@@ -2579,7 +2579,7 @@ PrefabInstance:
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: laeckerli-tower
+      value: maze
       objectReference: {fileID: 0}
     - target: {fileID: 4465806505024168320, guid: a811173d0981d45d88f29b8442086196,
         type: 3}

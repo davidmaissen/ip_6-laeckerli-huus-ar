@@ -38,7 +38,7 @@ public class Maze : MonoBehaviour
     void Awake()
     {
        // Debug.Log("Player: " + player.name);
-       // gameSuccessController = uiController.GetComponent<GameSuccessController>();
+        gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> (); 
         gameCompleted = false;
@@ -86,14 +86,15 @@ public class Maze : MonoBehaviour
             }
         }
 
-        if (player.touchesCounter <= 0) {
+        if (player.LevelLost()) {
+            Debug.Log("Level completed - No hits left");
             GameOver(player.activeLevel - 1);
         }
         
     }
 
 
-    	void NextLevel()
+    void NextLevel()
 	{
         highScore += player.touchesCounter;
         if (counter == levels.Length)

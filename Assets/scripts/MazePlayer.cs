@@ -10,7 +10,7 @@ public class MazePlayer : MonoBehaviour {
 	
 	// Create public variables for player speed, and for the Text UI game objects
 	public float speed;
-	public int touchesCounter = 0;
+	public int touchesCounter;
     // public TextMeshProUGUI touches;
 	//public Text winText;
 
@@ -25,6 +25,7 @@ public class MazePlayer : MonoBehaviour {
 
 	public int activeLevel;
 	private bool finished;
+	private bool gameOver = false;
     private Vector2 touchStart, touchEnd;
     private GameObject uiController;
 	private GameSuccessController gameSuccessController;
@@ -99,11 +100,16 @@ void Update() {
 	void OnTriggerEnter(Collider other) 
 	{
 		Debug.Log("Collision");
-		if (other.gameObject.CompareTag ("Finish"))
+		Debug.Log("Collision with " + other.gameObject);
+		if (other.gameObject.CompareTag("Finish"))
 		{
-			Debug.Log("Collision with target");
+			Debug.Log("Collision with finish-tag");
 		//	Debug.Log("Finish");
 			finished = true;
+		} else if (other.gameObject.CompareTag("Respawn")) {
+			Debug.Log("Collision with respawn-tag");
+			touchesCounter = 0;
+			gameOver = true;
 		}
 	}
 
@@ -117,6 +123,11 @@ void Update() {
 	public bool LevelCompleted()
 	{
 		return finished;
+	}
+
+	public bool LevelLost()
+	{
+		return gameOver;
 	}
 
 }

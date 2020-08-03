@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8751643207692705818}
   m_Layer: 0
-  m_Name: "La\u0308ckerli_Placeable"
+  m_Name: Laeckerli_Placeable Backup
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 189154, guid: dadabfb7666c71040b774315c71951ea, type: 3}
       propertyPath: m_Name
-      value: Teapot
+      value: "L\xE4ckerliFloor"
       objectReference: {fileID: 0}
     - target: {fileID: 456816, guid: dadabfb7666c71040b774315c71951ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -432,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 5342866754414830410, guid: ddc632854c41546d8aab6bffd68bfd26,
         type: 3}
       propertyPath: m_Name
-      value: Dish LOD0 Variant
+      value: "L\xE4ckerliFloor"
       objectReference: {fileID: 0}
     - target: {fileID: 5342866754414870378, guid: ddc632854c41546d8aab6bffd68bfd26,
         type: 3}
@@ -690,7 +690,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 108274, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_Name
-      value: Mug
+      value: "L\xE4ckerliFloor"
       objectReference: {fileID: 0}
     - target: {fileID: 455744, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,6 +14,7 @@ public class CombinationController : MonoBehaviour
     private bool gameOver;
     private GameTimer gameTimer;
     private int gameID = 2;
+    private int stars = 0;
     public Canvas canvas;
     public GameObject[] animations; 
     private ImageTrackingCombination imageTracking;
@@ -36,18 +37,24 @@ public class CombinationController : MonoBehaviour
     }
 
     private void Update() {
-        if (Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
+        if (!puzzlesCompleted[0] && Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
             // canvas.gameObject.SetActive(true);
             puzzlesCompleted[0] = true;
-        } else if (Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
+            stars++;
+            gameSuccessController.updateProgress(1, stars);
+        } else if (!puzzlesCompleted[1] && Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
             Debug.Log("whiskAddedCorrectly");
             // canvas.gameObject.SetActive(true);
             puzzlesCompleted[1] = true;
-        } else if (rollingPinAddedCorrectly) {
+            stars++;
+            gameSuccessController.updateProgress(2, stars);
+        } else if (!puzzlesCompleted[2] && rollingPinAddedCorrectly) {
             Debug.Log("rollingPinAddedCorrectly");
             // canvas.gameObject.SetActive(true);
             puzzlesCompleted[2] = true;
+            stars++;
+            gameSuccessController.updateProgress(3, stars);
         }
 
         if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) {

@@ -39,6 +39,22 @@ public class GameSuccessController : MonoBehaviour
             counter.text = count.ToString();
             break;
 
+            case "combination":
+            if (count == 1) {
+                GameObject bowl = menuTop.transform.Find("bowl-completed").gameObject;
+                bowl.SetActive(true);
+                Debug.Log(bowl.name + " " + bowl.activeSelf);
+            } else if (count == 2) {
+                GameObject whisk = menuTop.transform.Find("whisk-completed").gameObject;
+                whisk.SetActive(true);
+                Debug.Log(whisk.name + " " + whisk.activeSelf);
+            } else if (count == 3) {
+                GameObject rollingPin = menuTop.transform.Find("rolling-pin-completed").gameObject;
+                rollingPin.SetActive(true);
+                Debug.Log(rollingPin.name + " " + rollingPin.activeSelf);
+            }
+            break;
+
             case "find-alex":
             
             break;

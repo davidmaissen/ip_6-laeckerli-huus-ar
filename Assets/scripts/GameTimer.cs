@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // Source: https://www.youtube.com/watch?v=x-C95TuQtf0
 public class GameTimer : MonoBehaviour
 {
-    public Text timeText;
+    public TextMeshProUGUI timeText;
     public int minutesMax;
     private float startTime;
     private float timeRemaining;

@@ -68,6 +68,10 @@ public class MiniGame
         return ingredient.GetImageInactive();
     }
 
+    public Material GetIngredientMaterial() {
+        return ingredient.GetMaterial();
+    }
+
     public void setId(int id)
     {
         this.id = id;

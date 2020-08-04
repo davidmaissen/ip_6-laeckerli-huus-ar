@@ -7,15 +7,15 @@ public class Ingredient
     private int id;
     private string name;
     private Sprite imageActive;
-
     private Sprite imageInactive;
+    private Material material;
 
-
-    public Ingredient (int id, string name, Sprite imageActive, Sprite imageInactive ) {
+    public Ingredient (int id, string name, Sprite imageActive, Sprite imageInactive, Material material) {
         this.id = id;
         this.name = name;
         this.imageActive = imageActive;
         this.imageInactive = imageInactive;
+        this.material = material;
     }
 
     public int GetId()
@@ -48,5 +48,8 @@ public class Ingredient
         this.name = name;
     }
 
+    public Material GetMaterial() {
+        return material;
+    }
 
 }

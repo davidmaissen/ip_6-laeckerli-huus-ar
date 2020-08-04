@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class GameDetailController : MonoBehaviour
 {
     public GameObject gameDetails;
-    public GameObject buttonActive;
+    // public GameObject buttonActive;
     public GameObject[] stars;
-
-    public Image labelIcon;
+    public int activeGame;
+    public GameObject labelIcon;
+    public bool isUi;
 
     //Controller
     private GameProgress gameProgress;
@@ -21,7 +22,7 @@ public class GameDetailController : MonoBehaviour
     {
         gameProgress = new GameProgress();
         gameProgress.InitializeGameData();
-        updateGameDetails(0);
+        updateGameDetails(activeGame);
     }
 
     // Update is called once per frame
@@ -32,14 +33,31 @@ public class GameDetailController : MonoBehaviour
 
     public void updateGameDetails(int gameID)
     {
+        Debug.Log("UpdateGameDetail");
        // string tag = obj.tag;
      //   int gameID = Int32.Parse(tag.Substring(8));
+        (string title, int stars, string status, int highScore) details = gameProgress.getGameDetail(gameID);
 
-        TextMeshProUGUI gameTitle = gameDetails.transform.Find("Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI gameStatus = gameDetails.transform.Find("Status-Game/Status-Text").gameObject.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI gameHighScore = gameDetails.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+        if (isUi) {
+            TextMeshProUGUI gameTitle = gameDetails.transform.Find("Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI gameStatus = gameDetails.transform.Find("Status-Game/Status-Text").gameObject.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI gameHighScore = gameDetails.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+            gameTitle.text = details.Item1;
+            gameStatus.text = details.Item3;
+            gameHighScore.text = details.Item4.ToString();
+            labelIcon.gameObject.GetComponent<Image>().sprite = gameProgress.GetIngredientIcon(gameID, false);
+        } else {
+            GameObject gameDetailsUpdated = gameDetails;
+            TextMeshPro gameTitle = gameDetailsUpdated.transform.Find("Title-Game").gameObject.GetComponent<TextMeshPro>();
+            TextMeshPro gameStatus = gameDetailsUpdated.transform.Find("Status-Game/Status-Text").gameObject.GetComponent<TextMeshPro>();
+            TextMeshPro gameHighScore = gameDetailsUpdated.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshPro>();
+            gameTitle.text = details.Item1;
+            gameStatus.text = details.Item3;
+            gameHighScore.text = details.Item4.ToString();
+            labelIcon.GetComponent<Renderer>().material = gameProgress.GetMaterial(gameID);
+        }
+
        // Sprite labelIcon = gameDetails.transform.Find("Label-Image").gameObject.transform.GetComponent<Image>().sprite;
-
 
 
 /*         foreach(GameObject icon in ingredientIcons)
@@ -54,11 +72,6 @@ public class GameDetailController : MonoBehaviour
             }
         } */
 
-        (string title, int stars, string status, int highScore) details = gameProgress.getGameDetail(gameID);
-        gameTitle.text = details.Item1;
-        gameStatus.text = details.Item3;
-        gameHighScore.text = details.Item4.ToString();
-        labelIcon.sprite = gameProgress.GetIngredientIcon(gameID, false);
 
         for (int i = 0; i < stars.Length; i++)
         {
@@ -74,6 +87,7 @@ public class GameDetailController : MonoBehaviour
             }
           
         }
+        Debug.Log("UpdateGameDetail - Updated Stars");
 
     }
 }

@@ -28,10 +28,10 @@ public class GameProgress
             Sprite sp  = Resources.Load<Sprite>("Sprites/tower");
 
             //Initialize Ingredients
-            Ingredient lemon = new Ingredient(0, "Lemon", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"));
-            Ingredient hazelnut = new Ingredient(1, "Hazelnut", Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-active"), Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-inactive"));
-            Ingredient flour = new Ingredient(2, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/flour-active"), Resources.Load<Sprite>("Sprites/Ingredients/flour-inactive"));
-            Ingredient honey = new Ingredient(3, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/honey-active"), Resources.Load<Sprite>("Sprites/Ingredients/honey-inactive"));
+            Ingredient lemon = new Ingredient(0, "Lemon", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"), Resources.Load<Material>("Materials/Success/lemon"));
+            Ingredient hazelnut = new Ingredient(1, "Hazelnut", Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-active"), Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-inactive"), Resources.Load<Material>("Materials/Success/hazelnut"));
+            Ingredient flour = new Ingredient(2, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/flour-active"), Resources.Load<Sprite>("Sprites/Ingredients/flour-inactive"), Resources.Load<Material>("Materials/Success/flour"));
+            Ingredient honey = new Ingredient(3, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/honey-active"), Resources.Load<Sprite>("Sprites/Ingredients/honey-inactive"), Resources.Load<Material>("Materials/Success/honey"));
             
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
@@ -183,6 +183,10 @@ public class GameProgress
             return  null;
         }
         
+    }
+
+    public Material GetMaterial(int gameID) {
+        return miniGames[gameID].GetIngredientMaterial();
     }
 
     public bool checkifStoryCompleted()

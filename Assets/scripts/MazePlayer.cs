@@ -114,7 +114,7 @@ void Update() {
 	}
 
 	private void TouchCount() {
-		touchesCounter--;
+		touchesCounter = touchesCounter > 0 ? touchesCounter - 1 : 0;
 		swipeAnimator.SetBool("ShowInfo", false);
         gameSuccessController.updateProgress(touchesCounter, activeLevel-1);
 	}

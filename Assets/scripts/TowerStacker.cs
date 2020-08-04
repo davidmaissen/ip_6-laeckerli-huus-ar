@@ -82,7 +82,7 @@ public class TowerStacker : MonoBehaviour
             gameSuccessController.updateProgress(highScore + 1, getStarsFromCount(highScore + 1));
             //score.text = "LÄCKERLI: " + (highScore + 1);
         } else {
-    
+            gameSuccessController.updateProgress(highScore, getStarsFromCount(highScore));
             int stars = getStarsFromCount(highScore);
             GameOver(stars);
         }

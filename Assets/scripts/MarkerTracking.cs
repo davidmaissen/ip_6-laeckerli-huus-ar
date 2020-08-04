@@ -138,46 +138,23 @@ public class MarkerTracking : MonoBehaviour
     }
 
     private void ShowGameIcon(GameObject prefab) {
-        if (GameProgress.miniGames[0].getTitleKey() == prefab.name) {
-            MiniGame miniGame = GameProgress.miniGames[0];
-            if (miniGame.isCompleted()) {
-                prefab.transform.Find("completed").gameObject.SetActive(true);
-                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
-                animator.enabled = true;
-                animator.Play("pulse-succ");
-                prefab.transform.Find("not-completed").gameObject.SetActive(false);
-            } else {
-                prefab.transform.Find("completed").gameObject.SetActive(false);
-                prefab.transform.Find("not-completed").gameObject.SetActive(true);
+        MiniGame miniGame = null;
+        for (int i = 0; i < GameProgress.miniGames.Length; i++ ) {
+            if (GameProgress.miniGames[i].getTitleKey() == prefab.name) {
+            miniGame = GameProgress.miniGames[i];
             }
-        } else if (GameProgress.miniGames[1].getTitleKey() == prefab.name) {
-            MiniGame miniGame = GameProgress.miniGames[1];
-            if (miniGame.isCompleted()) {
-                prefab.transform.Find("completed").gameObject.SetActive(true);
-                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
-                animator.enabled = true;
-                animator.Play("pulse-succ");
-                prefab.transform.Find("not-completed").gameObject.SetActive(false);
-            } else {
-                prefab.transform.Find("completed").gameObject.SetActive(false);
-                prefab.transform.Find("not-completed").gameObject.SetActive(true);
-            }
-        } else if (GameProgress.miniGames[2].getTitleKey() == prefab.name) {
-            MiniGame miniGame = GameProgress.miniGames[2];
-            if (miniGame.isCompleted()) {
-                prefab.transform.Find("completed").gameObject.SetActive(true);
-                Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
-                animator.enabled = true;
-                animator.Play("pulse-succ");
-                prefab.transform.Find("not-completed").gameObject.SetActive(false);
-            } else {
-                prefab.transform.Find("completed").gameObject.SetActive(false);
-                prefab.transform.Find("not-completed").gameObject.SetActive(true);
-            }
-        } else {
-            return;
         }
 
+        if (miniGame != null && miniGame.isCompleted()) {
+            prefab.transform.Find("completed").gameObject.SetActive(true);
+            Animator animator = prefab.transform.Find("completed").Find("marker_pulse_completed").GetComponent<Animator>();
+            animator.enabled = true;
+            animator.Play("pulse-succ");
+            prefab.transform.Find("not-completed").gameObject.SetActive(false);
+        } else {
+            prefab.transform.Find("completed").gameObject.SetActive(false);
+            prefab.transform.Find("not-completed").gameObject.SetActive(true);
+        }
     }
 
     IEnumerator LoadAsyncScene(string name)

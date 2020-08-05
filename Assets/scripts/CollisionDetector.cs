@@ -11,10 +11,10 @@ public class CollisionDetector : MonoBehaviour
         Debug.Log("Collision with " + collision.gameObject.name);
         if (collision.gameObject.name == "LäckerliFloor") {
             floorCollided = true;
-        } else if (collision.gameObject.name.Contains("Laeckerli")) {
-            if (collision.relativeVelocity.y < -0.3 ) {
+        } else if (collision.gameObject.name.Contains("laeckerli")) {
+            // if (collision.relativeVelocity.y < -0.3 ) {
                 cookieCollided = true;
-            }
+            // }
             Debug.Log("Läckerli: " + collision);
             Debug.Log("Läckerli: " + collision.relativeVelocity);
         }

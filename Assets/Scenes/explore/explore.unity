@@ -8696,13 +8696,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDetails: {fileID: 5311845862953079135}
-  buttonActive: {fileID: 5311845862497359347}
   stars:
   - {fileID: 5311845862619870475}
   - {fileID: 5311845863731610764}
   - {fileID: 5311845862360283924}
   activeGame: 0
-  labelIcon: {fileID: 21300000, guid: f8ac3a398eac14e04b445b8771793c68, type: 3}
+  labelIcon: {fileID: 5311845862793268700}
+  isUi: 1
 --- !u!114 &2349679999062578594
 MonoBehaviour:
   m_ObjectHideFlags: 0

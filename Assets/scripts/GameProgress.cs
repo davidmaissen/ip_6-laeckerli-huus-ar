@@ -31,14 +31,14 @@ public class GameProgress
             Ingredient lemon = new Ingredient(0, "Lemon", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"), Resources.Load<Material>("Materials/Success/lemon"));
             Ingredient hazelnut = new Ingredient(1, "Hazelnut", Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-active"), Resources.Load<Sprite>("Sprites/Ingredients/hazelnut-inactive"), Resources.Load<Material>("Materials/Success/hazelnut"));
             Ingredient flour = new Ingredient(2, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/flour-active"), Resources.Load<Sprite>("Sprites/Ingredients/flour-inactive"), Resources.Load<Material>("Materials/Success/flour"));
-            Ingredient honey = new Ingredient(3, "Flour", Resources.Load<Sprite>("Sprites/Ingredients/honey-active"), Resources.Load<Sprite>("Sprites/Ingredients/honey-inactive"), Resources.Load<Material>("Materials/Success/honey"));
+            Ingredient honey = new Ingredient(3, "Honey", Resources.Load<Sprite>("Sprites/Ingredients/honey-active"), Resources.Load<Sprite>("Sprites/Ingredients/honey-inactive"), Resources.Load<Material>("Materials/Success/honey"));
             
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem su sie aufeinander stapelst.", 0, 0, lemon);
+            miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem du sie aufeinander stapelst.", 0, 0, lemon);
             miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex", "Hilf Emma Alex zu finden.", 0, 0, flour);
-            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke richtig zusammen.", 0, 0, hazelnut);
-            miniGames[3] = new MiniGame(3, "maze", "Küchen Minigolf", "Navigiere eine Kugel durch die Hindernisse.", 0, 0, honey);
+            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke mithilfe von Karten richtig zusammen.", 0, 0, hazelnut);
+            miniGames[3] = new MiniGame(3, "maze", "Küchen Minigolf", "Spiele Minigolf in der Küche von Alex.", 0, 0, honey);
             Debug.Log("Creating new MiniGame Array");
         }
     }

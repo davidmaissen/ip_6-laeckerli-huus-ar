@@ -61,7 +61,7 @@ public class TowerStacker : MonoBehaviour
 
                 // Give the Cube an unique Name and at it to the List with all Cubes
                 counter++;
-                go.gameObject.name = "Läckerli " + counter;
+                go.gameObject.name = "laeckerli " + counter;
                 cubes.Add(go);
                 // score.text = "HIGHSCORE: " + counter;
                 // go.GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
@@ -69,6 +69,7 @@ public class TowerStacker : MonoBehaviour
         }
 
         if (CollisionDetector.cookieCollided) {
+            Debug.Log("Play Cookie");
             FindObjectOfType<AudioManager>().Play("cookie");
             CollisionDetector.cookieCollided = false;
         }
@@ -82,7 +83,7 @@ public class TowerStacker : MonoBehaviour
             gameSuccessController.updateProgress(highScore + 1, getStarsFromCount(highScore + 1));
             //score.text = "LÄCKERLI: " + (highScore + 1);
         } else {
-    
+            gameSuccessController.updateProgress(highScore, getStarsFromCount(highScore));
             int stars = getStarsFromCount(highScore);
             GameOver(stars);
         }

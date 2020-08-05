@@ -1660,7 +1660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1110.9929, y: 0}
+  m_AnchoredPosition: {x: 654.8728, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347234896
@@ -4557,8 +4557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1110.9929, y: 0}
-  m_SizeDelta: {x: 2061.9858, y: 0}
+  m_AnchoredPosition: {x: 654.8728, y: 0}
+  m_SizeDelta: {x: 1149.7456, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084321393
 MonoBehaviour:
@@ -8214,7 +8214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1110.9929, y: 0}
+  m_AnchoredPosition: {x: 654.8728, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774057675
@@ -8350,8 +8350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1110.9929, y: 0}
-  m_SizeDelta: {x: 2061.9858, y: 0}
+  m_AnchoredPosition: {x: 654.8728, y: 0}
+  m_SizeDelta: {x: 1149.7456, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867080745
 MonoBehaviour:
@@ -8696,12 +8696,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDetails: {fileID: 5311845862953079135}
-  buttonActive: {fileID: 5311845862497359347}
   stars:
   - {fileID: 5311845862619870475}
   - {fileID: 5311845863731610764}
   - {fileID: 5311845862360283924}
-  labelIcon: {fileID: 5311845862793268702}
+  activeGame: 0
+  labelIcon: {fileID: 5311845862793268700}
+  isUi: 1
 --- !u!114 &2349679999062578594
 MonoBehaviour:
   m_ObjectHideFlags: 0

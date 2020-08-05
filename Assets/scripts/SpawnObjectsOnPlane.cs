@@ -91,9 +91,14 @@ public class SpawnObjectsOnPlane : MonoBehaviour
                     planeManager.enabled = false;
                     placementModeActive = false;
                 } else {
-                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+                    var cameraForward = Camera.current.transform.forward;
+                    var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
+                    var placementPoseRotation = hitPose.rotation;
+                    placementPoseRotation = Quaternion.LookRotation(cameraBearing);
+
+                    spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, placementPoseRotation);
                     SetAllPlanesActive(false);
-                    spawnedObject.gameObject.transform.Rotate(0,180,0);
+                    spawnedObject.gameObject.transform.Rotate(0,-90,0);
                     planeManager.enabled = false;
                     placementModeActive = false;
                 }

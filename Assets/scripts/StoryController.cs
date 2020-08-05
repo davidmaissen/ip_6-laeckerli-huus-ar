@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class StoryController : MonoBehaviour
 {
@@ -16,15 +18,22 @@ public class StoryController : MonoBehaviour
         if(GameProgress.tutorialCompleted && gameProgress.checkifStoryCompleted())
         {
             Debug.Log(GameProgress.tutorialCompleted);
-            canvasSuccess.SetActive(true);
-            
+            Debug.Log("Game Completed!");
+            StartCoroutine(ShowSuccessScene());            
         }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ShowSuccessScene()
     {
-        
+        Stopwatch watch = new Stopwatch();
+        watch.Start();
+
+        while (watch.Elapsed.TotalSeconds < 3) {
+            yield return null;
+        }
+
+        SceneManager.LoadScene("success-board");
+        StopCoroutine("ShowSuccessScene");
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialController : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class TutorialController : MonoBehaviour
     public GameObject menuInfo;
     public GameObject menuSettings;
     public GameObject[] tutorialSteps;
+    public GameObject uiController;
+    
     
 
 
     // Start is called before the first frame update
     void Start()
     {
+
+
+        Screen.orientation = ScreenOrientation.Portrait;
+
         for (int i = 0; i < tutorialSteps.Length; i++)
         {
             if(i < 1){
@@ -38,23 +45,23 @@ public class TutorialController : MonoBehaviour
     public void next()
     {
         int triggerAnimateIndex1 = 6;
-        int triggerAnimateIndex2 = 8;
+       // int triggerAnimateIndex2 = 8;
 
         int index = getActiveStep();
         setStep(index, index + 1);
 
-        if(index == triggerAnimateIndex1)
+/*         if(index == triggerAnimateIndex1)
         {
             Animator animation = menuInfo.transform.Find("Panel-Menu").gameObject.GetComponent<Animator>();
 
             animation.SetBool("displayed", !animation.GetBool("displayed"));
-        }
-        if (index == triggerAnimateIndex2)
+        } */
+/*         if (index == triggerAnimateIndex2)
         {
             Animator animation = menuSettings.transform.Find("Panel-Settings").gameObject.GetComponent<Animator>();
 
             animation.SetBool("displayed", !animation.GetBool("displayed"));
-        }
+        } */
     }
 
     public void back()
@@ -103,15 +110,17 @@ public class TutorialController : MonoBehaviour
                 break;
 
             case "Tutorial-Step-3":
-                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(true);
+                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
                 menuExplore.gameObject.SetActive(false);
                 break;
 
             case "Tutorial-Step-4":
-                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(true);
+                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
 
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
@@ -119,7 +128,7 @@ public class TutorialController : MonoBehaviour
                 break;
 
             case "Tutorial-Step-5":
-                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(true);
+                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
 
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
@@ -150,33 +159,37 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
-                menuInfo.transform.Find("Panel-Menu/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
+                menuInfo.transform.Find("Panel-Menu-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
                 break;
 
             case "Tutorial-Step-8":
-                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
-                menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
-                menuTutorial.gameObject.SetActive(true);
-
-                menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
-                menuInfo.transform.Find("Panel-Menu/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
-                menuExplore.gameObject.SetActive(true);
-                break;
-
-            case "Tutorial-Step-9":
+                uiController.GetComponent<AnimationController>().TogglePanel(menuInfo.gameObject);
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
                 menuTutorial.gameObject.SetActive(true);
 
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
+                menuSettings.transform.Find("Panel-Settings-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
+                menuExplore.gameObject.SetActive(true);
+                break;
+
+            case "Tutorial-Step-9":
+                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
+                menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
+                menuTutorial.gameObject.SetActive(true);
+
+                menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
+                menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
-                menuSettings.transform.Find("Panel-Settings/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
+                //menuSettings.transform.Find("Panel-Settings/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
+                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
                 break;
         }

@@ -111,6 +111,7 @@ public class FindAlexController : MonoBehaviour
          else if (hit == "papeterie-woman") {
             scenery.transform.Find("papeterie-woman").gameObject.GetComponent<Renderer>().material = materials[2];
             scenery.transform.Find("text-papeterie").gameObject.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("papeterie");
         }
          gameSuccessController.updateProgress(0, stars);
     }

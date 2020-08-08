@@ -1046,6 +1046,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: papeterie
+    clip: {fileID: 8300000, guid: c7b65180ca9ee4a4599e91d5b4a3f7ac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &738453947
 Transform:
   m_ObjectHideFlags: 0

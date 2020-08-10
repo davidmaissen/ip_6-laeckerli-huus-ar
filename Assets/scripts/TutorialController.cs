@@ -106,12 +106,14 @@ public class TutorialController : MonoBehaviour
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Stop("tutorial-1");
                 FindObjectOfType<AudioManager>().Play("tutorial-2");
                 break;
 
             case "Tutorial-Step-3":
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-2");
                 FindObjectOfType<AudioManager>().Play("tutorial-3");
                 menuExplore.gameObject.SetActive(false);
                 break;
@@ -125,6 +127,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-3");
                 FindObjectOfType<AudioManager>().Play("tutorial-4");
                 menuExplore.gameObject.SetActive(true);
                 break;
@@ -138,6 +141,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-4");
                 FindObjectOfType<AudioManager>().Play("tutorial-5");
                 break;
 
@@ -150,6 +154,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Stop("tutorial-5");
                 FindObjectOfType<AudioManager>().Play("tutorial-6");
                 menuExplore.gameObject.SetActive(true);
                 break;
@@ -165,6 +170,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuInfo.transform.Find("Panel-Menu-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-6");
                 FindObjectOfType<AudioManager>().Play("tutorial-7");
                 break;
 
@@ -181,6 +187,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
                 menuSettings.transform.Find("Panel-Settings-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-7");
                 FindObjectOfType<AudioManager>().Play("tutorial-8");
                 break;
 
@@ -197,6 +204,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Stop("tutorial-8");
                 FindObjectOfType<AudioManager>().Play("tutorial-9");
                 break;
         }

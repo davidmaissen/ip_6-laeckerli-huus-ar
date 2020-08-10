@@ -11,39 +11,15 @@ public class ButtonStateController : MonoBehaviour
     public bool isButtonGroup;
     public bool isActive;
 
-    
-  //  public GameObject[] ingredientButtons;
-    //public GameObject[] languageButtons;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-     //   Initialize();
-    }
-
-
     public void Initialize()
     {
-/*         ButtonStateController[] buttons = FindObjectsOfType<ButtonStateController>();
-
-        foreach(ButtonStateController button in buttons)
-        {
-            if(button.isActive)
-            {
-             //   GetComponent<Button>().onClick.Invoke();
-                button.transform.GetComponent<Button>().onClick.Invoke();
-            }
-        } */
-
         this.transform.GetComponent<Button>().onClick.Invoke();
         this.transform.GetComponent<Image>().sprite = this.imageActive;
-
     }
 
     public void setButtonStates()
     {
         GameObject buttonClicked = this.gameObject;
-
 
         if (buttonClicked.transform.GetComponent<Image>().sprite == imageActive)
         {

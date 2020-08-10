@@ -9,6 +9,8 @@ public class GameProgress
     public static int starsCollected = 0;
     public static bool tutorialCompleted = false;
 
+    public static string playerName;
+
     /*
     private void Awake() {
         if (miniGames == null) {
@@ -199,5 +201,10 @@ public class GameProgress
         }
 
         return i == miniGames.Length;
+    }
+
+    public void setPlayerName(string name)
+    {
+        playerName = name;
     }
 }

@@ -334,7 +334,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 4445872538775890963}
   m_TextComponent: {fileID: 4445872539404676307}
   m_materialReferenceIndex: 1
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_text: "Einf\xFChrung starten?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}
-  m_sharedMaterial: {fileID: -1441547330206132555, guid: 47771057c6031441ca4621100caacdc9,
+  m_sharedMaterial: {fileID: 1000969922072976223, guid: 47771057c6031441ca4621100caacdc9,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -760,7 +760,7 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 2
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

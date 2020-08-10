@@ -70,7 +70,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             return;
         }
 
-        if (raycastManager.Raycast(touchposition,hits,TrackableType.PlaneWithinPolygon) && IsCanvasClicked.goClicked) {
+        if (raycastManager.Raycast(touchposition,hits,TrackableType.PlaneWithinPolygon)) {
             Pose hitPose = hits[0].pose;
             planeHit = true;
             Debug.Log("Event Data touchposition: " + touchposition);
@@ -109,7 +109,6 @@ public class SpawnObjectsOnPlane : MonoBehaviour
             }
             Debug.Log("Object spawned with name: " + spawnedObject.gameObject.name);
             // Debug.Log("Event Data Spawn: " + isCanvasClicked.goClicked);
-            IsCanvasClicked.goClicked = false;
         }
         // hit = false;
     }

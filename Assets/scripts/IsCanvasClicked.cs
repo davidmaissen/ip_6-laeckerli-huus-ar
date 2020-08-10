@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class IsCanvasClicked : MonoBehaviour, IPointerDownHandler
 {
-    public static bool goClicked = false;
+    public bool goClicked = false;
     // private SpawnObjectsOnPlane spawnObjectsOnPlane;
     
     public void OnPointerDown(PointerEventData data)

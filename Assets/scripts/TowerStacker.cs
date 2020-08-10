@@ -40,10 +40,12 @@ public class TowerStacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnObjectsOnPlane.placementModeActive || gameOver) {
+        if (spawnObjectsOnPlane.placementModeActive) {
             gameSuccessController.updateProgress(1, 0);
             return;
         }
+
+        if (gameOver) return;
 
         foreach(var t in Input.touches) {
             if (t.phase != TouchPhase.Began)

@@ -26,6 +26,15 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+    public void Stop(string name) {
+        Sound s = Array.Find(sounds, sounds => sounds.name == name);
+        if (s == null) { 
+            Debug.Log("Can't find file with name " + name);
+            return; 
+        }
+        s.source.Stop();
+    }
     
     public AudioSource GetSoundSource(string name) {
         return Array.Find(sounds, sounds => sounds.name == name).source;

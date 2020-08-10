@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
  
 public class OrientationLayoutController : MonoBehaviour
 {
@@ -25,9 +26,26 @@ public class OrientationLayoutController : MonoBehaviour
 
     public GameObject[] nestedInfoSettingsGroup;
 
+    private Scene activeScene;
+
 
     void Awake()
     {
+        activeScene = SceneManager.GetActiveScene();
+
+        switch(activeScene.name)
+        {
+
+             case "start":
+             Screen.orientation = ScreenOrientation.Portrait;
+             break;
+
+             case "tutorial":
+             Screen.orientation = ScreenOrientation.Portrait;
+             break;
+
+        }
+    
         rectTransform = GetComponent<RectTransform>();
         UpdateLayout();
 

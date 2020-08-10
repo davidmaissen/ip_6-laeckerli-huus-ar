@@ -20,8 +20,6 @@ public class TutorialController : MonoBehaviour
     {
 
 
-        Screen.orientation = ScreenOrientation.Portrait;
-
         for (int i = 0; i < tutorialSteps.Length; i++)
         {
             if(i < 1){

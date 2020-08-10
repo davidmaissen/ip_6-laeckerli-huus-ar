@@ -75,8 +75,8 @@ public class Maze : MonoBehaviour
         if (player.LevelCompleted())
         {
             if (gameCompleted){
-                int stars = 2;
-                GameOver(2);
+                gameOver = true;
+                GameOver();
             }
             else
             {
@@ -88,7 +88,8 @@ public class Maze : MonoBehaviour
 
         if (player.LevelLost()) {
             Debug.Log("Level completed - No hits left");
-            GameOver(player.activeLevel - 1);
+            gameOver = true;
+            GameOver();
         }
         
     }
@@ -119,12 +120,12 @@ public class Maze : MonoBehaviour
 	}
 
 
-    private void GameOver(int stars) {
-        gameOver = true;
+    public void GameOver() {
         //MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
         //gameProgress.SaveMiniGame(towerstacker);
-        gameProgress.SaveMiniGame(gameID,highScore, stars);
-        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
+
+        gameProgress.SaveMiniGame(gameID,highScore, gameStarted ? player.activeLevel - 1 : 0);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, gameStarted ? player.activeLevel - 1 : 0);
     }
 
 

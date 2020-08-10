@@ -11,7 +11,7 @@ public class CombinationController : MonoBehaviour
     private bool[] whiskAddedCorrectly;
     private bool rollingPinAddedCorrectly;
     private bool[] puzzlesCompleted;
-    private bool gameOver;
+    private bool gameOver = false;
     private GameTimer gameTimer;
     private int gameID = 2;
     private int stars = 0;
@@ -94,10 +94,10 @@ public class CombinationController : MonoBehaviour
         }
     }
 
-    private void SaveMiniGame() {
+    public void SaveMiniGame() {
         int highScore = (int)gameTimer.timeRemainingTotal;
         gameProgress.SaveMiniGame(gameID,highScore, stars);
-        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, stars);
     }
 
     public void PlayAnimation(string name, Vector3 position, Quaternion rotation) {

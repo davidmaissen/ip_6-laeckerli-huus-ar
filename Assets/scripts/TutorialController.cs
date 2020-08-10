@@ -101,17 +101,20 @@ public class TutorialController : MonoBehaviour
 
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("tutorial-1");
                 break;
 
             case "Tutorial-Step-2":
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("tutorial-2");
                 break;
 
             case "Tutorial-Step-3":
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-3");
                 menuExplore.gameObject.SetActive(false);
                 break;
 
@@ -124,6 +127,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-4");
                 menuExplore.gameObject.SetActive(true);
                 break;
 
@@ -136,6 +140,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-5");
                 break;
 
             case "Tutorial-Step-6":
@@ -147,6 +152,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("tutorial-6");
                 menuExplore.gameObject.SetActive(true);
                 break;
 
@@ -161,6 +167,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuInfo.transform.Find("Panel-Menu-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-7");
                 break;
 
             case "Tutorial-Step-8":
@@ -176,6 +183,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
                 menuSettings.transform.Find("Panel-Settings-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-8");
                 break;
 
             case "Tutorial-Step-9":
@@ -191,6 +199,7 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("tutorial-9");
                 break;
         }
     }

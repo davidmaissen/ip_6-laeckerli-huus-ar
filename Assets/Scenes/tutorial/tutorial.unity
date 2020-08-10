@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 79.85
+  m_fontSize: 67.05
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2267,7 +2267,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 69.7
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4972,6 +4972,104 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1280}
   m_SizeDelta: {x: 1440, y: 2560}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1797554346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797554348}
+  - component: {fileID: 1797554347}
+  m_Layer: 0
+  m_Name: AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1797554347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797554346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a715faf09b804470db044ef2684c4ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: tutorial-1
+    clip: {fileID: 8300000, guid: a498009850c7849b7a6ca26ea62b8ca4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-2
+    clip: {fileID: 8300000, guid: 8e4123bc23b2549e0bb27fa1f0eec6f2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-3
+    clip: {fileID: 8300000, guid: f1d38f65f2d7f4d2692a949252bbbab9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-4
+    clip: {fileID: 8300000, guid: 4005c796837354c9aaed3a15dc195e4a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-5
+    clip: {fileID: 8300000, guid: 6fd03ded6efa04fb7b8df6ba90ffcc8d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-6
+    clip: {fileID: 8300000, guid: c8fa51d7d1b28477692a3d909e9e3eac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-7
+    clip: {fileID: 8300000, guid: e7c3a77e58ba242439830fc363f2335b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-8
+    clip: {fileID: 8300000, guid: 823edd9cf416a449eb02e79ce5146ec7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tutorial-9
+    clip: {fileID: 8300000, guid: f81f140021ebc4f3fa4e31c20dc237e0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1797554348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797554346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807926205
 GameObject:
   m_ObjectHideFlags: 0
@@ -5351,8 +5449,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Wenn du das Spiel beenden oder die Sprache \xE4ndern m\xF6chtest, klicke
-    links auf das Haus-Symbol."
+  m_text: "Wenn du das Spiel beenden oder die Sprache \xE4ndern m\xF6chtest, kannst
+    du links auf das Haus-Symbol klicken."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}
   m_sharedMaterial: {fileID: -1441547330206132555, guid: 47771057c6031441ca4621100caacdc9,
@@ -5398,7 +5496,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 96
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5422,12 +5520,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1890156375}
-    characterCount: 93
+    characterCount: 104
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 15
+    spaceCount: 16
+    wordCount: 17
     linkCount: 0
-    lineCount: 5
+    lineCount: 6
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -5878,7 +5976,7 @@ PrefabInstance:
     - target: {fileID: 5598594187268047216, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 722.48047
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187268047216, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
@@ -5908,7 +6006,7 @@ PrefabInstance:
     - target: {fileID: 5598594187854502901, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 722.48047
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187854502901, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
@@ -5938,12 +6036,12 @@ PrefabInstance:
     - target: {fileID: 5598594187950212887, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 722.48047
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187950212887, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1284.9609
+      value: 2061.9858
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187950212887, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
@@ -6148,12 +6246,12 @@ PrefabInstance:
     - target: {fileID: 5598594188544232783, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 722.48047
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594188544232783, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1284.9609
+      value: 2061.9858
       objectReference: {fileID: 0}
     - target: {fileID: 5598594188544232783, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}

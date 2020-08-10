@@ -16,6 +16,7 @@ public class TowerStacker : MonoBehaviour
 
     public GameObject uiController;
     private int counter = 0;
+    private int stars = 0;
     private int highScore;
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
@@ -59,8 +60,10 @@ public class TowerStacker : MonoBehaviour
                 var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 1, 0), Quaternion.identity);
                 go.transform.rotation = hitInfo.transform.rotation;
 
-                // Give the Cube an unique Name and at it to the List with all Cubes
+                stars = getStarsFromCount(cubes.Count);
                 counter++;
+                
+                // Give the Cube an unique Name and at it to the List with all Cubes
                 go.gameObject.name = "laeckerli " + counter;
                 cubes.Add(go);
                 // score.text = "HIGHSCORE: " + counter;
@@ -84,8 +87,8 @@ public class TowerStacker : MonoBehaviour
             //score.text = "LÄCKERLI: " + (highScore + 1);
         } else {
             gameSuccessController.updateProgress(highScore, getStarsFromCount(highScore));
-            int stars = getStarsFromCount(highScore);
-            GameOver(stars);
+            gameOver = true;
+            GameOver();
         }
     }
 
@@ -120,12 +123,11 @@ public class TowerStacker : MonoBehaviour
         CollisionDetector.cookieCollided = false;
     }
 
-    private void GameOver(int stars) {
-        gameOver = true;
+    public void GameOver() {
         //MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
         //gameProgress.SaveMiniGame(towerstacker);
         gameProgress.SaveMiniGame(gameID,highScore, stars);
-        gameSuccessController.showSuccessPanel(gameID, highScore, stars);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, stars);
     }
 
     private int getStarsFromCount(int count)

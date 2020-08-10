@@ -15,7 +15,7 @@ public class FindAlexController : MonoBehaviour
     private bool gameOver = false;
     private bool gameStarted = false;
     private bool touchInfoNeeded = true; 
-    private int stars;
+    private int stars = 0;
     private int gameID = 1;
 
     //Controller
@@ -96,7 +96,8 @@ public class FindAlexController : MonoBehaviour
             scenery.transform.Find("alex-found").gameObject.GetComponent<Renderer>().material = materials[1];
             StartCoroutine(DoAfterPlaying("alex-found", "emma-2"));
             stars++;
-            GameOver(stars);
+            gameOver = true;
+            GameOver();
         } else if (hit == "emma"){
             if (scenery.transform.Find("text-emma").gameObject.activeSelf) {
                 scenery.transform.Find("text-emma").gameObject.SetActive(true);
@@ -111,16 +112,16 @@ public class FindAlexController : MonoBehaviour
          else if (hit == "papeterie-woman") {
             scenery.transform.Find("papeterie-woman").gameObject.GetComponent<Renderer>().material = materials[2];
             scenery.transform.Find("text-papeterie").gameObject.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("papeterie");
         }
          gameSuccessController.updateProgress(0, stars);
     }
 
-    private void GameOver(int stars) {
-        gameOver = true;
+    public void GameOver() {
         //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
         //gameProgress.SaveMiniGame(findAlex);
         gameProgress.SaveMiniGame(gameID, 0, stars);
-        gameSuccessController.showSuccessPanel(gameID, 0, stars);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, 0, stars);
     }
 
     private void TouchInfoNotNeeded() {
@@ -139,6 +140,7 @@ public class FindAlexController : MonoBehaviour
     IEnumerator StartGame(){
         scenery = GameObject.FindWithTag("Player");
         gameStarted = true;
+        gameSuccessController.updateProgress(0, stars);
         Debug.Log("Start Coroutine");
         FindObjectOfType<AudioManager>().Play("find-alex-scenery");
         Stopwatch watch = new Stopwatch();

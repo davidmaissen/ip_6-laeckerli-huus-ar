@@ -18,21 +18,26 @@ public class ButtonStateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();
+     //   Initialize();
     }
 
 
     public void Initialize()
     {
-        ButtonStateController[] buttons = FindObjectsOfType<ButtonStateController>();
+/*         ButtonStateController[] buttons = FindObjectsOfType<ButtonStateController>();
 
         foreach(ButtonStateController button in buttons)
         {
             if(button.isActive)
             {
-                button.transform.GetComponent<Image>().sprite = imageActive;
+             //   GetComponent<Button>().onClick.Invoke();
+                button.transform.GetComponent<Button>().onClick.Invoke();
             }
-        }
+        } */
+
+        this.transform.GetComponent<Button>().onClick.Invoke();
+        this.transform.GetComponent<Image>().sprite = this.imageActive;
+
     }
 
     public void setButtonStates()

@@ -6,7 +6,7 @@ public class GameProgress
 {
     public static MiniGame[] miniGames;
     public static int numberOfGames = 4;
-    public static int starsCollected = 1;
+    public static int starsCollected = 0;
     public static bool tutorialCompleted = false;
     public static string playerName;
 

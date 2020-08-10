@@ -37,6 +37,7 @@ public class AnimationController : MonoBehaviour
         {
             Animator animatorPortrait = panel.transform.GetChild(0).transform.GetComponent<Animator>();      
             animatorPortrait.SetBool("displayed", !animatorPortrait.GetBool("displayed"));
+         
         }
         else
         {

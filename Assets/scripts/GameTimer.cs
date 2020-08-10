@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour
     public int minutesMax;
     private float startTime;
     private float timeRemaining;
+    private bool paused = false;
     public bool timeOver { get; set; }
     public float timeRemainingTotal { get; set; }
     void Start()
@@ -22,7 +23,7 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        if (!timeOver) {
+        if (!timeOver && !paused) {
             timeRemaining = startTime - Time.time;
             int minutes = (int) timeRemaining  / 60;
             int seconds = (int) timeRemaining  % 60;
@@ -34,7 +35,11 @@ public class GameTimer : MonoBehaviour
         }
     }
 
+    public void Pause() {
+        paused = true;
+    }
     public void ReStart() {
+        paused = false;
         startTime = Time.time + minutesMax * 60;
         timeRemainingTotal += timeRemaining;
     }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8261184734360484069}
   - component: {fileID: 2420991375679177756}
   - component: {fileID: -6238518643987533825}
-  - component: {fileID: 4748123710652873809}
   - component: {fileID: 760034099890310667}
+  - component: {fileID: 8807532479389749685}
   m_Layer: 0
   m_Name: whisk-wires
   m_TagString: Untagged
@@ -98,20 +98,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &4748123710652873809
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4153938269328273600}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6052653990032537022, guid: dfb489b8aa78b45cbb5d67f750f306c7, type: 3}
 --- !u!114 &760034099890310667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   collision: {fileID: 1495864580862965839, guid: aa056cf46b12b45fe9204abba5f2bfda,
     type: 3}
   puzzleName: whisk
+--- !u!65 &8807532479389749685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153938269328273600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.70181835, y: 0.2344373, z: 0.23443729}
+  m_Center: {x: -0.013157114, y: -0.000028327107, z: 0.000053852797}

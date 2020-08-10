@@ -39,42 +39,24 @@ public class CombinationController : MonoBehaviour
     private void Update() {
         if (!puzzlesCompleted[0] && Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
-            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[0] = true;
             stars++;
             gameSuccessController.updateProgress(1, stars);
-            // SaveMiniGame();
         } else if (!puzzlesCompleted[1] && Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
             Debug.Log("whiskAddedCorrectly");
-            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[1] = true;
             stars++;
             gameSuccessController.updateProgress(2, stars);
-            // SaveMiniGame();
         } else if (!puzzlesCompleted[2] && rollingPinAddedCorrectly) {
             Debug.Log("rollingPinAddedCorrectly");
-            // canvas.gameObject.SetActive(true);
             puzzlesCompleted[2] = true;
             stars++;
             gameSuccessController.updateProgress(3, stars);
-            // SaveMiniGame();
         }
 
         if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) {
             gameOver = true;
-            /*
-            int stars = 0;
-            foreach (bool completed in puzzlesCompleted) {
-                if (completed) {
-                    stars ++;
-                }
-            }
-            */
             SaveMiniGame();
-            
-            //MiniGame towerstacker = new MiniGame(2, "Combine", "Kombiniere die Stücke richtig", highScore, stars);
-            //gameProgress.SaveMiniGame(towerstacker);
-            
         }
     }
 
@@ -134,7 +116,7 @@ public class CombinationController : MonoBehaviour
         animation.transform.position = position;
         animation.transform.rotation = rotation;
         imageTracking.ToggleImageTracking();
-
+        gameTimer.Pause();
         while (watch.Elapsed.TotalSeconds < 5) {
             yield return null;
         }

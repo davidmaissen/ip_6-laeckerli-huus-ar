@@ -24,6 +24,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!114 &277625305118666164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,6 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!114 &4635970299485477484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8751643207692705818}
+  - component: {fileID: 8980298787668954276}
   m_Layer: 0
   m_Name: Laeckerli_Placeable Backup
   m_TagString: Respawn
@@ -84,6 +87,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8980298787668954276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130802774869350125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df78b8a4076e405a9fab0fe4c38e27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gizmoSize: 0.25
+  gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &3415692901610623810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!114 &3987004314472702797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!1001 &272239088884453961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,7 +465,7 @@ PrefabInstance:
     - target: {fileID: 5342866754414870378, guid: ddc632854c41546d8aab6bffd68bfd26,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.014959946
+      value: -0.014959931
       objectReference: {fileID: 0}
     - target: {fileID: 5342866754414870378, guid: ddc632854c41546d8aab6bffd68bfd26,
         type: 3}
@@ -553,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 2933759261020410891, guid: 86fd67b58b9cb4ec0901343a18121ba1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2933759261020410891, guid: 86fd67b58b9cb4ec0901343a18121ba1,
         type: 3}
@@ -624,15 +643,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455744, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 455744, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 455744, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 455744, guid: f30b04b488e907b4a88bf0e13b603528, type: 3}
       propertyPath: m_LocalRotation.w

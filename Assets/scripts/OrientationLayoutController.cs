@@ -44,6 +44,10 @@ public class OrientationLayoutController : MonoBehaviour
              Screen.orientation = ScreenOrientation.Portrait;
              break;
 
+             case "explore":
+             Screen.orientation = ScreenOrientation.AutoRotation;
+             break;           
+
         }
     
         rectTransform = GetComponent<RectTransform>();
@@ -66,6 +70,8 @@ public class OrientationLayoutController : MonoBehaviour
             GameObject panelSettings = panelsSettings[0].transform.Find("Menu-Area/Panel-Background-Portrait").gameObject;
 
             CreateGrouping(panelInfo, nestedLayoutGroupInfo, nestedLayoutGroupSettings, panelSettings);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(panelInfo.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(panelSettings.GetComponent<RectTransform>());
         }
         else
         {
@@ -77,6 +83,8 @@ public class OrientationLayoutController : MonoBehaviour
             GameObject panelSettings = panelsSettings[1].transform.Find("Menu-Area/Panel-Background-Landscape").gameObject;
 
             CreateGrouping(panelInfo, nestedLayoutGroupInfo, nestedLayoutGroupSettings, panelSettings);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(panelInfo.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(panelSettings.GetComponent<RectTransform>());
         }
     }
     

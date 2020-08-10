@@ -63,7 +63,7 @@ public class GameSuccessController : MonoBehaviour
 
     }
 
-     public void ShowSuccessPanel(bool gameOver, int gameID, int highscore, int starsCount)
+    public void ShowSuccessPanel(bool gameOver, int gameID, int? highscore, int starsCount)
     {   
         (string name, Sprite imageActive, Sprite imageInactive) gameData = gameProgress.GetIngredientInfo(gameID);
         GameObject stars;
@@ -104,7 +104,7 @@ public class GameSuccessController : MonoBehaviour
         }
 
         ingredientLabel.text = gameData.Item1;
-        highscoreLabel.text = highscore.ToString();
+        highscoreLabel.text = highscore != null ? highscore.ToString() : "-";
         if (starsCount < 1) {
             ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item3;
         } else {

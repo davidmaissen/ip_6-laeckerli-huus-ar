@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameDetailController : MonoBehaviour
 {
     public GameObject gameDetails;
-    // public GameObject buttonActive;
     public GameObject[] stars;
     public int activeGame;
     public GameObject labelIcon;
@@ -34,8 +33,6 @@ public class GameDetailController : MonoBehaviour
     public void updateGameDetails(int gameID)
     {
         Debug.Log("UpdateGameDetail");
-       // string tag = obj.tag;
-     //   int gameID = Int32.Parse(tag.Substring(8));
         (string title, int stars, string status, int highScore) details = gameProgress.getGameDetail(gameID);
 
         if (isUi) {
@@ -44,7 +41,7 @@ public class GameDetailController : MonoBehaviour
             TextMeshProUGUI gameHighScore = gameDetails.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
             gameTitle.text = details.Item1;
             gameStatus.text = details.Item3;
-            gameHighScore.text = details.Item4.ToString();
+            gameHighScore.text = details.Item4 > 0 ? details.Item4.ToString() : "-";
             labelIcon.gameObject.GetComponent<Image>().sprite = gameProgress.GetIngredientIcon(gameID, false);
         } else {
             GameObject gameDetailsUpdated = gameDetails;
@@ -53,25 +50,9 @@ public class GameDetailController : MonoBehaviour
             TextMeshPro gameHighScore = gameDetailsUpdated.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshPro>();
             gameTitle.text = details.Item1;
             gameStatus.text = details.Item3;
-            gameHighScore.text = details.Item4.ToString();
+            gameHighScore.text = details.Item4 > 0 ? details.Item4.ToString() : "-";
             labelIcon.GetComponent<Renderer>().material = gameProgress.GetMaterial(gameID);
         }
-
-       // Sprite labelIcon = gameDetails.transform.Find("Label-Image").gameObject.transform.GetComponent<Image>().sprite;
-
-
-/*         foreach(GameObject icon in ingredientIcons)
-        {
-            if (icon.name.Equals(name))
-            {
-                icon.gameObject.SetActive(true);
-            }
-            else
-            {
-                icon.gameObject.SetActive(false);
-            }
-        } */
-
 
         for (int i = 0; i < stars.Length; i++)
         {

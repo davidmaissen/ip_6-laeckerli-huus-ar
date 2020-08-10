@@ -7,7 +7,7 @@ using Debug = UnityEngine.Debug;
 
 public class StoryController : MonoBehaviour
 {
-
+    public static bool successShown = false;
     private GameProgress gameProgress;
     public GameObject canvasSuccess;
 
@@ -26,14 +26,17 @@ public class StoryController : MonoBehaviour
 
     IEnumerator ShowSuccessScene()
     {
-        Stopwatch watch = new Stopwatch();
-        watch.Start();
+        if (!successShown) {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
 
-        while (watch.Elapsed.TotalSeconds < 3) {
-            yield return null;
+            while (watch.Elapsed.TotalSeconds < 3) {
+                yield return null;
+            }
+
+            SceneManager.LoadScene("success-board");
+            successShown = true;
         }
-
-        SceneManager.LoadScene("success-board");
         StopCoroutine("ShowSuccessScene");
     }
 }

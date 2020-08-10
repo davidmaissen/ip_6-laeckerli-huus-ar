@@ -14,7 +14,7 @@ public class FindAlexController : MonoBehaviour
     private float timeUntilHint;
     private bool gameOver = false;
     private bool gameStarted = false;
-    private bool touchInfoNeeded = true; 
+    private bool touchInfoNeeded = true;
     private int stars = 0;
     private int gameID = 1;
 
@@ -34,8 +34,10 @@ public class FindAlexController : MonoBehaviour
         if (spawnObjectsOnPlane.placementModeActive || gameOver) return;
         if (!gameStarted) StartCoroutine(StartGame());
         if (touchInfoNeeded) arHelpCanvas.SetActive(true);
-        if (timeUntilHint > 0 && touchInfoNeeded && Time.time > timeUntilHint) {
-            timeUntilHint += 120.0f;
+        if (timeUntilHint > 0 && Time.time > timeUntilHint) {
+            scenery.transform.Find("text-emma").gameObject.SetActive(false);
+            scenery.transform.Find("text-emma-3").gameObject.SetActive(true);
+            timeUntilHint += 90.0f;
             FindObjectOfType<AudioManager>().Play("emma-3");
         }
         

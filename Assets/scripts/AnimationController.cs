@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
 
+    public GameObject topBar;
     private OrientationLayoutController layoutController;
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class AnimationController : MonoBehaviour
         {
             Animator animatorLandscape = panel.transform.GetChild(1).transform.GetComponent<Animator>();
             animatorLandscape.SetBool("displayed", !animatorLandscape.GetBool("displayed"));
+            topBar.SetActive(!topBar.active);
             
             
         }

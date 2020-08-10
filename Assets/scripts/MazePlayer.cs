@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
-
-// Include the namespace required to use Unity UI
 using UnityEngine.UI;
-
 using System.Collections;
 using TMPro;
 
@@ -11,17 +8,12 @@ public class MazePlayer : MonoBehaviour {
 	// Create public variables for player speed, and for the Text UI game objects
 	public float speed;
 	public int touchesCounter;
-    // public TextMeshProUGUI touches;
-	//public Text winText;
-
 	public GameObject nextLevel;
 
 	// Create private references to the rigidbody component on the player, and the count of pick up objects picked up so far
 	private Rigidbody rb;
 
 	private GameObject levelGroup;
-
-	// private GameObject[] levels;
 
 	public int activeLevel;
 	private bool finished;
@@ -32,54 +24,25 @@ public class MazePlayer : MonoBehaviour {
 	private GameObject arHelpCanvas;
     private Animator swipeAnimator;
 
-
-	//private GameObject activeLevel;
-
-	// At the start of the game..
 	void Start ()
 	{
-		// Assign the Rigidbody component to our private rb variable
-		//rb = GetComponent<Rigidbody>();
         arHelpCanvas = GameObject.Find("UserInterface").gameObject.transform.Find("ARHelpCanvasTouch").gameObject;
-		// arHelpCanvas.SetActive(true);
-		//arHelpCanvas.gameObject.transform.Find("Swipe").gameObject.SetActive(true);
 		touchesCounter = activeLevel * 15;
 		uiController = GameObject.Find("UserInterface").gameObject.transform.Find("UIControllerGame").gameObject;
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
-		gameSuccessController.updateProgress(touchesCounter, activeLevel-1);
 		swipeAnimator = arHelpCanvas.transform.Find("Swipe").gameObject.GetComponent<Animator>();
 		swipeAnimator.SetBool("ShowInfo", true);
-
-		//levelGroup = GameObject.FindGameObjectWithTag("Level");
-		//levelCount = levelGroup.transform.childCount;
 		finished = false;
-
-
-/*         for (int i = 0; i < levelGroup.transform.childCount; i++)
-        {   
-            if (i < 1)
-            {
-                levelGroup.transform.GetChild(i).gameObject.SetActive(true);
-				activeLevel = levelGroup.transform.GetChild(i).gameObject;
-            }
-            else
-            {
-                levelGroup.transform.GetChild(i).gameObject.SetActive(false);
-            }
-        } */
-
 		rb = GetComponent<Rigidbody>();
 		Debug.Log("Kugel: " + rb.name);
 
 	}
 
-	// Each physics step..
-
+// Each physics step..
 //https://www.youtube.com/watch?v=gyOOf25321M
 void Update() {
    // Swipe start
    if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
-		// swipeAnimator.SetBool("ShowInfo", false);
     	touchStart = Input.GetTouch(0).position;
 		TouchCount();
    }
@@ -104,7 +67,7 @@ void Update() {
 		if (other.gameObject.CompareTag("Finish"))
 		{
 			Debug.Log("Collision with finish-tag");
-		//	Debug.Log("Finish");
+			gameSuccessController.updateProgress(touchesCounter, activeLevel);
 			finished = true;
 		} else if (other.gameObject.CompareTag("Respawn")) {
 			Debug.Log("Collision with respawn-tag");

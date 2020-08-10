@@ -27,22 +27,14 @@ public class UIController
     public void animateIngredientsBar(Animator animation)
     {
         animation.SetBool("expanded", !animation.GetBool("expanded"));
-
     }
-
-
-
-
 
     public void updateStarsCounter(TextMeshProUGUI starsCounter)
     {
         //set value of starsCounter
         starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
         starsCounter.text = GameProgress.starsCollected.ToString();
-
     }
-
-
 
     public void updateGameDetails(GameObject gameDetails)
     {
@@ -50,8 +42,4 @@ public class UIController
         Debug.Log(gameTitle.text);
         gameTitle.text = "Läckerliturm";
     }
-
-
-
-
 }

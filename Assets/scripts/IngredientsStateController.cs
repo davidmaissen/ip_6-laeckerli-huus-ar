@@ -18,13 +18,6 @@ public class IngredientsStateController : MonoBehaviour
         SetIngredientStates(gameID);  
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
  public void SetIngredientStates(int gameID)
     {
         GameObject ingredient = this.gameObject;

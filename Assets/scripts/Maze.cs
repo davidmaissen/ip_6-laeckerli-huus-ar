@@ -5,19 +5,14 @@ using System;
 
 public class Maze : MonoBehaviour
 {
-    //public GameObject cubePrefab;
-    //public GameObject circle3d;
-    //public TextMeshProUGUI score;
-
-    public GameObject successCanvas;
-
+    public GameObject levelSuccessCanvas;
     public GameObject uiController;
 
     public GameObject[] levels;
     private GameObject[] spawnedlevels;
 
     private GameObject activeLevel;
-    private int counter = 0;
+    private int comletedLevels = 0;
     private bool gameStarted = false;
     private bool gameCompleted;
     private int highScore = 0;
@@ -34,26 +29,24 @@ public class Maze : MonoBehaviour
 
     private int gameID = 3;
 
-    // Start is called before the first frame update
     void Awake()
     {
-       // Debug.Log("Player: " + player.name);
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> (); 
         gameCompleted = false;
         spawnedlevels = new GameObject[3];
+        levelSuccessCanvas.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (spawnObjectsOnPlane.placementModeActive || gameOver) {
-        return;
+            return;
         }
 
         if (!gameStarted) {
+            Debug.Log("Start Game");
             gameStarted = true;
             activeLevel = GameObject.FindWithTag("Respawn");
             activeLevel.SetActive(false);
@@ -74,15 +67,14 @@ public class Maze : MonoBehaviour
 
         if (player.LevelCompleted())
         {
+            comletedLevels++;
             if (gameCompleted){
-                gameOver = true;
-                GameOver();
+                return;
             }
             else
             {
-                counter++;
                 Debug.Log("Level completed");
-                NextLevel();
+                LevelCompleted();
             }
         }
 
@@ -91,43 +83,39 @@ public class Maze : MonoBehaviour
             gameOver = true;
             GameOver();
         }
-        
     }
 
-
-    void NextLevel()
-	{
+    void LevelCompleted() 
+    {
+        Debug.Log("Completed Levels: " + comletedLevels);
         highScore += player.touchesCounter;
-        if (counter == levels.Length)
+        if (comletedLevels == levels.Length)
         {
             gameCompleted = true;
+            gameOver = true;
+            GameOver();
             return;
         }
         else
         {
             Debug.Log("Load new Level");
-            //Destroy(activeLevel);
             foreach (GameObject level in levels) {
                 level.SetActive(false);
             }
-            // activeLevel = levels[counter];
-            spawnedlevels[counter-1].SetActive(false);
-            spawnedlevels[counter].SetActive(true);
-            
-            player = spawnedlevels[counter].GetComponent<MazePlayer>();
+            spawnedlevels[comletedLevels-1].SetActive(false);
+            levelSuccessCanvas.SetActive(true);
         }
-
-	}
-
-
-    public void GameOver() {
-        //MiniGame towerstacker = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", highScore, stars);
-        //gameProgress.SaveMiniGame(towerstacker);
-
-        gameProgress.SaveMiniGame(gameID,highScore, gameStarted ? player.activeLevel - 1 : 0);
-        gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, gameStarted ? player.activeLevel - 1 : 0);
     }
 
+    public void NextLevel()
+	{
+        levelSuccessCanvas.SetActive(false);
+        spawnedlevels[comletedLevels].SetActive(true);
+        player = spawnedlevels[comletedLevels].GetComponent<MazePlayer>();	
+    }
 
-
+    public void GameOver() {
+        gameProgress.SaveMiniGame(gameID, highScore, comletedLevels);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, comletedLevels);
+    }
 }

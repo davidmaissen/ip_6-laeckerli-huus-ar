@@ -107,6 +107,7 @@ public class SpawnObjectsOnPlane : MonoBehaviour
                 spawnedObject.transform.position = hitPose.position;
                 spawnedObject.transform.rotation = hitPose.rotation;
             }
+            spawnedObject.SetActive(true);
             Debug.Log("Object spawned with name: " + spawnedObject.gameObject.name);
             // Debug.Log("Event Data Spawn: " + isCanvasClicked.goClicked);
         }

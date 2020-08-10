@@ -17,7 +17,7 @@ public class TowerStacker : MonoBehaviour
     public GameObject uiController;
     private int counter = 0;
     private int stars = 0;
-    private int highScore;
+    private int highScore = 0;
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;
@@ -34,14 +34,14 @@ public class TowerStacker : MonoBehaviour
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         cubes = new List<GameObject>();
-        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane> (); 
-    
+        spawnObjectsOnPlane = GameObject.FindObjectOfType<SpawnObjectsOnPlane>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (spawnObjectsOnPlane.placementModeActive || gameOver) {
+            gameSuccessController.updateProgress(1, 0);
             return;
         }
 
@@ -51,6 +51,9 @@ public class TowerStacker : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(t.position);
             RaycastHit hitInfo;
             if(!gameOver && Time.time > canSpawn && Physics.Raycast(ray, out hitInfo)) {
+                if (!hitInfo.transform.gameObject.GetComponent<IsCanvasClicked>().goClicked) {
+                    return;
+                }
                 StartCoroutine(ShowTouchInput(hitInfo));
                 // Create a Cooldown so the Player can't spawn too many Cubes to cheat
                 Debug.Log("Resetting Cooldown...");
@@ -59,9 +62,6 @@ public class TowerStacker : MonoBehaviour
                 // Instantiate Cube
                 var go = GameObject.Instantiate(cubePrefab,hitInfo.point + new Vector3(0, 1, 0), Quaternion.identity);
                 go.transform.rotation = hitInfo.transform.rotation;
-
-                stars = getStarsFromCount(cubes.Count);
-                counter++;
                 
                 // Give the Cube an unique Name and at it to the List with all Cubes
                 go.gameObject.name = "laeckerli " + counter;
@@ -71,39 +71,21 @@ public class TowerStacker : MonoBehaviour
             }
         }
 
-        if (CollisionDetector.cookieCollided) {
-            Debug.Log("Play Cookie");
-            FindObjectOfType<AudioManager>().Play("cookie");
-            CollisionDetector.cookieCollided = false;
-        }
-
-        // Check if every GameObject (except first) is still higher than the one spawned before. False = GameOver
-        // if (cubes.TrueForAll(f => cubes.IndexOf(f) == 0 || f.gameObject.transform.position.y >= cubes[cubes.IndexOf(f)-1].gameObject.transform.position.y)){
-        if (!CollisionDetector.floorCollided) {
-            highScore = cubes.Count;
-
-           // gameSuccessController.setCounter(highScore + 1);   
-            gameSuccessController.updateProgress(highScore + 1, getStarsFromCount(highScore + 1));
-            //score.text = "LÄCKERLI: " + (highScore + 1);
-        } else {
+        if (CollisionDetector.floorCollided) {
             gameSuccessController.updateProgress(highScore, getStarsFromCount(highScore));
             gameOver = true;
             GameOver();
-        }
-    }
-
-    /*
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        Debug.Log("Läckerli: " + collisionInfo.gameObject.name);
-        if (collisionInfo.gameObject.name.Contains("Läckerli")){
-            Debug.Log("Läckerli: " + collisionInfo);
-            Debug.Log("Läckerli: " + collisionInfo.relativeVelocity);
-            Debug.Log("Läckerli: " + collisionInfo.impulse);
+        } else if (CollisionDetector.cookieCollided) {
+            Debug.Log("Play Cookie");
             FindObjectOfType<AudioManager>().Play("cookie");
+            CollisionDetector.cookieCollided = false;
+
+            highScore = cubes.Count;
+            stars = getStarsFromCount(cubes.Count);
+            counter++;
+            gameSuccessController.updateProgress(highScore + 1, getStarsFromCount(highScore + 1));
         }
     }
-    */
 
     IEnumerator ShowTouchInput(RaycastHit hitInfo){
         var inputFeedback = GameObject.Instantiate(circle3d, hitInfo.point + new Vector3(0,0.01f,0), Quaternion.identity);

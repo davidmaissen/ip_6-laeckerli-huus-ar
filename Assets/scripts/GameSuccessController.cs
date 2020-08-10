@@ -103,7 +103,7 @@ public class GameSuccessController : MonoBehaviour
             successQuitCanvas.SetActive(true);
         }
 
-        ingredientLabel.text = gameData.Item1;
+        ingredientLabel.text = gameData.Item1 + " erhalten";
         highscoreLabel.text = highscore != null ? highscore.ToString() : "-";
         if (starsCount < 1) {
             ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item3;

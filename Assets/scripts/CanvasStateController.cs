@@ -12,7 +12,6 @@ public class CanvasStateController : MonoBehaviour
 
     private GameProgress gameProgress;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +44,14 @@ public class CanvasStateController : MonoBehaviour
     }
 
 
-        public void showTutorial(GameObject tutorial)
+    public void showTutorial(GameObject tutorial)
     {
         tutorial.SetActive(true);
     }
 
+    public void ToggleQuitMenu() 
+    {
+        GameObject go = GameObject.Find("UserInterface").transform.Find("Canvas-Quit-Success").gameObject;
+        go.SetActive(!go.activeSelf);
+    }
 }

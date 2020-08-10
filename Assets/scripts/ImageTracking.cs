@@ -181,7 +181,8 @@ public class ImageTracking : MonoBehaviour
                     StartCoroutine(DoAfterPlaying("alex-found", "emma-2"));
                     // FindObjectOfType<AudioManager>().Play("alex-found");
                     stars++;
-                    GameOver(stars);
+                    gameOver = true;
+                    GameOver();
                 } else if (hitInfo.transform.gameObject.name == "emma"){
                     if (placeablePrefab.transform.Find("text-emma").gameObject.activeSelf) {
                         placeablePrefab.transform.Find("text-emma").gameObject.SetActive(true);
@@ -197,11 +198,9 @@ public class ImageTracking : MonoBehaviour
         }
     }
 
-    private void GameOver(int stars) {
-        gameOver = true;
-        
+    private void GameOver() {        
         gameProgress.SaveMiniGame(gameID, 0, stars);
-        gameSuccessController.showSuccessPanel(gameID, 0, stars);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, 0, stars);
 
         //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
         //gameProgress.SaveMiniGame(findAlex);

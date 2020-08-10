@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class GameSuccessController : MonoBehaviour
 {
     public GameObject successCanvas;
+    public GameObject successQuitCanvas;
     public GameObject menuTop;
-
     public GameObject menuBottom;
 
    //Controller
@@ -63,20 +63,55 @@ public class GameSuccessController : MonoBehaviour
 
     }
 
-     public void showSuccessPanel(int gameID, int highscore, int starsCount)
+     public void ShowSuccessPanel(bool gameOver, int gameID, int highscore, int starsCount)
     {   
         (string name, Sprite imageActive, Sprite imageInactive) gameData = gameProgress.GetIngredientInfo(gameID);
-        GameObject stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
-        GameObject ingredientIcon = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Ingredient-Icon").gameObject; 
-        TextMeshProUGUI ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+        GameObject stars;
+        GameObject ingredientIcon; 
+        TextMeshProUGUI ingredientLabel;
+        TextMeshProUGUI highscoreLabel;
+        TextMeshProUGUI textAlex;
+
+        if (gameOver)
+        {
+            stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
+            ingredientIcon = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Ingredient-Icon").gameObject; 
+            ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
+            highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+            textAlex = successCanvas.transform.Find("Panel-Detail/Alex/Speech-Bubble/Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>();
+            switch (starsCount) {
+                case 0:
+                textAlex.text = "Schade!";
+                break;
+                case 1:
+                textAlex.text = "Gut!";
+                break;
+                case 2:
+                textAlex.text = "Bravo!";
+                break;
+                case 3:
+                textAlex.text = "Perfekt!";
+                break;
+            }
+            successCanvas.SetActive(true);
+        } else 
+        {
+            stars = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
+            ingredientIcon = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Ingredient-Icon").gameObject;
+            ingredientLabel = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
+            highscoreLabel = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
+            successQuitCanvas.SetActive(true);
+        }
 
         ingredientLabel.text = gameData.Item1;
         highscoreLabel.text = highscore.ToString();
-        ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item2;
+        if (starsCount < 1) {
+            ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item3;
+        } else {
+            ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item2;
+        }
 
         menuBottom.SetActive(false);
-        successCanvas.SetActive(true);
         starStateController = uiController.GetComponent<StarStateController>();
         starStateController.setStarGroup(stars, starsCount);
     }

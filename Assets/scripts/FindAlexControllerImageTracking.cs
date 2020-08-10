@@ -117,7 +117,7 @@ public class FindAlexControllerImageTracking : MonoBehaviour
         gameOver = true;
         
         gameProgress.SaveMiniGame(gameID, 0, stars);
-        gameSuccessController.showSuccessPanel(gameID, 0, stars);
+        gameSuccessController.ShowSuccessPanel(gameOver, gameID, 0, stars);
         //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
         //gameProgress.SaveMiniGame(findAlex);
     }

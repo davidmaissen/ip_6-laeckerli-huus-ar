@@ -24,14 +24,14 @@ public class MarkerTracking : MonoBehaviour
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
-    private StarsCountController starsCountController;
+    private GameUpdateController starsCountController;
     private static bool airPlaneStarCollected = false;
     private static bool oldImagesStarCollected = false;
     private static bool museStarCollected = false;
 
     private void Awake() {
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        starsCountController = FindObjectOfType<StarsCountController>();
+        starsCountController = FindObjectOfType<GameUpdateController>();
         gameProgress = new GameProgress();
 
         foreach(GameObject prefab in placeablePrefab)

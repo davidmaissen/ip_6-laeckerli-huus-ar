@@ -13,6 +13,9 @@ public class CollisionDetectorCombination : MonoBehaviour
     private static bool rollingPinSuccessPlayed;
 
     private void Awake() {
+        bowlSuccessPlayed = false;
+        whiskSuccessPlayed = false;
+        rollingPinSuccessPlayed = false;
         combinationController = GameObject.FindObjectOfType<CombinationController>();
         if (puzzleName == "bowl") {
             combination = new Combination("bowl", Vector3.forward, Quaternion.identity);

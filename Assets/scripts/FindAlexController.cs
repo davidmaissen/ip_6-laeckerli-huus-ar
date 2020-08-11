@@ -82,11 +82,13 @@ public class FindAlexController : MonoBehaviour
             stars++;
         } else if (hit == "man-window") {
             scenery.transform.Find("text-man-window").gameObject.SetActive(true);
+            StopAllVoices();
             FindObjectOfType<AudioManager>().Play("man-window");
         } else if (hit == "daughter-mother") {
             if (!scenery.transform.Find("door-house-1").gameObject.activeSelf) {
                 scenery.transform.Find("text-daughter-mother-1").gameObject.SetActive(true);
                 scenery.transform.Find("door-house-1").gameObject.SetActive(true);
+                StopAllVoices();
                 FindObjectOfType<AudioManager>().Play("daughter-mother-1");
             } 
         } else if (hit == "alex-found") {
@@ -103,6 +105,7 @@ public class FindAlexController : MonoBehaviour
             if (scenery.transform.Find("text-emma").gameObject.activeSelf) {
                 scenery.transform.Find("text-emma").gameObject.SetActive(true);
                 scenery.transform.Find("text-emma-3").gameObject.SetActive(false);
+                StopAllVoices();
                 FindObjectOfType<AudioManager>().Play("emma");
             }
         } else if (hit == "birdie") {
@@ -113,9 +116,13 @@ public class FindAlexController : MonoBehaviour
          else if (hit == "papeterie-woman") {
             scenery.transform.Find("papeterie-woman").gameObject.GetComponent<Renderer>().material = materials[2];
             scenery.transform.Find("text-papeterie").gameObject.SetActive(true);
+            StopAllVoices();
             FindObjectOfType<AudioManager>().Play("papeterie");
         }
-         gameSuccessController.updateProgress(0, stars);
+        if (timeUntilHint - Time.time < 20.0f) {
+            timeUntilHint += 10.0f;
+        }
+        gameSuccessController.updateProgress(0, stars);
     }
 
     public void SaveMiniGame() {
@@ -130,7 +137,19 @@ public class FindAlexController : MonoBehaviour
         touchInfoNeeded = false;
     }
 
+    private void StopAllVoices() {
+        FindObjectOfType<AudioManager>().Stop("man-window");
+        FindObjectOfType<AudioManager>().Stop("bicyclist");
+        FindObjectOfType<AudioManager>().Stop("papeterie");
+        FindObjectOfType<AudioManager>().Stop("daughter-mother-1");
+        FindObjectOfType<AudioManager>().Stop("daughter-mother-2");
+        FindObjectOfType<AudioManager>().Stop("emma");
+        FindObjectOfType<AudioManager>().Stop("emma-1");
+        FindObjectOfType<AudioManager>().Stop("emma-2");
+    }
+
     IEnumerator DoAfterPlaying(string soundSource, string soundSourceNext){
+        StopAllVoices();
         AudioSource audio = FindObjectOfType<AudioManager>().GetSoundSource(soundSource);
         audio.Play();
 
@@ -141,6 +160,7 @@ public class FindAlexController : MonoBehaviour
     IEnumerator StartGame(){
         scenery = GameObject.FindWithTag("Player");
         gameStarted = true;
+        timeUntilHint = Time.time + 20.0f;
         gameSuccessController.updateProgress(0, stars);
         Debug.Log("Start Coroutine");
         FindObjectOfType<AudioManager>().Play("find-alex-scenery");
@@ -151,7 +171,6 @@ public class FindAlexController : MonoBehaviour
         }
         Debug.Log("2 secs elapsed.");
         arHelpCanvas.SetActive(true);
-        timeUntilHint = Time.time + 15.0f;
         FindObjectOfType<AudioManager>().Play("emma");
         scenery.transform.Find("text-emma").gameObject.SetActive(true);
         StopCoroutine("StartGame");

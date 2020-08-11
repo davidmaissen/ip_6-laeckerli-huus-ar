@@ -10,18 +10,6 @@ public class GameProgress
     public static bool tutorialCompleted = false;
     public static string playerName;
 
-    /*
-    private void Awake() {
-        if (miniGames == null) {
-            miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu suchen", 0, 0);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0);
-            Debug.Log("Creating new MiniGame Array");
-        }
-    }
-    */
-
     public void InitializeGameData()
     {
         if (miniGames == null)
@@ -36,10 +24,10 @@ public class GameProgress
             
             //Initialize MiniGames
             miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem du sie aufeinander stapelst.", 1, 2, lemon);
-            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex", "Hilf Emma Alex zu finden. Du kannst zwei zusätzliche Sterne verdienen, wenn du genau herumschaust und auch den anderen hilfst.", 1, 1, flour);
-            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke zusammen, indem du die Karten richtig drehst und zusammensetzt.", 1, 1, hazelnut);
-            miniGames[3] = new MiniGame(3, "maze", "Küchen Minigolf", "Spiele Minigolf in der Küche von Alex.", 1, 1, honey);
+            miniGames[0] = new MiniGame(0, "laeckerli-tower", "Läckerli Turm", "Baue einen Turm mit Läckerli indem du sie aufeinander stapelst.", 0, 0, lemon);
+            miniGames[1] = new MiniGame(1, "find-alex", "Finde Alex", "Hilf Emma Alex zu finden. Du kannst zwei zusätzliche Sterne verdienen, wenn du genau herumschaust und auch den anderen hilfst.", 0, 0, flour);
+            miniGames[2] = new MiniGame(2, "combination", "Kombiniere richtig", "Setze die einzelnen Stücke zusammen, indem du die Karten richtig drehst und zusammensetzt.", 0, 0, hazelnut);
+            miniGames[3] = new MiniGame(3, "maze", "Küchen Minigolf", "Spiele Minigolf in der Küche von Alex.", 0, 0, honey);
             Debug.Log("Creating new MiniGame Array");
         }
     }

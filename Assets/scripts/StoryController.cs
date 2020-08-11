@@ -20,8 +20,7 @@ public class StoryController : MonoBehaviour
             Debug.Log(GameProgress.tutorialCompleted);
             Debug.Log("Game Completed!");
             StartCoroutine(ShowSuccessScene());            
-        }
-        
+        }      
     }
 
     IEnumerator ShowSuccessScene()

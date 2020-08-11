@@ -9,14 +9,14 @@ public class saveName : MonoBehaviour
     public TextMeshProUGUI inputField;
 
     //Controller
-    private ChangeSceneManagement sceneManagement;
+   // private ChangeSceneManagement sceneManagement;
     private GameProgress gameProgress;
 
 
 void Start()
 {
     gameProgress = new GameProgress();
-    sceneManagement = GetComponent<ChangeSceneManagement>();
+    //sceneManagement = GetComponent<ChangeSceneManagement>();
 }
 
 public void CheckIsValidAndSave(TextMeshProUGUI exceptionPanel)
@@ -26,8 +26,7 @@ public void CheckIsValidAndSave(TextMeshProUGUI exceptionPanel)
     if(charCount > 1)
     {
         gameProgress.setPlayerName(inputField.text);
-        Debug.Log(GameProgress.playerName);
-        sceneManagement.ChangeScene("explore");
+      //  sceneManagement.ChangeScene("explore");
     }
     else
     {

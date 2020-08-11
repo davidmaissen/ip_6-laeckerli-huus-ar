@@ -81,7 +81,7 @@ public class Maze : MonoBehaviour
         if (player.LevelLost()) {
             Debug.Log("Level completed - No hits left");
             gameOver = true;
-            GameOver();
+            SaveMiniGame();
         }
     }
 
@@ -93,7 +93,7 @@ public class Maze : MonoBehaviour
         {
             gameCompleted = true;
             gameOver = true;
-            GameOver();
+            SaveMiniGame();
             return;
         }
         else
@@ -114,7 +114,7 @@ public class Maze : MonoBehaviour
         player = spawnedlevels[comletedLevels].GetComponent<MazePlayer>();	
     }
 
-    public void GameOver() {
+    public void SaveMiniGame() {
         gameProgress.SaveMiniGame(gameID, highScore, comletedLevels);
         gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, comletedLevels);
     }

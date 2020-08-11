@@ -95,3 +95,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: question-products-star
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5127234197728659259
+      m_GuidHigh: 13484317777961519233
+    m_SerializedTextureGuid:
+      m_GuidLow: 3767073781780868301
+      m_GuidHigh: 12514524780709344747
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: question-history-star
+    m_Texture: {fileID: 0}

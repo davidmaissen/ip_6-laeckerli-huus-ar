@@ -8,9 +8,9 @@ public class CollisionDetectorCombination : MonoBehaviour
     private CombinationController combinationController;
     private Combination combination;
     public string puzzleName;
-    private bool bowlSuccessPlayed;
-    private bool whiskSuccessPlayed;
-    private bool rollingPinSuccessPlayed;
+    private static bool bowlSuccessPlayed;
+    private static bool whiskSuccessPlayed;
+    private static bool rollingPinSuccessPlayed;
 
     private void Awake() {
         combinationController = GameObject.FindObjectOfType<CombinationController>();
@@ -25,7 +25,8 @@ public class CollisionDetectorCombination : MonoBehaviour
     
     private void Update() {
         if (puzzleName == "bowl" && !bowlSuccessPlayed) {
-            if (combinationController.IsPuzzleCompleted(puzzleName) && this.name == "bowl-topleft") {
+            if (combinationController.IsPuzzleCompleted(puzzleName) && combination.position != Vector3.forward && 
+            (this.name == "bowl-topleft" || this.name == "bowl-topright")) {
                 Combination completed = combination;
                 Debug.Log(completed.position);
                 combinationController.PlayAnimation(completed.name, completed.position, completed.rotation);

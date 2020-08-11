@@ -10,18 +10,6 @@ public class GameProgress
     public static bool tutorialCompleted = false;
     public static string playerName;
 
-    /*
-    private void Awake() {
-        if (miniGames == null) {
-            miniGames = new MiniGame[numberOfGames];
-            miniGames[0] = new MiniGame(0, "Towerstacker", "Baue einen Turm mit Läckerli so hoch du kannst", 0, 0);
-            miniGames[1] = new MiniGame(1, "Find Alex", "Hilf Emma Alex zu suchen", 0, 0);
-            miniGames[2] = new MiniGame(2, "Combine", "Kombiniere richtig", 0, 0);
-            Debug.Log("Creating new MiniGame Array");
-        }
-    }
-    */
-
     public void InitializeGameData()
     {
         if (miniGames == null)

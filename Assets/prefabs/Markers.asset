@@ -85,3 +85,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: maze
     m_Texture: {fileID: 2800000, guid: ae6ad66978d6640a8998a9294849cab9, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4750108554879103765
+      m_GuidHigh: 12583115172174133414
+    m_SerializedTextureGuid:
+      m_GuidLow: 11837719909756887826
+      m_GuidHigh: 11784744418293961499
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: question-products-star
+    m_Texture: {fileID: 0}

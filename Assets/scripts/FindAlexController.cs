@@ -64,6 +64,10 @@ public class FindAlexController : MonoBehaviour
             animator.Play("door-open");
             scenery.transform.Find("dog").gameObject.SetActive(true);
             FindObjectOfType<AudioManager>().Play("dog-bark");
+            scenery.transform.Find("text-daughter-mother-1").gameObject.SetActive(false);
+            scenery.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
+            scenery.transform.Find("star-dog").gameObject.SetActive(true);
+            StartCoroutine(DoAfterPlaying("star", "daughter-mother-2"));
         } else if (hit == "bicyclist") {
             scenery.transform.Find("text-bicyclist").gameObject.SetActive(true);
             scenery.transform.Find("star-bicyclist").gameObject.SetActive(true);
@@ -84,12 +88,7 @@ public class FindAlexController : MonoBehaviour
                 scenery.transform.Find("text-daughter-mother-1").gameObject.SetActive(true);
                 scenery.transform.Find("door-house-1").gameObject.SetActive(true);
                 FindObjectOfType<AudioManager>().Play("daughter-mother-1");
-            } else {
-                scenery.transform.Find("text-daughter-mother-1").gameObject.SetActive(false);
-                scenery.transform.Find("text-daughter-mother-2").gameObject.SetActive(true);
-                scenery.transform.Find("star-dog").gameObject.SetActive(true);
-                StartCoroutine(DoAfterPlaying("star", "daughter-mother-2"));
-            }
+            } 
         } else if (hit == "alex-found") {
             scenery.transform.Find("text-alex").gameObject.SetActive(true);
             scenery.transform.Find("text-emma").gameObject.SetActive(false);

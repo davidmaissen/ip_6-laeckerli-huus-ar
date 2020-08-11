@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
  
 public class OrientationLayoutController : MonoBehaviour
 {
-    //https://forum.unity.com/threads/device-screen-rotation-event.118638/?_ga=2.268232782.134089061.1595601046-2023691235.1592315311
+    //Source: https://forum.unity.com/threads/device-screen-rotation-event.118638/?_ga=2.268232782.134089061.1595601046-2023691235.1592315311
 
     RectTransform rectTransform;
     public GameObject[] panelsInfo;

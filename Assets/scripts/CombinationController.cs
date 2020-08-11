@@ -19,7 +19,6 @@ public class CombinationController : MonoBehaviour
     public GameObject[] animations; 
     private ImageTrackingCombination imageTracking;
 
-
     //Controller
     public GameObject uiController;
     private GameSuccessController gameSuccessController;

@@ -37,16 +37,6 @@ public class ImageTracking : MonoBehaviour
         lastTrackedImage = new ARTrackedImage();
         arHelpCanvas = GameObject.Find("ARHelpCanvas");
         arHelpCanvas.SetActive(false);
-
-        /*
-        foreach(GameObject prefab in placeablePrefab)
-        {
-            GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-            newPrefab.name = prefab.name;
-            newPrefab.SetActive(false);
-            spawnedPrefabs.Add(prefab.name, newPrefab);
-        }
-        */
     }
 
     private void OnEnable() {
@@ -201,9 +191,6 @@ public class ImageTracking : MonoBehaviour
     private void GameOver() {        
         gameProgress.SaveMiniGame(gameID, 0, stars);
         gameSuccessController.ShowSuccessPanel(gameOver, gameID, 0, stars);
-
-        //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
-        //gameProgress.SaveMiniGame(findAlex);
     }
 
     private void TouchInfoNotNeeded() {

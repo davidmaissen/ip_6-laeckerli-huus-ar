@@ -37,13 +37,6 @@ public class CanvasStateController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void showTutorial(GameObject tutorial)
     {
         tutorial.SetActive(true);

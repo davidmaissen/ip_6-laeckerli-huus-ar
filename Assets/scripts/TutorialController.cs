@@ -10,10 +10,8 @@ public class TutorialController : MonoBehaviour
     public GameObject menuInfo;
     public GameObject menuSettings;
     public GameObject[] tutorialSteps;
+    //Controller
     public GameObject uiController;
-    
-    
-
 
     // Start is called before the first frame update
     void Start()
@@ -34,32 +32,11 @@ public class TutorialController : MonoBehaviour
         setView(tutorialSteps[0], tutorialSteps[0]);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void next()
     {
         int triggerAnimateIndex1 = 6;
-       // int triggerAnimateIndex2 = 8;
-
         int index = getActiveStep();
         setStep(index, index + 1);
-
-/*         if(index == triggerAnimateIndex1)
-        {
-            Animator animation = menuInfo.transform.Find("Panel-Menu").gameObject.GetComponent<Animator>();
-
-            animation.SetBool("displayed", !animation.GetBool("displayed"));
-        } */
-/*         if (index == triggerAnimateIndex2)
-        {
-            Animator animation = menuSettings.transform.Find("Panel-Settings").gameObject.GetComponent<Animator>();
-
-            animation.SetBool("displayed", !animation.GetBool("displayed"));
-        } */
     }
 
     public void back()

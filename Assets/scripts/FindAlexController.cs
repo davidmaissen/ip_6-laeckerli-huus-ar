@@ -99,7 +99,7 @@ public class FindAlexController : MonoBehaviour
             StartCoroutine(DoAfterPlaying("alex-found", "emma-2"));
             stars++;
             gameOver = true;
-            GameOver();
+            SaveMiniGame();
         } else if (hit == "emma"){
             if (scenery.transform.Find("text-emma").gameObject.activeSelf) {
                 scenery.transform.Find("text-emma").gameObject.SetActive(true);
@@ -119,7 +119,7 @@ public class FindAlexController : MonoBehaviour
          gameSuccessController.updateProgress(0, stars);
     }
 
-    public void GameOver() {
+    public void SaveMiniGame() {
         //MiniGame findAlex = new MiniGame(1, "Finde Alex", "Hilf Emma Alex zu finden", stars, stars);
         //gameProgress.SaveMiniGame(findAlex);
         gameProgress.SaveMiniGame(gameID, 0, stars);

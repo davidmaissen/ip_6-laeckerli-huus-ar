@@ -257,7 +257,7 @@ PrefabInstance:
         type: 3}
       propertyPath: successQuitCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1665158328}
     - target: {fileID: 1703594996156767286, guid: 01534d2ba867b4640b1cd1ead8f41b27,
         type: 3}
       propertyPath: setInactive.Array.size

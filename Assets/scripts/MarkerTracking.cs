@@ -33,6 +33,7 @@ public class MarkerTracking : MonoBehaviour
     private static bool oldImagesStarCollected = false;
     private static bool museStarCollected = false;
     private static bool productsStarCollected = false;
+    private static bool historyStarCollected = false;
 
     private void Awake() {
         
@@ -110,6 +111,7 @@ public class MarkerTracking : MonoBehaviour
                 if (hitInfo.transform.gameObject.name == "airplane-star" ||
                     hitInfo.transform.gameObject.name == "old-images-star" || 
                     hitInfo.transform.gameObject.name == "muse-star" ||
+                    hitInfo.transform.gameObject.name == "history-star" ||
                     hitInfo.transform.gameObject.name == "products-star") {
                     StarCollected(hitInfo.transform.gameObject.name);
                 } else if (hitInfo.transform.gameObject.name.Contains("Answer")) {
@@ -120,6 +122,12 @@ public class MarkerTracking : MonoBehaviour
                         pannel.gameObject.SetActive(false);
                         question.transform.Find("products-star").gameObject.SetActive(true);
                     } else if (hit.name == "Answer - Brot") {
+                        GameObject wrongAnswer = question.transform.Find("Pannel - Wrong").gameObject;
+                        StartCoroutine(AnswerWrong(pannel, wrongAnswer));
+                    } else if (hit.name == "Answer - 1904") {
+                        pannel.gameObject.SetActive(false);
+                        question.transform.Find("history-star").gameObject.SetActive(true);
+                    } else if (hit.name == "Answer - 2001") {
                         GameObject wrongAnswer = question.transform.Find("Pannel - Wrong").gameObject;
                         StartCoroutine(AnswerWrong(pannel, wrongAnswer));
                     }
@@ -140,6 +148,7 @@ public class MarkerTracking : MonoBehaviour
         else if (name == "old-images-star") oldImagesStarCollected = true;
         else if (name == "muse-star") museStarCollected = true;
         else if (name == "products-star") productsStarCollected = true;
+        else if (name == "history-star") historyStarCollected = true;
         Debug.Log(GameProgress.starsCollected);
         starCountAnimation.Play("Animate-StarCount");
         GameProgress.starsCollected++;
@@ -156,6 +165,7 @@ public class MarkerTracking : MonoBehaviour
         return (name == "airplane-star" && airPlaneStarCollected) || 
         (name == "old-images-star" && oldImagesStarCollected) ||
         (name == "muse-star" && museStarCollected) ||
+        (name == "question-history-star" && historyStarCollected) ||
         (name == "question-products-star" && productsStarCollected);
     }
 

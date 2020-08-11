@@ -11236,7 +11236,7 @@ GameObject:
   - component: {fileID: 5598594188528301054}
   - component: {fileID: 5598594188528301055}
   - component: {fileID: 5598594188528300928}
-  - component: {fileID: 2866912450381450518}
+  - component: {fileID: 9194811938943944698}
   m_Layer: 5
   m_Name: Icon-Star
   m_TagString: Untagged
@@ -11355,7 +11355,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &2866912450381450518
+--- !u!95 &9194811938943944698
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

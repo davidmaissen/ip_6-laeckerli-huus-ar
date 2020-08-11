@@ -32,10 +32,10 @@ public class MarkerTracking : MonoBehaviour
     private static bool museStarCollected = false;
 
     private void Awake() {
+        
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         starsCountController = FindObjectOfType<GameUpdateController>();
         gameProgress = new GameProgress();
-
         foreach(GameObject prefab in placeablePrefab)
         {
             GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -120,9 +120,7 @@ public class MarkerTracking : MonoBehaviour
         if (name == "airplane-star") airPlaneStarCollected = true;
         else if (name == "old-images-star") oldImagesStarCollected = true;
         else if (name == "muse-star") museStarCollected = true;
-        Debug.Log(GameProgress.starsCollected);
-        //animator
-        //animation.SetBool("catched", !animation.GetBool("catched"));
+        starCountAnimation.Play("Animate-StarCount");
         GameProgress.starsCollected++;
         starsCountController.updateStarsCounter();
         Debug.Log(GameProgress.starsCollected);

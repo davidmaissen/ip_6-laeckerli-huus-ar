@@ -32,8 +32,8 @@ public class StoryController : MonoBehaviour
             while (watch.Elapsed.TotalSeconds < 3) {
                 yield return null;
             }
-
-            SceneManager.LoadScene("success-board");
+            canvasSuccess.SetActive(true);
+            // SceneManager.LoadScene("success-board");
             successShown = true;
         }
         StopCoroutine("ShowSuccessScene");

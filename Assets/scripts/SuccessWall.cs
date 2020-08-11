@@ -7,7 +7,9 @@ using TMPro;
 public class SuccessWall : MonoBehaviour
 {
     public TextMeshPro playerNameLabel;
+    public TextMeshPro collectedStarsLabel;
     private void Awake() {
         playerNameLabel.text = GameProgress.playerName;
+        collectedStarsLabel.text = GameProgress.starsCollected.ToString();
     }
 }

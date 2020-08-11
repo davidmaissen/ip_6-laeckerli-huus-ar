@@ -19,6 +19,8 @@ public class MarkerTracking : MonoBehaviour
     public GameObject gamePlayButton;
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI gameDescription;
+
+    public Animator starCountAnimation;
     private GameProgress gameProgress;
     private MiniGame selectedMiniGame;
 
@@ -119,6 +121,8 @@ public class MarkerTracking : MonoBehaviour
         else if (name == "old-images-star") oldImagesStarCollected = true;
         else if (name == "muse-star") museStarCollected = true;
         Debug.Log(GameProgress.starsCollected);
+        //animator
+        //animation.SetBool("catched", !animation.GetBool("catched"));
         GameProgress.starsCollected++;
         starsCountController.updateStarsCounter();
         Debug.Log(GameProgress.starsCollected);

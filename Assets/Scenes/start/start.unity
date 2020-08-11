@@ -1097,16 +1097,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513945276}
   m_LocalRotation: {x: -0.0085984925, y: 0.00050117745, z: -0.05818573, w: 0.9982686}
-  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 315847904}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -0.98, y: 0.115, z: -6.6730003}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -395, y: -292}
-  m_SizeDelta: {x: 403, y: 577}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 343.2, y: 170.5}
+  m_SizeDelta: {x: 434.44775, y: 622.02563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513945278
 MonoBehaviour:
@@ -2684,7 +2684,7 @@ GameObject:
   - component: {fileID: 949169523}
   - component: {fileID: 949169522}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image-Ingredients
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2778,9 +2778,9 @@ RectTransform:
   m_Father: {fileID: 315847904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.42656258}
-  m_AnchorMax: {x: 0.5, y: 0.42656258}
-  m_AnchoredPosition: {x: -129.43, y: 444.81}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 590.57, y: 822.81}
   m_SizeDelta: {x: 1305.8539, y: 766.6382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1053557406
@@ -3917,9 +3917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4bff51152084b05a2a59a1dc47a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasStart: {fileID: 0}
-  canvasInput: {fileID: 0}
-  canvasIntro: {fileID: 0}
   inputField: {fileID: 828679234}
 --- !u!4 &1619584829
 Transform:

@@ -21,6 +21,8 @@ public class MarkerTracking : MonoBehaviour
     public GameObject gamePlayButton;
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI gameDescription;
+
+    public Animator starCountAnimation;
     private GameProgress gameProgress;
     private MiniGame selectedMiniGame;
 
@@ -33,10 +35,10 @@ public class MarkerTracking : MonoBehaviour
     private static bool productsStarCollected = false;
 
     private void Awake() {
+        
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         starsCountController = FindObjectOfType<GameUpdateController>();
         gameProgress = new GameProgress();
-
         foreach(GameObject prefab in placeablePrefab)
         {
             GameObject newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -139,6 +141,7 @@ public class MarkerTracking : MonoBehaviour
         else if (name == "muse-star") museStarCollected = true;
         else if (name == "products-star") productsStarCollected = true;
         Debug.Log(GameProgress.starsCollected);
+        starCountAnimation.Play("Animate-StarCount");
         GameProgress.starsCollected++;
         starsCountController.updateStarsCounter();
         Debug.Log(GameProgress.starsCollected);

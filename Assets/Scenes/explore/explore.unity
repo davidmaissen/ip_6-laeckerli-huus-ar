@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 0.6
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.6}
+  m_IndirectSpecularColor: {r: 0.3504172, g: 0.39069715, b: 0.45406997, a: 0.6}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -537,6 +537,7 @@ MonoBehaviour:
   gamePlayButton: {fileID: 8000489229845108299}
   gameTitle: {fileID: 8000489229010062747}
   gameDescription: {fileID: 8000489228761336262}
+  starCountAnimation: {fileID: 654979792}
 --- !u!224 &571581463 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1050425634507646187, guid: 7ac0684bd97ab497eaf6982220961c03,
@@ -555,6 +556,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &654979792 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9194811938943944698, guid: 7ac0684bd97ab497eaf6982220961c03,
+    type: 3}
+  m_PrefabInstance: {fileID: 5598594187460059967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &797942891 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 289712977722407863, guid: 7ac0684bd97ab497eaf6982220961c03,
@@ -1622,34 +1629,44 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
+    - target: {fileID: 4842478778110418551, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
-      propertyPath: m_AnchorMin.x
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147633424729993196, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147633424729993196, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147633424729993196, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147633424729993196, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147633424729993196, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
-      propertyPath: m_AnchorMin.y
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594186529157162, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598594186562195473, guid: 7ac0684bd97ab497eaf6982220961c03,
@@ -1925,32 +1942,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
-      propertyPath: m_AnchorMin.x
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598594188120101802, guid: 7ac0684bd97ab497eaf6982220961c03,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598594188136284062, guid: 7ac0684bd97ab497eaf6982220961c03,
@@ -2206,6 +2203,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: explore
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194811938943944698, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194811938943944698, guid: 7ac0684bd97ab497eaf6982220961c03,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac0684bd97ab497eaf6982220961c03, type: 3}
@@ -3180,8 +3187,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Baue mit L\xE4ckerli einen Turm indem du sie aufeinander stapelst."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}
+  m_sharedMaterial: {fileID: 1000969922072976223, guid: 47771057c6031441ca4621100caacdc9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3206,7 +3214,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 60.15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1

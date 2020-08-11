@@ -75,7 +75,9 @@ public class MarkerTracking : MonoBehaviour
         PositionSaveSystem.position = prefab.transform.position;
         PositionSaveSystem.rotation = prefab.transform.rotation;
         prefab.transform.Rotate(90,0,0);
-        ShowGameIcon(prefab);
+        if (!prefab.name.Contains("star")) {
+            ShowGameIcon(prefab);
+        }
 
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");

@@ -34,28 +34,27 @@ public class MazePlayer : MonoBehaviour {
 		swipeAnimator.SetBool("ShowInfo", true);
 		finished = false;
 		rb = GetComponent<Rigidbody>();
-		Debug.Log("Kugel: " + rb.name);
-
+		TouchCount();
 	}
 
-// Each physics step..
-//https://www.youtube.com/watch?v=gyOOf25321M
-void Update() {
-   // Swipe start
-   if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
-    	touchStart = Input.GetTouch(0).position;
-		TouchCount();
-   }
-   // Swipe end
-   if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) {
-		touchEnd = Input.GetTouch(0).position;
-		float cameraFacing = Camera.main.transform.eulerAngles.y;
-		Vector2 swipeVector = touchEnd - touchStart;
-		Vector3 inputVector = new Vector3(swipeVector.x, 0.0f, swipeVector.y);
-		Vector3 movement = Quaternion.Euler(0.0f, cameraFacing, 0.0f) * Vector3.Normalize(inputVector);
-		rb.velocity = movement;
-   }   
- }
+	//https://www.youtube.com/watch?v=gyOOf25321M
+	void Update() {
+		if (gameOver || finished) return;
+		// Swipe start
+		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
+				touchStart = Input.GetTouch(0).position;
+				TouchCount();
+		}
+		// Swipe end
+		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+			touchEnd = Input.GetTouch(0).position;
+			float cameraFacing = Camera.main.transform.eulerAngles.y;
+			Vector2 swipeVector = touchEnd - touchStart;
+			Vector3 inputVector = new Vector3(swipeVector.x, 0.0f, swipeVector.y);
+			Vector3 movement = Quaternion.Euler(0.0f, cameraFacing, 0.0f) * Vector3.Normalize(inputVector);
+			rb.velocity = movement;
+		}   
+	}
 
 
 	// When this game object intersects a collider with 'is trigger' checked, 
@@ -81,7 +80,6 @@ void Update() {
 		swipeAnimator.SetBool("ShowInfo", false);
         gameSuccessController.updateProgress(touchesCounter, activeLevel-1);
 	}
-
 
 	public bool LevelCompleted()
 	{

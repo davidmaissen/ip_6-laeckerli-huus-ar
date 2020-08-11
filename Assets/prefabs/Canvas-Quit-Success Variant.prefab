@@ -167,17 +167,17 @@ PrefabInstance:
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6653263369253510782}
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleQuitMenu
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4465806505012590031, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
@@ -247,12 +247,12 @@ PrefabInstance:
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 94
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
@@ -267,18 +267,18 @@ PrefabInstance:
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_text
-      value: "M\xF6chtest du dieses Mini-Spiel abschliessen und die verdienten Sterne
-        und die Zutat einsammeln?"
+      value: "M\xF6chtest du dieses Mini-Spiel abschliessen und die Sterne und die
+        Zutat einsammeln?"
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_fontSize
-      value: 19.55
+      value: 22.05
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7183493292691768235, guid: a811173d0981d45d88f29b8442086196,
         type: 3}
@@ -343,3 +343,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a811173d0981d45d88f29b8442086196, type: 3}
+--- !u!1 &6653263369253510782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4465806504442506895, guid: a811173d0981d45d88f29b8442086196,
+    type: 3}
+  m_PrefabInstance: {fileID: 7038168072478650609}
+  m_PrefabAsset: {fileID: 0}

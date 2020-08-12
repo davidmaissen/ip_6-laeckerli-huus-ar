@@ -19,6 +19,7 @@ public class TowerStacker : MonoBehaviour
     private int stars = 0;
     private int highScore = 0;
     private bool gameOver = false;
+    private bool gameStarted = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;
     
@@ -43,6 +44,11 @@ public class TowerStacker : MonoBehaviour
         if (spawnObjectsOnPlane.placementModeActive) {
             gameSuccessController.updateProgress(1, 0);
             return;
+        }
+
+        if (!gameStarted) {
+            gameStarted = true;
+            FindObjectOfType<AudioManager>().Play("music");
         }
 
         if (gameOver) return;

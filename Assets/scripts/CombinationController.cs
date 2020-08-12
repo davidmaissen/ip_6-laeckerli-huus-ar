@@ -33,6 +33,7 @@ public class CombinationController : MonoBehaviour
         bowlAddedCorrectly = new bool[4];
         whiskAddedCorrectly = new bool[2];
         puzzlesCompleted = new bool[3];
+        FindObjectOfType<AudioManager>().Play("music");
     }
 
     private void Update() {

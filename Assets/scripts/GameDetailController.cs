@@ -46,8 +46,8 @@ public class GameDetailController : MonoBehaviour
         } else {
             GameObject gameDetailsUpdated = gameDetails;
             TextMeshPro gameTitle = gameDetailsUpdated.transform.Find("Title-Game").gameObject.GetComponent<TextMeshPro>();
-            TextMeshPro gameStatus = gameDetailsUpdated.transform.Find("Status/Status-Game/Status-Text").gameObject.GetComponent<TextMeshPro>();
-            TextMeshPro gameHighScore = gameDetailsUpdated.transform.Find("HighScore/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshPro>();
+            TextMeshPro gameStatus = gameDetailsUpdated.transform.Find("Status-Game/Status-Text").gameObject.GetComponent<TextMeshPro>();
+            TextMeshPro gameHighScore = gameDetailsUpdated.transform.Find("HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshPro>();
             gameTitle.text = details.Item1;
             gameStatus.text = details.Item3;
             gameHighScore.text = details.Item4 > 0 ? details.Item4.ToString() : "-";

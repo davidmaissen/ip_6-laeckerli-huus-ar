@@ -35,6 +35,8 @@ public class MazePlayer : MonoBehaviour {
 		finished = false;
 		rb = GetComponent<Rigidbody>();
 		TouchCount();
+		FindObjectOfType<AudioManager>().Play("music");
+		FindObjectOfType<AudioManager>().Play("sounds");
 	}
 
 	//https://www.youtube.com/watch?v=gyOOf25321M
@@ -53,6 +55,7 @@ public class MazePlayer : MonoBehaviour {
 			Vector3 inputVector = new Vector3(swipeVector.x, 0.0f, swipeVector.y);
 			Vector3 movement = Quaternion.Euler(0.0f, cameraFacing, 0.0f) * Vector3.Normalize(inputVector);
 			rb.velocity = movement;
+			FindObjectOfType<AudioManager>().Play("golf-bat");
 		}   
 	}
 

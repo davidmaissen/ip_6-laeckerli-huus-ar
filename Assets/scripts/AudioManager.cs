@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Can't find file with name " + name);
             return; 
         }
-        s.source.Play();
+        if (!s.source.isPlaying) s.source.Play();
     }
 
     public void Stop(string name) {

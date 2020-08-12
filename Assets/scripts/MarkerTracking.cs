@@ -92,11 +92,13 @@ public class MarkerTracking : MonoBehaviour
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");
 
+        /*
         foreach(GameObject go in spawnedPrefabs.Values) {
             if (go.name != name) {
                 go.SetActive(false);
             }
         }
+        */
     }
 
      void Update(){
@@ -137,6 +139,7 @@ public class MarkerTracking : MonoBehaviour
                     gameTitle.text = selectedMiniGame.getTitle();
                     gameDescription.text = selectedMiniGame.getDescription();
                     gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
+                    FindObjectOfType<AudioManager>().Play(selectedMiniGame.getTitleKey());
                     // SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 }
             }

@@ -5001,6 +5001,7 @@ GameObject:
   - component: {fileID: 2040705749695059310}
   - component: {fileID: 4784293090439426894}
   - component: {fileID: 2340164553697021575}
+  - component: {fileID: 595023411739162349}
   m_Layer: 0
   m_Name: combination
   m_TagString: Untagged
@@ -5083,6 +5084,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &595023411739162349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678165666069990904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!1 &3714416075915539645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,7 +5154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 600632079493727670, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
+  - {fileID: -3068483129789752678, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5199,7 +5213,7 @@ MonoBehaviour:
   m_text: Kombiniere
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
-  m_sharedMaterial: {fileID: 600632079493727670, guid: b0bf4defc798541579d3e8116149b77c,
+  m_sharedMaterial: {fileID: -3068483129789752678, guid: b0bf4defc798541579d3e8116149b77c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5301,6 +5315,7 @@ GameObject:
   - component: {fileID: 296516185937132374}
   - component: {fileID: 6398655673816117236}
   - component: {fileID: 7085802646337090017}
+  - component: {fileID: 8419639355922148842}
   m_Layer: 0
   m_Name: combination
   m_TagString: Untagged
@@ -5383,6 +5398,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8419639355922148842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983555581824312957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!1 &5627863350574158317
 GameObject:
   m_ObjectHideFlags: 0

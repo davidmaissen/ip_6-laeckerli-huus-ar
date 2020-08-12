@@ -792,6 +792,8 @@ MonoBehaviour:
   - {fileID: 8541744748547234771, guid: b64bfd7b3664e4e0b988dc7248e8f420, type: 3}
   - {fileID: 8541744748547234771, guid: 461acd804ae5a454185c15c88c41775b, type: 3}
   - {fileID: 7911040046619357045, guid: 1db8f23226df0421995d1fcc34e72432, type: 3}
+  - {fileID: 3132807776479307711, guid: eb5d2980c108f4168a9002ae55c82ff8, type: 3}
+  - {fileID: 3132807776479307711, guid: 3d5277af258064c26afd93d7e497b803, type: 3}
   gameStartScreen: {fileID: 8000489228018457516}
   gamePlayButton: {fileID: 8000489229845108299}
   gameTitle: {fileID: 8000489229010062747}
@@ -4053,7 +4055,7 @@ PrefabInstance:
     - target: {fileID: 5598594187268047216, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 654.8728
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187268047216, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
@@ -4093,7 +4095,7 @@ PrefabInstance:
     - target: {fileID: 5598594187854502901, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 654.8728
+      value: 1110.9929
       objectReference: {fileID: 0}
     - target: {fileID: 5598594187854502901, guid: 7ac0684bd97ab497eaf6982220961c03,
         type: 3}
@@ -5554,7 +5556,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 62.95
+  m_fontSize: 55.7
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5600,7 +5602,7 @@ MonoBehaviour:
     spaceCount: 9
     wordCount: 10
     linkCount: 0
-    lineCount: 4
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

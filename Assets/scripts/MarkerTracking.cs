@@ -21,6 +21,8 @@ public class MarkerTracking : MonoBehaviour
     public GameObject gamePlayButton;
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI gameDescription;
+    public Sprite emma;
+    public GameObject imageAlex;
 
     public Animator starCountAnimation;
     private GameProgress gameProgress;
@@ -140,6 +142,9 @@ public class MarkerTracking : MonoBehaviour
                     gameDescription.text = selectedMiniGame.getDescription();
                     gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
                     FindObjectOfType<AudioManager>().Play(selectedMiniGame.getTitleKey());
+                    if (selectedMiniGame.getTitleKey() == "find-alex") {
+                        imageAlex.gameObject.GetComponent<Image>().sprite = emma;
+                    }
                     // SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 }
             }

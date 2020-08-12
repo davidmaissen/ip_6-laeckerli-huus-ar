@@ -2241,7 +2241,7 @@ RectTransform:
   m_GameObject: {fileID: 1652486145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 1145894764}
   - {fileID: 1460563257}
@@ -2764,7 +2764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1946678153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,11 +2778,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: cookie
-    clip: {fileID: 8300000, guid: c66daabf0af844ab3a0628df0c5adafa, type: 3}
-    volume: 1
+  - name: music
+    clip: {fileID: 8300000, guid: 6fa1bcda6fb5a4814abacdb58a295ffb, type: 3}
+    volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: sound
+    clip: {fileID: 8300000, guid: 3db4a8d3149eb496a8c6b4996d7ba26f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &1946678154
 Transform:

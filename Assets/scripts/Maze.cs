@@ -111,7 +111,8 @@ public class Maze : MonoBehaviour
 	{
         levelSuccessCanvas.SetActive(false);
         spawnedlevels[comletedLevels].SetActive(true);
-        player = spawnedlevels[comletedLevels].GetComponent<MazePlayer>();	
+        player = spawnedlevels[comletedLevels].GetComponent<MazePlayer>();
+        FindObjectOfType<AudioManager>().Play("level");
     }
 
     public void SaveMiniGame() {

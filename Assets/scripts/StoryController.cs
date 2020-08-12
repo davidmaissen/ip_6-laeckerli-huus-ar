@@ -33,6 +33,7 @@ public class StoryController : MonoBehaviour
                 yield return null;
             }
             canvasSuccess.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("gameover");
             // SceneManager.LoadScene("success-board");
             successShown = true;
         }

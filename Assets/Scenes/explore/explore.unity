@@ -267,6 +267,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: gameover
+    clip: {fileID: 8300000, guid: e9561f9e31c9144e398f4aacdf4f24db, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &25913935
 Transform:
   m_ObjectHideFlags: 0
@@ -1432,7 +1438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gut gemacht! Dank dir kann ich wieder die feinen L\xE4ckerli backen! Platziere
+  m_text: "Besten Dank! Dank dir kann ich wieder die feinen L\xE4ckerli backen! Platziere
     die Siegerwand, um all deine Leistungen nochmals anschauen zu k\xF6nnen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47771057c6031441ca4621100caacdc9, type: 2}

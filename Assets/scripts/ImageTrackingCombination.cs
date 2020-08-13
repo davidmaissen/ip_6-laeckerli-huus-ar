@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
@@ -58,7 +59,7 @@ public class ImageTrackingCombination : MonoBehaviour
                 UpdateImage(trackedImage);
             }
             foreach(ARTrackedImage trackedImage in eventArgs.updated) {
-                UpdateImage(trackedImage);
+                if (trackedImage.trackingState == TrackingState.Tracking) UpdateImage(trackedImage);
             }
             foreach(ARTrackedImage trackedImage in eventArgs.removed) {
                 spawnedPrefabs[trackedImage.name].SetActive(false);

@@ -157,12 +157,15 @@ public class MarkerTracking : MonoBehaviour
                 else
                 // show mini game button
                 {
+                    Debug.Log("setting texts");
                     gameStartScreen.SetActive(true);
                     selectedMiniGame = Array.Find(GameProgress.miniGames, minigame => minigame.getTitleKey() == hitInfo.transform.gameObject.name);
                     gameTitle.text = selectedMiniGame.getTitle();
                     gameDescription.text = selectedMiniGame.getDescription();
-                    gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
+                    Debug.Log("play sound");
                     FindObjectOfType<AudioManager>().Play(selectedMiniGame.getTitleKey());
+                    Debug.Log("set button listener");
+                    gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
                     // if the mini game is find-alex, show emma insted of alex
                     if (selectedMiniGame.getTitleKey() == "find-alex") 
                     {

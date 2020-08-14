@@ -13,11 +13,8 @@ public class TutorialController : MonoBehaviour
     //Controller
     public GameObject uiController;
 
-    // Start is called before the first frame update
     void Start()
     {
-
-
         for (int i = 0; i < tutorialSteps.Length; i++)
         {
             if(i < 1){
@@ -47,7 +44,7 @@ public class TutorialController : MonoBehaviour
 
     public void handleInfoClick()
     {
-        int triggeredStep = 5;
+        int triggeredStep = 6;
 
         if (getActiveStep() == triggeredStep)
         {
@@ -111,6 +108,14 @@ public class TutorialController : MonoBehaviour
 
             case "Tutorial-Step-5":
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
+                menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
+
+                FindObjectOfType<AudioManager>().Stop("tutorial-4");
+                FindObjectOfType<AudioManager>().Play("tutorial-5");
+                break;
+
+            case "Tutorial-Step-6":
+                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
 
                 menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
@@ -118,11 +123,11 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(true);
-                FindObjectOfType<AudioManager>().Stop("tutorial-4");
-                FindObjectOfType<AudioManager>().Play("tutorial-5");
+                FindObjectOfType<AudioManager>().Stop("tutorial-5");
+                FindObjectOfType<AudioManager>().Play("tutorial-6");
                 break;
 
-            case "Tutorial-Step-6":
+            case "Tutorial-Step-7":
                 menuTutorial.gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
@@ -131,12 +136,12 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
-                FindObjectOfType<AudioManager>().Stop("tutorial-5");
-                FindObjectOfType<AudioManager>().Play("tutorial-6");
+                FindObjectOfType<AudioManager>().Stop("tutorial-6");
+                FindObjectOfType<AudioManager>().Play("tutorial-7");
                 menuExplore.gameObject.SetActive(true);
                 break;
 
-            case "Tutorial-Step-7":
+            case "Tutorial-Step-8":
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
                 menuTutorial.gameObject.SetActive(true);
@@ -147,28 +152,12 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(false);
                 menuInfo.transform.Find("Panel-Menu-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
-                FindObjectOfType<AudioManager>().Stop("tutorial-6");
-                FindObjectOfType<AudioManager>().Play("tutorial-7");
-                break;
-
-            case "Tutorial-Step-8":
-                uiController.GetComponent<AnimationController>().TogglePanel(menuInfo.gameObject);
-                menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
-                menuTutorial.transform.Find("Button-Next").gameObject.SetActive(true);
-                menuTutorial.gameObject.SetActive(true);
-
-                menuExplore.transform.Find("Panel/Menu-Top/Ingredients-Bar").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(false);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
-                menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
-                menuSettings.transform.Find("Panel-Settings-Portrait/Menu-Area/Panel-Background-Portrait/Button-Close").gameObject.GetComponent<Button>().interactable = false;
-                menuExplore.gameObject.SetActive(true);
                 FindObjectOfType<AudioManager>().Stop("tutorial-7");
                 FindObjectOfType<AudioManager>().Play("tutorial-8");
                 break;
 
             case "Tutorial-Step-9":
+                uiController.GetComponent<AnimationController>().TogglePanel(menuInfo.gameObject);
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuTutorial.transform.Find("Button-Next").gameObject.SetActive(false);
                 menuTutorial.gameObject.SetActive(true);
@@ -177,7 +166,6 @@ public class TutorialController : MonoBehaviour
                 menuExplore.transform.Find("Panel/Menu-Top/Icon-Star").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.SetActive(true);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.SetActive(true);
-                //menuSettings.transform.Find("Panel-Settings/Menu-Area/Panel-Background/Menu-Bottom/Button-Close").gameObject.SetActive(false);
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Home").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.transform.Find("Panel/Menu-Bottom/Button-Info").gameObject.GetComponent<Button>().interactable = false;
                 menuExplore.gameObject.SetActive(true);
@@ -203,6 +191,4 @@ public class TutorialController : MonoBehaviour
         }
         return i;
     }
-
-
 }

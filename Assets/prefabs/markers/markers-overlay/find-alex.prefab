@@ -5252,7 +5252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 600632079493727670, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
+  - {fileID: -3068483129789752678, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5311,7 +5311,7 @@ MonoBehaviour:
   m_text: Finde Alex
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0bf4defc798541579d3e8116149b77c, type: 2}
-  m_sharedMaterial: {fileID: 600632079493727670, guid: b0bf4defc798541579d3e8116149b77c,
+  m_sharedMaterial: {fileID: -3068483129789752678, guid: b0bf4defc798541579d3e8116149b77c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5413,6 +5413,7 @@ GameObject:
   - component: {fileID: 2608879705952259654}
   - component: {fileID: 465040746886446850}
   - component: {fileID: 7807524810067162369}
+  - component: {fileID: 1945719713628977560}
   m_Layer: 0
   m_Name: find-alex
   m_TagString: Untagged
@@ -5495,6 +5496,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1945719713628977560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4208655821159540128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!1 &4223966870819718464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5521,7 @@ GameObject:
   - component: {fileID: 4657343476540536870}
   - component: {fileID: 4752171480308993656}
   - component: {fileID: 5932886349548189079}
+  - component: {fileID: 7526640681090454283}
   m_Layer: 0
   m_Name: find-alex
   m_TagString: Untagged
@@ -5589,6 +5604,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7526640681090454283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223966870819718464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3f83df413c040b39972d42f3ac0101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goClicked: 0
 --- !u!1 &6083030494298978908
 GameObject:
   m_ObjectHideFlags: 0

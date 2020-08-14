@@ -11,5 +11,7 @@ public class SuccessWall : MonoBehaviour
     private void Awake() {
         playerNameLabel.text = GameProgress.playerName;
         collectedStarsLabel.text = GameProgress.starsCollected.ToString();
+        FindObjectOfType<AudioManager>().Play("music");
+        FindObjectOfType<AudioManager>().Play("sound");
     }
 }

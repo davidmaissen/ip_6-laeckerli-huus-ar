@@ -82,15 +82,19 @@ public class GameSuccessController : MonoBehaviour
             switch (starsCount) {
                 case 0:
                 textAlex.text = "Schade!";
+                FindObjectOfType<AudioManager>().Play("fail");
                 break;
                 case 1:
                 textAlex.text = "Gut!";
+                FindObjectOfType<AudioManager>().Play("good");
                 break;
                 case 2:
                 textAlex.text = "Bravo!";
+                FindObjectOfType<AudioManager>().Play("bravo");
                 break;
                 case 3:
                 textAlex.text = "Perfekt!";
+                FindObjectOfType<AudioManager>().Play("perfect");
                 break;
             }
             successCanvas.SetActive(true);

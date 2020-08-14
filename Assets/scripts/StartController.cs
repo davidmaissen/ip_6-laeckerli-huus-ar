@@ -48,7 +48,9 @@ public class StartController : MonoBehaviour
     }
     else
     {
-        exceptionPanel.text = "Bitte gib einen gültigen Spielernamen ein";
+        exceptionPanel.text = "Bitte gib einen gültigen Spielernamen ein.";
+        FindObjectOfType<AudioManager>().Stop("name");
+        FindObjectOfType<AudioManager>().Play("wrong");
     }
 
     }
@@ -60,6 +62,7 @@ public class StartController : MonoBehaviour
         {
             string playerName = GameProgress.playerName;
             introText.text = "Hallo " + playerName + "\r\nIch möchte die berühmten Basler Läckerli backen. Mir fehlen aber noch einige Zutaten, die in der Ausstellung versteckt sind. Hilfst Du mir, diese zu finden?";
+            FindObjectOfType<AudioManager>().Play("intro");
         }
 
         canvasInput.SetActive(false);

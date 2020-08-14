@@ -37,6 +37,7 @@ public class CombinationController : MonoBehaviour
     }
 
     private void Update() {
+        if (gameOver) return;
         if (!puzzlesCompleted[0] && Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
             Debug.Log("bowlAddedCorrectly");
             puzzlesCompleted[0] = true;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -21,6 +22,8 @@ public class MarkerTracking : MonoBehaviour
     public GameObject gamePlayButton;
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI gameDescription;
+    public Sprite emma;
+    public GameObject imageAlex;
 
     public Animator starCountAnimation;
     private GameProgress gameProgress;
@@ -62,10 +65,11 @@ public class MarkerTracking : MonoBehaviour
             UpdateImage(trackedImage);
         }
         foreach(ARTrackedImage trackedImage in eventArgs.updated) {
-            UpdateImage(trackedImage);
+            if (trackedImage.trackingState == TrackingState.Tracking) UpdateImage(trackedImage);
+            if (trackedImage.trackingState == TrackingState.Limited) spawnedPrefabs[trackedImage.referenceImage.name].SetActive(false);
         }
         foreach(ARTrackedImage trackedImage in eventArgs.removed) {
-            spawnedPrefabs[trackedImage.name].SetActive(false);
+            spawnedPrefabs[trackedImage.referenceImage.name].SetActive(false);
         }
     }
 
@@ -92,11 +96,13 @@ public class MarkerTracking : MonoBehaviour
         prefab.SetActive(true);
         Debug.Log(prefab.name + " spotted");
 
+        /*
         foreach(GameObject go in spawnedPrefabs.Values) {
             if (go.name != name) {
                 go.SetActive(false);
             }
         }
+        */
     }
 
      void Update(){
@@ -137,6 +143,10 @@ public class MarkerTracking : MonoBehaviour
                     gameTitle.text = selectedMiniGame.getTitle();
                     gameDescription.text = selectedMiniGame.getDescription();
                     gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
+                    FindObjectOfType<AudioManager>().Play(selectedMiniGame.getTitleKey());
+                    if (selectedMiniGame.getTitleKey() == "find-alex") {
+                        imageAlex.gameObject.GetComponent<Image>().sprite = emma;
+                    }
                     // SceneManager.LoadScene(hitInfo.transform.gameObject.name);
                 }
             }

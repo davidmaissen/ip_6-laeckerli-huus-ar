@@ -35,19 +35,14 @@ public class OrientationLayoutController : MonoBehaviour
 
         switch(activeScene.name)
         {
-
              case "start":
-             Screen.orientation = ScreenOrientation.Portrait;
-             break;
-
              case "tutorial":
              Screen.orientation = ScreenOrientation.Portrait;
              break;
 
-             case "explore":
+             default:
              Screen.orientation = ScreenOrientation.AutoRotation;
-             break;           
-
+             break;
         }
     
         rectTransform = GetComponent<RectTransform>();

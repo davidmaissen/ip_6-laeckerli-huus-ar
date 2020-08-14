@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
-
     public static bool floorCollided = false;
     public static bool cookieCollided = false;
 
+    // used to look up, if cookie of laeckerli stacking game hasn't touched the floor
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "LaeckerliFloor") {

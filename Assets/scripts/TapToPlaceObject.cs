@@ -9,19 +9,16 @@ using System;
 
 public class TapToPlaceObject : MonoBehaviour
 {
-
     public GameObject placementIndicator;
     private ARSessionOrigin arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
     
-    // Start is called before the first frame update
     void Start()
     {
         arOrigin = FindObjectOfType<ARSessionOrigin>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdatePlacementPose();
@@ -42,7 +39,6 @@ public class TapToPlaceObject : MonoBehaviour
     {
         var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f,0.5f));
         var hits = new List<ARRaycastHit>();
-        // arOrigin.Raycast(screenCenter, hits, Trackable);
         var raycastManager = GetComponent<ARRaycastManager>();
         raycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
 

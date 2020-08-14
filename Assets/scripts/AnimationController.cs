@@ -5,10 +5,8 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     public GameObject topBar;
-    //Controller
     private OrientationLayoutController layoutController;
 
-    //Toggles ingredientsBar
     public void animateIngredientsBar(Animator animation)
     {
         animation.SetBool("expanded", !animation.GetBool("expanded"));
@@ -16,11 +14,10 @@ public class AnimationController : MonoBehaviour
 
      public void ToggleVisible(Animator animation)
     {
-        //var anim = GetComponent<Animator>();
         animation.SetBool("displayed", !animation.GetBool("displayed"));
     }
 
-    //Toggles menu- and info-panel for landscape and portrait view
+    // toggles menu- and info-panel for landscape and portrait view
      public void TogglePanel(GameObject panel)
     {
         layoutController = GetComponent<OrientationLayoutController>();

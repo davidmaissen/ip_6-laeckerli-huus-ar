@@ -11,7 +11,6 @@ public class StoryController : MonoBehaviour
     private GameProgress gameProgress;
     public GameObject canvasSuccess;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameProgress = new GameProgress();
@@ -23,6 +22,7 @@ public class StoryController : MonoBehaviour
         }      
     }
 
+    // show game success scene if every game has been completed and success scene hasn't been shown before
     IEnumerator ShowSuccessScene()
     {
         if (!successShown) {
@@ -34,7 +34,6 @@ public class StoryController : MonoBehaviour
             }
             canvasSuccess.SetActive(true);
             FindObjectOfType<AudioManager>().Play("gameover");
-            // SceneManager.LoadScene("success-board");
             successShown = true;
         }
         StopCoroutine("ShowSuccessScene");

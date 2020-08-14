@@ -8,5 +8,4 @@ public class ChangeSceneManagement : MonoBehaviour
         Debug.Log("Change Scene " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
-
 }

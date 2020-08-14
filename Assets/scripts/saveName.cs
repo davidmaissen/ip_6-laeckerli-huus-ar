@@ -5,36 +5,26 @@ using TMPro;
 
 public class saveName : MonoBehaviour
 {
-
     public TextMeshProUGUI inputField;
-
-    //Controller
-   // private ChangeSceneManagement sceneManagement;
     private GameProgress gameProgress;
 
-
-void Start()
-{
-    gameProgress = new GameProgress();
-    //sceneManagement = GetComponent<ChangeSceneManagement>();
-}
-
-public void CheckIsValidAndSave(TextMeshProUGUI exceptionPanel)
-{
-    int charCount = inputField.text.Length;
-    Debug.Log("Länge: " + charCount);
-    if(charCount > 1)
+    void Start()
     {
-        gameProgress.setPlayerName(inputField.text);
-      //  sceneManagement.ChangeScene("explore");
-    }
-    else
-    {
-        exceptionPanel.text = "Bitte gib einen gültigen Spielernamen ein";
+        gameProgress = new GameProgress();
     }
 
-   // TMP_TextInfo textInfo = textMP.textInfo;
-}
-
-
+    // only accept names between one and 15 letters to show it during game
+    public void CheckIsValidAndSave(TextMeshProUGUI exceptionPanel)
+    {
+        int charCount = inputField.text.Length;
+        Debug.Log("Länge: " + charCount);
+        if (charCount > 1 && charCount < 15)
+        {
+            gameProgress.setPlayerName(inputField.text);
+        }
+        else
+        {
+            exceptionPanel.text = "Bitte gib einen gültigen Spielernamen ein";
+        }
+    }
 }

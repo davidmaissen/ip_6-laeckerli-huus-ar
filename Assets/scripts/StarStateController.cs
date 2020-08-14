@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class StarStateController : MonoBehaviour
 {
-
     public Sprite imageInactive;
     public Sprite imageActive;
-
 
     public void setStarGroup(GameObject stars, int starsCount)
     {

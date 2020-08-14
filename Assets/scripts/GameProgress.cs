@@ -10,6 +10,7 @@ public class GameProgress
     public static bool tutorialCompleted = false;
     public static string playerName;
 
+    // setup of all mini games
     public void InitializeGameData()
     {
         if (miniGames == null)
@@ -32,9 +33,9 @@ public class GameProgress
         }
     }
 
+    // used to save progress in specific mini game
     public void SaveMiniGame(int id, int highScore, int stars)
     {
-        
         if (miniGames != null && id < miniGames.Length && (miniGames[id].getHighScore() < highScore || miniGames[id].getStars() < stars))
         {
             starsCollected += stars - miniGames[id].getStars();
@@ -62,8 +63,6 @@ public class GameProgress
 
     public bool isGameCompleted(int gameID)
     {
-        bool completed = false;
-
         if (miniGames != null && gameID < miniGames.Length)
         {
             return miniGames[gameID].isCompleted();
@@ -95,19 +94,18 @@ public class GameProgress
         string status = "";
         int highScore = 0;
 
-
-        if(miniGames != null && gameID < miniGames.Length)
+        if (miniGames != null && gameID < miniGames.Length)
         {
            MiniGame game = miniGames[gameID];
            title = game.getTitle();
            stars = game.getStars();
            highScore = game.getHighScore();
 
-           if(game.isCompleted()){
+            if(game.isCompleted()){
                 status = "gefunden";
-           }
-           else
-           {
+            }
+            else
+            {
                 status = "verschollen";
             }
         }
@@ -117,7 +115,7 @@ public class GameProgress
 
     public (string name, Sprite imageActive, Sprite imageInactive) GetIngredientInfo(int gameID)
     {
-        if(miniGames != null && gameID < miniGames.Length)
+        if (miniGames != null && gameID < miniGames.Length)
         {
             MiniGame game = miniGames[gameID];
             string name = game.getIngredientName();
@@ -134,7 +132,7 @@ public class GameProgress
 
     public Sprite GetIngredientIcon(int gameID, bool checkState)
     {
-        if(miniGames != null && gameID < miniGames.Length)
+        if (miniGames != null && gameID < miniGames.Length)
         {
             MiniGame game = miniGames[gameID];
 
@@ -162,7 +160,7 @@ public class GameProgress
     {
 
         int i = 0;
-        while(i < miniGames.Length && miniGames[i].isCompleted())
+        while (i < miniGames.Length && miniGames[i].isCompleted())
         {
             i++;
         }

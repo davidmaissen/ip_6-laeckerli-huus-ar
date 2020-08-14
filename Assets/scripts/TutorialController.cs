@@ -10,14 +10,14 @@ public class TutorialController : MonoBehaviour
     public GameObject menuInfo;
     public GameObject menuSettings;
     public GameObject[] tutorialSteps;
-    //Controller
     public GameObject uiController;
 
     void Start()
     {
         for (int i = 0; i < tutorialSteps.Length; i++)
         {
-            if(i < 1){
+            if (i < 1)
+            {
                 tutorialSteps[i].SetActive(true);
             }
             else
@@ -29,19 +29,21 @@ public class TutorialController : MonoBehaviour
         setView(tutorialSteps[0], tutorialSteps[0]);
     }
 
+    // go to next tutorial screen
     public void next()
     {
-        int triggerAnimateIndex1 = 6;
         int index = getActiveStep();
         setStep(index, index + 1);
     }
 
+    // go to previous tutorial screen
     public void back()
     {
         int index = getActiveStep();
         setStep(index, index-1);
     }
 
+    // react to click on info button if current step is step 6
     public void handleInfoClick()
     {
         int triggeredStep = 6;
@@ -52,6 +54,7 @@ public class TutorialController : MonoBehaviour
         }
     }
 
+    // react to click on home button if triggered step is step 7
     public void handleHomeClick()
     {
         int triggeredStep = 7;
@@ -62,6 +65,7 @@ public class TutorialController : MonoBehaviour
         }
     }
 
+    // show needed ui elements and play sound depending on current step
     private void setView(GameObject nextStep, GameObject actualStep)
     {
         actualStep.gameObject.SetActive(false);
@@ -70,7 +74,6 @@ public class TutorialController : MonoBehaviour
         switch (nextStep.name)
         {
             case "Tutorial-Step-1":
-
                 menuTutorial.transform.Find("Button-Back").gameObject.SetActive(false);
                 menuExplore.gameObject.SetActive(false);
                 FindObjectOfType<AudioManager>().Play("tutorial-1");

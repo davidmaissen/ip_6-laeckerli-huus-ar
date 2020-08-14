@@ -18,14 +18,12 @@ public class CombinationController : MonoBehaviour
     public Canvas canvas;
     public GameObject[] animations; 
     private ImageTrackingCombination imageTracking;
-
-    //Controller
     public GameObject uiController;
     private GameSuccessController gameSuccessController;
     private GameProgress gameProgress;
 
-
-    private void Awake() {
+    private void Awake() 
+    {
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
         gameProgress = new GameProgress();
         gameTimer = GameObject.FindObjectOfType<GameTimer>();
@@ -36,26 +34,35 @@ public class CombinationController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("music");
     }
 
-    private void Update() {
+    private void Update() 
+    {
         if (gameOver) return;
-        if (!puzzlesCompleted[0] && Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) {
+        // if a puzzle has been completed, add a star and show it in the UI
+        if (!puzzlesCompleted[0] && Array.TrueForAll(bowlAddedCorrectly, value => { return value; })) 
+        {
             Debug.Log("bowlAddedCorrectly");
             puzzlesCompleted[0] = true;
             stars++;
             gameSuccessController.updateProgress(1, stars);
-        } else if (!puzzlesCompleted[1] && Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) {
+        } 
+        else if (!puzzlesCompleted[1] && Array.TrueForAll(whiskAddedCorrectly, value => { return value; })) 
+        {
             Debug.Log("whiskAddedCorrectly");
             puzzlesCompleted[1] = true;
             stars++;
             gameSuccessController.updateProgress(2, stars);
-        } else if (!puzzlesCompleted[2] && rollingPinAddedCorrectly) {
+        } 
+        else if (!puzzlesCompleted[2] && rollingPinAddedCorrectly) 
+        {
             Debug.Log("rollingPinAddedCorrectly");
             puzzlesCompleted[2] = true;
             stars++;
             gameSuccessController.updateProgress(3, stars);
         }
 
-        if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) {
+        // if the time is over or all pieces have been completed, show game success screen and save the mini game
+        if (gameTimer.timeOver || Array.TrueForAll(puzzlesCompleted, value => { return value; })) 
+        {
             gameOver = true;
             SaveMiniGame();
         }
@@ -65,51 +72,69 @@ public class CombinationController : MonoBehaviour
         StartCoroutine(CollisionUpdate(index, name));
     }
 
-    public bool IsPuzzleCompleted(string name) {
-        if (name.Contains("bowl")) {
+    public bool IsPuzzleCompleted(string name) 
+    {
+        if (name.Contains("bowl")) 
+        {
             return puzzlesCompleted[0];
-        } else if (name.Contains("whisk")) {
+        } 
+        else if (name.Contains("whisk")) 
+        {
             return puzzlesCompleted[1];
-        } else if (name.Contains("rolling-pin")) {
+        } 
+        else if (name.Contains("rolling-pin")) 
+        {
             return puzzlesCompleted[2];
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
 
-    public void SaveMiniGame() {
+    public void SaveMiniGame() 
+    {
         int highScore = (int)gameTimer.timeRemainingTotal;
         gameProgress.SaveMiniGame(gameID,highScore, stars);
         gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, stars);
     }
 
-    public void PlayAnimation(string name, Vector3 position, Quaternion rotation) {
+    public void PlayAnimation(string name, Vector3 position, Quaternion rotation) 
+    {
         StartCoroutine(PlayAnimationThenGoOn(name, position, rotation));
     }
 
+    // if one piece is added correctly, the complete-state gets saved for half a second
     IEnumerator CollisionUpdate(int index, string name)
     {
         Stopwatch watch = new Stopwatch();
         watch.Start();
-        if (name.Contains("bowl") && !bowlAddedCorrectly[index]) {
+        if (name.Contains("bowl") && !bowlAddedCorrectly[index]) 
+        {
             bowlAddedCorrectly[index] = true;
             while (watch.Elapsed.TotalSeconds < 0.5) {
                 yield return null;
             }
             bowlAddedCorrectly[index] = false;
-        } else if (name.Contains("whisk") && !whiskAddedCorrectly[index]) {
+        } 
+        else if (name.Contains("whisk") && !whiskAddedCorrectly[index]) 
+        {
             whiskAddedCorrectly[index] = true;
             while (watch.Elapsed.TotalSeconds < 0.5) {
                 yield return null;
             }
             whiskAddedCorrectly[index] = false;
-        } else if (name.Contains("rolling-pin") && !rollingPinAddedCorrectly) {
+        } 
+        else if (name.Contains("rolling-pin") && !rollingPinAddedCorrectly) 
+        {
             rollingPinAddedCorrectly = true;
         }
         StopCoroutine("CollisionUpdate");       
     }
 
-    IEnumerator PlayAnimationThenGoOn(string name, Vector3 position, Quaternion rotation) {
+    // if a puzzle is completed, show success animation
+    IEnumerator PlayAnimationThenGoOn(string name, Vector3 position, Quaternion rotation) 
+    {
         Stopwatch watch = new Stopwatch();
         watch.Start();
 
@@ -118,7 +143,8 @@ public class CombinationController : MonoBehaviour
         animation.transform.rotation = rotation;
         imageTracking.ToggleImageTracking();
         gameTimer.Pause();
-        while (watch.Elapsed.TotalSeconds < 5) {
+        while (watch.Elapsed.TotalSeconds < 5) 
+        {
             yield return null;
         }
         Destroy(animation);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// Source: https://www.youtube.com/watch?v=x-C95TuQtf0
+// Based on source https://www.youtube.com/watch?v=x-C95TuQtf0
 public class GameTimer : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
@@ -23,28 +23,33 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        if (!timeOver && !paused) {
+        if (!timeOver && !paused) 
+        {
             timeRemaining = startTime - Time.time;
             int minutes = (int) timeRemaining  / 60;
             int seconds = (int) timeRemaining  % 60;
             timeText.text = minutes.ToString() + ":" + seconds.ToString("f0");
 
-            if (timeRemaining < 0) {
+            if (timeRemaining < 0) 
+            {
                 TimeOver();
             }
         }
     }
 
-    public void Pause() {
+    public void Pause() 
+    {
         paused = true;
     }
-    public void ReStart() {
+    public void ReStart() 
+    {
         paused = false;
         startTime = Time.time + minutesMax * 60;
         timeRemainingTotal += timeRemaining;
     }
 
-    void TimeOver() {
+    void TimeOver() 
+    {
         timeOver = true;
         timeText.text = "00:00";
     }

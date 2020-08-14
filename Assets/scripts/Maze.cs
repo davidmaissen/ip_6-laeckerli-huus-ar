@@ -7,10 +7,8 @@ public class Maze : MonoBehaviour
 {
     public GameObject levelSuccessCanvas;
     public GameObject uiController;
-
     public GameObject[] levels;
     private GameObject[] spawnedlevels;
-
     private GameObject activeLevel;
     private int comletedLevels = 0;
     private bool gameStarted = false;
@@ -19,14 +17,11 @@ public class Maze : MonoBehaviour
     private bool gameOver = false;
     private float cooldownDuration = 1.0f;
     private float canSpawn;
-    
     private List<GameObject> cubes;
     private SpawnObjectsOnPlane spawnObjectsOnPlane;
     private GameProgress gameProgress;
     private GameSuccessController gameSuccessController;
-
     private MazePlayer player;
-
     private int gameID = 3;
 
     void Awake()
@@ -41,17 +36,21 @@ public class Maze : MonoBehaviour
 
     void Update()
     {
-        if (spawnObjectsOnPlane.placementModeActive || gameOver) {
+        if (spawnObjectsOnPlane.placementModeActive || gameOver) 
+        {
             return;
         }
 
-        if (!gameStarted) {
+        // initialise scene with levels, as soon as plane detection has been completed
+        if (!gameStarted) 
+        {
             Debug.Log("Start Game");
             gameStarted = true;
             activeLevel = GameObject.FindWithTag("Respawn");
             activeLevel.SetActive(false);
 
-            for (int i = 0; i < levels.Length; i++) {
+            for (int i = 0; i < levels.Length; i++) 
+            {
                 GameObject newPrefab = Instantiate(levels[i], activeLevel.transform.position, activeLevel.transform.rotation);
                 Vector3 eulerRotation = transform.rotation.eulerAngles;
                 newPrefab.transform.rotation = Quaternion.Euler(0, eulerRotation.y, 0);
@@ -62,6 +61,7 @@ public class Maze : MonoBehaviour
             spawnedlevels[0].SetActive(true);
         }
         
+        // if ball has touched the goal or an area it shouldn't have to, update mini game progress
         player = GameObject.FindObjectOfType<MazePlayer>();
         Debug.Log("gefunden: " + player.name);
 
@@ -78,13 +78,15 @@ public class Maze : MonoBehaviour
             }
         }
 
-        if (player.LevelLost()) {
+        if (player.LevelLost()) 
+        {
             Debug.Log("Level completed - No hits left");
             gameOver = true;
             SaveMiniGame();
         }
     }
 
+    // if level has been completed, show success panel of level or of mini game if last level has been completed
     void LevelCompleted() 
     {
         Debug.Log("Completed Levels: " + comletedLevels);
@@ -99,7 +101,8 @@ public class Maze : MonoBehaviour
         else
         {
             Debug.Log("Load new Level");
-            foreach (GameObject level in levels) {
+            foreach (GameObject level in levels) 
+            {
                 level.SetActive(false);
             }
             spawnedlevels[comletedLevels-1].SetActive(false);
@@ -115,7 +118,8 @@ public class Maze : MonoBehaviour
         player = spawnedlevels[comletedLevels].GetComponent<MazePlayer>();
     }
 
-    public void SaveMiniGame() {
+    public void SaveMiniGame() 
+    {
         gameProgress.SaveMiniGame(gameID, highScore, comletedLevels);
         gameSuccessController.ShowSuccessPanel(gameOver, gameID, highScore, comletedLevels);
     }

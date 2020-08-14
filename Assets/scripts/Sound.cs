@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 
-// Source: https://www.youtube.com/watch?v=6OT43pvUyfY
+// Based on source https://www.youtube.com/watch?v=6OT43pvUyfY
 
 [System.Serializable]
 public class Sound

@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class TiltControl : MonoBehaviour
 {
-
     private Touch touch;
-
     private Vector2 touchPosition;
-
     private Quaternion rotationX, rotationZ;
-
     private float tiltSpeedModifier = 0.1f;
 
-
-    // Update is called once per frame
     void Update()
     {
         if(Input.touchCount > 0)
         {
-
-                touch = Input.GetTouch(0);
-
+            touch = Input.GetTouch(0);
             switch (touch.phase) {
-
                     case TouchPhase.Moved:
 
                         rotationX = Quaternion.Euler(

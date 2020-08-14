@@ -5,24 +5,20 @@ using TMPro;
 
 public class UIController
 {
-
     public void showTutorial(GameObject tutorial)
     {
         tutorial.SetActive(true);
     }
-
 
     public void disableMenu(Animator animation)
     {
         animation.SetBool("displayed", false);
     }
 
-
     public void enableMenu(Animator animation)
     {
         animation.SetBool("displayed", true);
     }
-
 
     public void animateIngredientsBar(Animator animation)
     {
@@ -31,7 +27,6 @@ public class UIController
 
     public void updateStarsCounter(TextMeshProUGUI starsCounter)
     {
-        //set value of starsCounter
         starsCounter = starsCounter.GetComponent<TextMeshProUGUI>();
         starsCounter.text = GameProgress.starsCollected.ToString();
     }

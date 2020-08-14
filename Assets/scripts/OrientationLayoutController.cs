@@ -6,33 +6,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
- 
+// Based on source: https://forum.unity.com/threads/device-screen-rotation-event.118638/?_ga=2.268232782.134089061.1595601046-2023691235.1592315311
+
 public class OrientationLayoutController : MonoBehaviour
 {
-    //Source: https://forum.unity.com/threads/device-screen-rotation-event.118638/?_ga=2.268232782.134089061.1595601046-2023691235.1592315311
-
     RectTransform rectTransform;
     public GameObject[] panelsInfo;
     public GameObject[] panelsSettings;
     public GameObject gameDetail;
-
     public GameObject button;
-
     public GameObject[] infoItemGroup;
-
     public GameObject[] nestedInfoItemGroup;
-    
     public GameObject[] settingsItemGroup;
-
     public GameObject[] nestedInfoSettingsGroup;
-
     private Scene activeScene;
-
 
     void Awake()
     {
         activeScene = SceneManager.GetActiveScene();
 
+        // lock orientation based on current scene
         switch(activeScene.name)
         {
              case "start":
@@ -44,10 +37,8 @@ public class OrientationLayoutController : MonoBehaviour
              Screen.orientation = ScreenOrientation.AutoRotation;
              break;
         }
-    
         rectTransform = GetComponent<RectTransform>();
         UpdateLayout();
-
     }
     void UpdateLayout()
     {
@@ -57,7 +48,7 @@ public class OrientationLayoutController : MonoBehaviour
 
         if(rectTransform.rect.width < rectTransform.rect.height){
 
-            //setup Layout for PortraitView
+            // setup layout for portrait view
             GameObject nestedLayoutGroupInfo = panelsInfo[0].transform.Find("Menu-Area/Panel-Background-Portrait/Label-Ingredients").gameObject;
             GameObject panelInfo = panelsInfo[0].transform.Find("Menu-Area/Panel-Background-Portrait").gameObject;
 
@@ -70,7 +61,7 @@ public class OrientationLayoutController : MonoBehaviour
         }
         else
         {
-            //setup Layout for LandscapeView
+            // setup layout for landscape view
             GameObject nestedLayoutGroupInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape/Label-Ingredients").gameObject;
             GameObject panelInfo = panelsInfo[1].transform.Find("Menu-Area/Panel-Background-Landscape").gameObject;
 
@@ -88,11 +79,11 @@ public class OrientationLayoutController : MonoBehaviour
         return rectTransform.rect.width < rectTransform.rect.height;
     }
    
-    //add the menu items to the specific Menu Panel
+    // add the menu items to the specific Menu Panel
     private void CreateGrouping(GameObject panelInfo, GameObject nestedLayoutGroupInfo, GameObject nestedLayoutGroupSettings, GameObject panelSettings)
     {
 
-            //Add all Menu-Info items to panel
+            // add all menu info items to panel
             foreach(GameObject item in infoItemGroup)
             {
                 item.transform.SetParent ( panelInfo.gameObject.transform );
@@ -105,13 +96,13 @@ public class OrientationLayoutController : MonoBehaviour
                     item.transform.SetSiblingIndex(1);
                 }
             }
-             //Add all Menu-Info items to nested panel
+             // add all menu info items to nested panel
             foreach(GameObject item in nestedInfoItemGroup)
             {
                item.transform.SetParent (nestedLayoutGroupInfo.gameObject.transform);
             }
 
-            //Add all Menu-Settings items to panel
+            // add all menu settings items to panel
             foreach(GameObject item in settingsItemGroup)
             {
                 item.transform.SetParent ( panelSettings.gameObject.transform );
@@ -125,14 +116,14 @@ public class OrientationLayoutController : MonoBehaviour
                 }
             }
 
-            //Add all Menu-Setting item to nested panel
+            // add all menu setting item to nested panel
             foreach(GameObject item in nestedInfoSettingsGroup)
             {
                item.transform.SetParent (nestedLayoutGroupSettings.gameObject.transform);
             }
     }
 
-       private void setView()
+    private void setView()
     {
             if(IsPortrait()){
                 panelsInfo[0].SetActive(true);

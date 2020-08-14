@@ -5,31 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class CanvasStateController : MonoBehaviour
 {
-
     public GameObject tutorial;
     public GameObject[] setActive;
     public GameObject[] setInactive;
-
     private GameProgress gameProgress;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameProgress = new GameProgress();
         gameProgress.InitializeGameData();
 
-        //set canvas visibilty
-        foreach(GameObject obj in setActive)
+        foreach (GameObject obj in setActive)
         {
              obj.SetActive(true);   
         }
 
-        foreach(GameObject obj in setInactive)
+        foreach (GameObject obj in setInactive)
         {
              obj.SetActive(false);   
         }
 
-        if( SceneManager.GetActiveScene().name.Equals("explore") && !(GameProgress.tutorialCompleted))
+        if (SceneManager.GetActiveScene().name.Equals("explore") && !(GameProgress.tutorialCompleted))
         {
             showTutorial(tutorial);
             GameProgress.tutorialCompleted = true;

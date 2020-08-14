@@ -8,18 +8,10 @@ public class MenuSettingsController : MonoBehaviour
     public GameObject menuSetting;
     public GameObject menuHome;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-            menuSetting.SetActive(true);
-            menuHome.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        menuSetting.SetActive(true);
+        menuHome.SetActive(false);
     }
 
     public void showPanel(string name)

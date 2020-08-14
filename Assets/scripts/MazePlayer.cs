@@ -3,18 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
-public class MazePlayer : MonoBehaviour {
-	
-	// Create public variables for player speed, and for the Text UI game objects
+// Based on source: https://www.youtube.com/watch?v=gyOOf25321M
+public class MazePlayer : MonoBehaviour 
+{
 	public float speed;
 	public int touchesCounter;
 	public GameObject nextLevel;
-
-	// Create private references to the rigidbody component on the player, and the count of pick up objects picked up so far
 	private Rigidbody rb;
-
 	private GameObject levelGroup;
-
 	public int activeLevel;
 	private bool finished;
 	private bool gameOver = false;
@@ -27,6 +23,7 @@ public class MazePlayer : MonoBehaviour {
 	void Start ()
 	{
         arHelpCanvas = GameObject.Find("UserInterface").gameObject.transform.Find("ARHelpCanvasTouch").gameObject;
+		// set points to earn points based on level
 		touchesCounter = activeLevel * 15;
 		uiController = GameObject.Find("UserInterface").gameObject.transform.Find("UIControllerGame").gameObject;
         gameSuccessController = uiController.GetComponent<GameSuccessController>();
@@ -39,15 +36,15 @@ public class MazePlayer : MonoBehaviour {
 		FindObjectOfType<AudioManager>().Play("sounds");
 	}
 
-	//https://www.youtube.com/watch?v=gyOOf25321M
-	void Update() {
+	void Update() 
+	{
 		if (gameOver || finished) return;
-		// Swipe start
+		// swipe start
 		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
 				touchStart = Input.GetTouch(0).position;
 				TouchCount();
 		}
-		// Swipe end
+		// swipe end
 		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) {
 			touchEnd = Input.GetTouch(0).position;
 			float cameraFacing = Camera.main.transform.eulerAngles.y;
@@ -60,7 +57,7 @@ public class MazePlayer : MonoBehaviour {
 	}
 
 
-	// When this game object intersects a collider with 'is trigger' checked, 
+	// when this game object intersects a collider with 'is trigger' checked, 
 	// store a reference to that collider in a variable named 'other'..
 	void OnTriggerEnter(Collider other) 
 	{
@@ -71,14 +68,17 @@ public class MazePlayer : MonoBehaviour {
 			Debug.Log("Collision with finish-tag");
 			gameSuccessController.updateProgress(touchesCounter, activeLevel);
 			finished = true;
-		} else if (other.gameObject.CompareTag("Respawn")) {
+		} 
+		else if (other.gameObject.CompareTag("Respawn")) 
+		{
 			Debug.Log("Collision with respawn-tag");
 			touchesCounter = 0;
 			gameOver = true;
 		}
 	}
 
-	private void TouchCount() {
+	private void TouchCount() 
+	{
 		touchesCounter = touchesCounter > 0 ? touchesCounter - 1 : 0;
 		swipeAnimator.SetBool("ShowInfo", false);
         gameSuccessController.updateProgress(touchesCounter, activeLevel-1);

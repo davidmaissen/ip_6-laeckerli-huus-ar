@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Source: https://forum.unity.com/threads/ui-animate-fullscreen-panel-from-off-screen.271751/
+// Based on source: https://forum.unity.com/threads/ui-animate-fullscreen-panel-from-off-screen.271751/
 // Lets a RectTransform fly in from one of the edges of its canvas.
 // This can be used with an animator.
 public class RectTransformFlyIn : MonoBehaviour
 {
-
     public enum Sides
     {
         Left,

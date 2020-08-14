@@ -11,12 +11,9 @@ public class GameSuccessController : MonoBehaviour
     public GameObject successQuitCanvas;
     public GameObject menuTop;
     public GameObject menuBottom;
-
-   //Controller
     private StarStateController starStateController;
     private GameProgress gameProgress;
     public GameObject uiController;
-
 
     void Awake()
     {
@@ -25,6 +22,7 @@ public class GameSuccessController : MonoBehaviour
         updateProgress(0, 0);
     }
 
+    // update progress of ui on top of the screen while playing a mini game
     public void updateProgress(int count, int starsCount)
     {   
         Debug.Log("update Progress");
@@ -54,15 +52,10 @@ public class GameSuccessController : MonoBehaviour
                 Debug.Log(rollingPin.name + " " + rollingPin.activeSelf);
             }
             break;
-
-            case "find-alex":
-            
-            break;
         }
-        
-
     }
 
+    // show success panel after mini game is over and show the game results
     public void ShowSuccessPanel(bool gameOver, int gameID, int? highscore, int starsCount)
     {   
         (string name, Sprite imageActive, Sprite imageInactive) gameData = gameProgress.GetIngredientInfo(gameID);
@@ -72,6 +65,7 @@ public class GameSuccessController : MonoBehaviour
         TextMeshProUGUI highscoreLabel;
         TextMeshProUGUI textAlex;
 
+        // show different information and play different audio based on if player wants to quit the mini game or the mini game is over
         if (gameOver)
         {
             stars = successCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
@@ -79,7 +73,8 @@ public class GameSuccessController : MonoBehaviour
             ingredientLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Title-Game").gameObject.GetComponent<TextMeshProUGUI>();
             highscoreLabel = successCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/HighScore-Game/HighScore-Text").gameObject.GetComponent<TextMeshProUGUI>();
             textAlex = successCanvas.transform.Find("Panel-Detail/Alex/Speech-Bubble/Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>();
-            switch (starsCount) {
+            switch (starsCount) 
+            {
                 case 0:
                 textAlex.text = "Schade!";
                 FindObjectOfType<AudioManager>().Play("fail");
@@ -98,7 +93,8 @@ public class GameSuccessController : MonoBehaviour
                 break;
             }
             successCanvas.SetActive(true);
-        } else 
+        } 
+        else 
         {
             stars = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Stars").gameObject;
             ingredientIcon = successQuitCanvas.transform.Find("Panel-Detail/Game-Success/Label-Success-Detail/Ingredient-Icon").gameObject;
@@ -107,7 +103,7 @@ public class GameSuccessController : MonoBehaviour
             successQuitCanvas.SetActive(true);
         }
 
-        if(starsCount > 0)
+        if (starsCount > 0)
         {
             ingredientLabel.text = gameData.Item1 + " erhalten";
         }
@@ -119,7 +115,9 @@ public class GameSuccessController : MonoBehaviour
         highscoreLabel.text = highscore != null ? highscore.ToString() : "-";
         if (starsCount < 1) {
             ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item3;
-        } else {
+        } 
+        else 
+        {
             ingredientIcon.transform.GetComponent<Image>().sprite = gameData.Item2;
         }
 

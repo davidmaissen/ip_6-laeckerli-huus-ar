@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// Based on source https://stackoverflow.com/questions/35529940/how-to-make-gameplay-ignore-clicks-on-ui-button-in-unity3d
 public class IsCanvasClicked : MonoBehaviour, IPointerDownHandler
 {
     public bool goClicked = false;
-    // private SpawnObjectsOnPlane spawnObjectsOnPlane;
-    
+
+    // stop propagation of ui clicks    
     public void OnPointerDown(PointerEventData data)
     {
         Debug.Log("Event Data World Position: " + data.pointerCurrentRaycast.worldPosition);
@@ -15,6 +16,5 @@ public class IsCanvasClicked : MonoBehaviour, IPointerDownHandler
         Debug.Log("Event Data Position: " + data.position);
         Debug.Log("Event Data: " + data);
         goClicked = true;
-        // spawnObjectsOnPlane.UpdateObjectOnPlane(data);
     }
 }

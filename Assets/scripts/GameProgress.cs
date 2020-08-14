@@ -11,11 +11,17 @@ public class GameProgress
     public static string playerName;
 
     // setup of all mini games
-    public void InitializeGameData()
+    public void InitializeGameData(bool forced = false)
     {
-        if (miniGames == null)
+        if (miniGames == null || forced)
         {
             Sprite sp  = Resources.Load<Sprite>("Sprites/tower");
+            starsCollected = 0;
+            MarkerTracking.airPlaneStarCollected = false;
+            MarkerTracking.oldImagesStarCollected = false;
+            MarkerTracking.museStarCollected = false;
+            MarkerTracking.productsStarCollected = false;
+            MarkerTracking.historyStarCollected = false;
 
             //Initialize Ingredients
             Ingredient lemon = new Ingredient(0, "Zitrone", Resources.Load<Sprite>("Sprites/Ingredients/lemon-active"), Resources.Load<Sprite>("Sprites/Ingredients/lemon-inactive"), Resources.Load<Material>("Materials/Success/lemon"));

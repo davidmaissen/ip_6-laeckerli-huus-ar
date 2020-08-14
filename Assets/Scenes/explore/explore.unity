@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeablePrefab:
-  - {fileID: 9121724712343460841, guid: 48002b3e7fe474456a13793330a759bb, type: 3}
+  - {fileID: 3132807776479307711, guid: 3d5277af258064c26afd93d7e497b803, type: 3}
   - {fileID: 7911040046619357045, guid: 3beb5e60633834bb0b4b73f46e927e67, type: 3}
   - {fileID: 7911040046619357045, guid: 3edea0b2a1ff14be98376a9d33c8f45c, type: 3}
   - {fileID: 7911040046619357045, guid: 73e86e2751f084a2cb15d29cd27575d6, type: 3}
@@ -867,12 +867,12 @@ MonoBehaviour:
   - {fileID: 8541744748547234771, guid: 461acd804ae5a454185c15c88c41775b, type: 3}
   - {fileID: 7911040046619357045, guid: 1db8f23226df0421995d1fcc34e72432, type: 3}
   - {fileID: 3132807776479307711, guid: eb5d2980c108f4168a9002ae55c82ff8, type: 3}
-  - {fileID: 3132807776479307711, guid: 3d5277af258064c26afd93d7e497b803, type: 3}
   gameStartScreen: {fileID: 8000489228018457516}
   gamePlayButton: {fileID: 8000489229845108299}
   gameTitle: {fileID: 8000489229010062747}
   gameDescription: {fileID: 8000489228761336262}
   emma: {fileID: 21300000, guid: fb119d67036f94eaf8e3ff0870f4af85, type: 3}
+  alex: {fileID: 21300000, guid: 5ea3aebc28d1b4ba8b6c9f03ed6dbc8e, type: 3}
   imageAlex: {fileID: 8000489229070442975}
   starCountAnimation: {fileID: 654979792}
 --- !u!1 &408497962
@@ -6285,18 +6285,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8000489229845108296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: explore
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &8000489229845108298
 RectTransform:
   m_ObjectHideFlags: 0

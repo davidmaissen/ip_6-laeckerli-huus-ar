@@ -23,6 +23,7 @@ public class MarkerTracking : MonoBehaviour
     public TextMeshProUGUI gameTitle;
     public TextMeshProUGUI gameDescription;
     public Sprite emma;
+    public Sprite alex;
     public GameObject imageAlex;
     public Animator starCountAnimation;
     private GameProgress gameProgress;
@@ -30,11 +31,11 @@ public class MarkerTracking : MonoBehaviour
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
     private GameUpdateController starsCountController;
-    private static bool airPlaneStarCollected = false;
-    private static bool oldImagesStarCollected = false;
-    private static bool museStarCollected = false;
-    private static bool productsStarCollected = false;
-    private static bool historyStarCollected = false;
+    public static bool airPlaneStarCollected = false;
+    public static bool oldImagesStarCollected = false;
+    public static bool museStarCollected = false;
+    public static bool productsStarCollected = false;
+    public static bool historyStarCollected = false;
 
     private void Awake() 
     {
@@ -157,19 +158,18 @@ public class MarkerTracking : MonoBehaviour
                 else
                 // show mini game button
                 {
-                    Debug.Log("setting texts");
                     gameStartScreen.SetActive(true);
                     selectedMiniGame = Array.Find(GameProgress.miniGames, minigame => minigame.getTitleKey() == hitInfo.transform.gameObject.name);
                     gameTitle.text = selectedMiniGame.getTitle();
                     gameDescription.text = selectedMiniGame.getDescription();
-                    Debug.Log("play sound");
                     FindObjectOfType<AudioManager>().Play(selectedMiniGame.getTitleKey());
-                    Debug.Log("set button listener");
                     gamePlayButton.GetComponent<Button>().onClick.AddListener(LoadScene);
                     // if the mini game is find-alex, show emma insted of alex
                     if (selectedMiniGame.getTitleKey() == "find-alex") 
                     {
                         imageAlex.gameObject.GetComponent<Image>().sprite = emma;
+                    } else {
+                        imageAlex.gameObject.GetComponent<Image>().sprite = alex;
                     }
                 }
             }

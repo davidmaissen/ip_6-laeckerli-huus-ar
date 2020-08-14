@@ -16,7 +16,7 @@ public class StartController : MonoBehaviour
     void Start()
     {
         gameProgress = new GameProgress();
-        gameProgress.InitializeGameData();
+        gameProgress.InitializeGameData(true);
     }
 
     public void showInput()
